@@ -3,10 +3,31 @@
 [ext_resource type="Script" uid="uid://dl30bxs27dggi" path="res://script/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 71.0
+radius = 106.16968
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=88700311]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+size = Vector2(121.375, 139)
+
+[node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("pivot", "sword_area", "sword_collision", "timer")]
 script = ExtResource("1_3vyb7")
+pivot = NodePath("Marker2D")
+sword_area = NodePath("sword_area")
+sword_collision = NodePath("sword_area/sword_collision")
+timer = NodePath("attack_cooldown")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1006971222]
+[node name="player_collision" type="CollisionShape2D" parent="." unique_id=1006971222]
 shape = SubResource("CircleShape2D_g2els")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
+
+[node name="attack_cooldown" type="Timer" parent="." unique_id=1134980537]
+one_shot = true
+
+[node name="sword_area" type="Area2D" parent="." unique_id=109049469]
+
+[node name="sword_collision" type="CollisionShape2D" parent="sword_area" unique_id=759228509]
+shape = SubResource("RectangleShape2D_3vyb7")
+debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
+
+[connection signal="timeout" from="attack_cooldown" to="." method="_attack_timeout"]
+[connection signal="body_entered" from="sword_area" to="." method="_on_sword_hit"]
