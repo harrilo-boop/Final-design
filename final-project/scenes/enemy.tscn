@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bocov7t2rxj7c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+radius = 42.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=790093923 groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497424036]
+shape = SubResource("CircleShape2D_8tegq")
+debug_color = Color(0.96854955, 0.16239247, 0.19665086, 0.41960785)

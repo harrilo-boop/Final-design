@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dl30bxs27dggi" path="res://script/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 106.16968
+radius = 44.102154
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(121.375, 139)
+size = Vector2(60.6875, 64.5)
 
 [node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("pivot", "sword_area", "sword_collision", "timer")]
 script = ExtResource("1_3vyb7")

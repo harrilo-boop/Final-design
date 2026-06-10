@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://b88a4y3sddpuy"]
+
+[ext_resource type="Script" uid="uid://k5vjrv5vja6m" path="res://script/town.gd" id="1_26hdk"]
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/player.tscn" id="1_vf4ci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26hdk"]
+size = Vector2(410.5, 301.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1obe"]
+size = Vector2(415, 299)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5sqg"]
+size = Vector2(189, 306)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gry36"]
+size = Vector2(174, 345.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xh0m"]
+size = Vector2(165, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgxhk"]
+size = Vector2(85, 109.5)
+
+[node name="Node2D" type="Node2D" unique_id=165869705 node_paths=PackedStringArray("player", "Trade_1", "Trade_2")]
+script = ExtResource("1_26hdk")
+player = NodePath("player")
+Trade_1 = NodePath("weapon_armor_collision")
+Trade_2 = NodePath("technique_collision")
+
+[node name="Town collisions (Demo)" type="Area2D" parent="." unique_id=636475663]
+
+[node name="Weapon_Collision (Demo)" type="CollisionShape2D" parent="Town collisions (Demo)" unique_id=1293962366]
+position = Vector2(947.25, 150.375)
+shape = SubResource("RectangleShape2D_26hdk")
+debug_color = Color(0.7798533, 0.4334869, 0.16744968, 0.41960785)
+
+[node name="Armour_Collision (Demo)" type="CollisionShape2D" parent="Town collisions (Demo)" unique_id=1729347945]
+position = Vector2(546.5, 152)
+shape = SubResource("RectangleShape2D_j1obe")
+debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
+
+[node name="Technique_Collision (Demo)" type="CollisionShape2D" parent="Town collisions (Demo)" unique_id=1741882379]
+position = Vector2(95, 155)
+shape = SubResource("RectangleShape2D_g5sqg")
+debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
+
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_vf4ci")]
+position = Vector2(1084, 467)
+
+[node name="Leave_town" type="Area2D" parent="." unique_id=873986512]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_town" unique_id=1560306548]
+position = Vector2(1244, 467)
+shape = SubResource("RectangleShape2D_gry36")
+
+[node name="weapon_armor_collision" type="Area2D" parent="." unique_id=2110656389]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_armor_collision" unique_id=912306859]
+position = Vector2(857, 245)
+shape = SubResource("RectangleShape2D_8xh0m")
+debug_color = Color(0.5971114, 0.4493575, 0.8054929, 0.41960785)
+
+[node name="technique_collision" type="Area2D" parent="." unique_id=123608754]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="technique_collision" unique_id=1557270617]
+position = Vector2(113, 249)
+shape = SubResource("RectangleShape2D_hgxhk")
+debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
+
+[connection signal="body_entered" from="Leave_town" to="." method="_leave_town"]
+[connection signal="area_entered" from="weapon_armor_collision" to="." method="_shop_enter"]
+[connection signal="area_entered" from="technique_collision" to="." method="_shop_enter"]
+[connection signal="area_exited" from="technique_collision" to="." method="_shop_leave"]
