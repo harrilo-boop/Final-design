@@ -12,12 +12,19 @@ outline_size = 8
 font_size = 40
 font_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7cga"]
+bg_color = Color(0.70980394, 0.14117648, 0.15294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqpje"]
+bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar")]
 script = ExtResource("1_acoj8")
 turn_label = NodePath("CanvasLayer/Turn_label")
 hp_ui = NodePath("CanvasLayer/Playerhp_label")
 enemy_ui = NodePath("CanvasLayer/Enemyhp_label")
 change_turn = NodePath("Change_turn")
+player_bar = NodePath("CanvasLayer/Playerhp")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 437.0
@@ -63,6 +70,17 @@ offset_bottom = 93.0
 text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
+[node name="Playerhp" type="ProgressBar" parent="CanvasLayer" unique_id=746096015]
+offset_left = 143.0
+offset_top = 160.0
+offset_right = 555.0
+offset_bottom = 197.0
+theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
+max_value = 10.0
+step = 1.0
+show_percentage = false
+
 [node name="Enemyhp_label" type="Label" parent="CanvasLayer" unique_id=1139744857]
 offset_left = 780.0
 offset_top = 31.0
@@ -82,23 +100,36 @@ offset_top = -3.0
 offset_right = 1153.0
 offset_bottom = 645.0
 
-[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1329014679]
+[node name="ATK_button" type="PanelContainer" parent="Control" unique_id=1329014679]
 layout_mode = 0
 offset_left = 231.0
 offset_top = 482.0
 offset_right = 497.0
 offset_bottom = 513.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer" unique_id=1634632411]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ATK_button" unique_id=1634632411]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/PanelContainer/VBoxContainer" unique_id=993049186]
+[node name="Attack" type="Button" parent="Control/ATK_button/VBoxContainer" unique_id=993049186]
 light_mask = 2
 layout_mode = 2
 text = "Attack"
 
+[node name="TECH_button" type="PanelContainer" parent="Control" unique_id=590545330]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 479.0
+offset_right = 902.0
+offset_bottom = 514.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TECH_button" unique_id=1166125510]
+layout_mode = 2
+
+[node name="TECH_button" type="Button" parent="Control/TECH_button/VBoxContainer" unique_id=1098732909]
+layout_mode = 2
+
 [node name="Change_turn" type="Timer" parent="." unique_id=1282682776]
 one_shot = true
 
-[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/Button" to="." method="_attack_choose"]
+[connection signal="pressed" from="Control/ATK_button/VBoxContainer/Attack" to="." method="_attack_choose"]
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]

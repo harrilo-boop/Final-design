@@ -21,11 +21,9 @@ size = Vector2(165, 109)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgxhk"]
 size = Vector2(85, 109.5)
 
-[node name="Node2D" type="Node2D" unique_id=165869705 node_paths=PackedStringArray("player", "Trade_1", "Trade_2")]
+[node name="Node2D" type="Node2D" unique_id=165869705 node_paths=PackedStringArray("player")]
 script = ExtResource("1_26hdk")
 player = NodePath("player")
-Trade_1 = NodePath("weapon_armor_collision")
-Trade_2 = NodePath("technique_collision")
 
 [node name="Town collisions (Demo)" type="Area2D" parent="." unique_id=636475663]
 
@@ -68,6 +66,7 @@ shape = SubResource("RectangleShape2D_hgxhk")
 debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 
 [connection signal="body_entered" from="Leave_town" to="." method="_leave_town"]
-[connection signal="area_entered" from="weapon_armor_collision" to="." method="_shop_enter"]
-[connection signal="area_entered" from="technique_collision" to="." method="_shop_enter"]
-[connection signal="area_exited" from="technique_collision" to="." method="_shop_leave"]
+[connection signal="body_entered" from="weapon_armor_collision" to="." method="_WAshop_enter"]
+[connection signal="body_exited" from="weapon_armor_collision" to="." method="_WAshop_leave"]
+[connection signal="body_entered" from="technique_collision" to="." method="_Tshop_enter"]
+[connection signal="body_exited" from="technique_collision" to="." method="_Tshop_leave"]
