@@ -54,14 +54,14 @@ shape = SubResource("RectangleShape2D_gry36")
 [node name="weapon_armor_collision" type="Area2D" parent="." unique_id=2110656389]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_armor_collision" unique_id=912306859]
-position = Vector2(857, 245)
+position = Vector2(850, 294)
 shape = SubResource("RectangleShape2D_8xh0m")
 debug_color = Color(0.5971114, 0.4493575, 0.8054929, 0.41960785)
 
 [node name="technique_collision" type="Area2D" parent="." unique_id=123608754]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="technique_collision" unique_id=1557270617]
-position = Vector2(113, 249)
+position = Vector2(111, 287)
 shape = SubResource("RectangleShape2D_hgxhk")
 debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 

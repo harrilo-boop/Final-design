@@ -29,5 +29,7 @@ one_shot = true
 shape = SubResource("RectangleShape2D_3vyb7")
 debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
+
 [connection signal="timeout" from="attack_cooldown" to="." method="_attack_timeout"]
 [connection signal="body_entered" from="sword_area" to="." method="_on_sword_hit"]

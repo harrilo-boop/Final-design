@@ -1,4 +1,11 @@
 extends Control
+#SHOWS WHEN BATTLE ENDS
 
 func _battle_end() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")
+
+#TO DO LIST
+#FIX THE POSITION RETURN WHEN PLAYER ENTER BATTLE
+#MAKE THE DATA(AUTOLOAD) UPDATE WHEN ENTER BATTLE
+#FIND THE PROCESS MODE USE IN TRADE AND ALL SETTINGS
+#POSITION = UPDATE_DATA -> PROCESS MODE -> TECH / ITEM --------> ESCAPE

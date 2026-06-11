@@ -1,4 +1,5 @@
 extends Node2D
+#THE TOWN SCRIPT
 
 var can_trade_1:bool = false
 var can_trade_2:bool = false
@@ -8,22 +9,25 @@ var can_trade_2:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass 
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+#Check the player  in the correct shop area so can trade the correct order
 func _process(delta: float) -> void:
 	if can_trade_1 == true and Input.is_action_just_pressed("ui_interact"):
 		print("Weapon & Armor shop opened")
 	elif can_trade_2 == true and Input.is_action_just_pressed("ui_interact"):
 		print("Technique shop opened")
 
+#Method for player to leave town(Changing scene)
 func _leave_town(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")
 
+#IMPROVEMENT FOR FUNCTION BELOW
+#Checking where the player is 
 func _WAshop_enter(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		can_trade_1 = true
-		
+
 func _WAshop_leave(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		can_trade_1 = false

@@ -1,10 +1,13 @@
 extends CharacterBody2D
+#THE PLAYER SCRIPT WITH OVERWORLD SETTINGS
 
 var speed:float = 500
 var is_attacking: bool = false
 var can_attack: bool = true
+var return_from_battle:bool = true
 var last_direction: Vector2 = Vector2.RIGHT
 var hitbox_offset: Vector2
+var player_position: Vector2 = Vector2(0,0)
 
 @export var pivot: Marker2D
 @export var sword_area: Area2D
@@ -15,7 +18,8 @@ func _ready() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
 	hitbox_offset = sword_area.position
-
+	player_position = Global.player_position
+	Global.player_position = player_position
 
 func _process(delta: float) -> void:
 	move_player()
