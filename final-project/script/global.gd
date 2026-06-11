@@ -9,7 +9,7 @@ var max_tp:int = 20
 
 var current_level:int = 0
 var player_xp:int = 0
-var player_position: Vector2 = Vector2.ZERO
+var last_position: Vector2 = Vector2.ZERO
 
 var weapon_attack:int = 1
 var armour_defend:int = 1
@@ -19,3 +19,6 @@ var max_enemy_hp:int = 5
 
 var enemy_attack:int = 1
 var enemy_defend:int = 0
+
+func battle_update(total_enemy_attack: int) -> void:
+	player_hp = player_hp - total_enemy_attack

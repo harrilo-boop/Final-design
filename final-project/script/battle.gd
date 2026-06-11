@@ -4,8 +4,8 @@ extends Node2D
 var player_turn:bool = true
 var enemy_turn:bool = false
 var update_stats:bool = false
-var player_hp:int = 10
-var max_hp:int = 10
+var player_hp:int = 1
+var max_hp:int = 1
 var weapon_attack:int = 2
 var armour_defend:int = 1
 var enemy_hp: int = 5
@@ -14,6 +14,7 @@ var enemy_attack:int = 2
 var enemy_defend:int = 0 
 var total_damage_attack:int = 0
 var total_enemy_attack:int = 0 
+
 
 @export var turn_label: Label
 @export var hp_ui: Label
@@ -26,8 +27,8 @@ var total_enemy_attack:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.player_hp = player_hp #connect the autoload data to battle
-	Global.max_player_hp = max_hp
+	player_hp = Global.player_hp #connect the autoload data to battle
+	max_hp = Global.max_player_hp
 	Global.weapon_attack = weapon_attack
 	Global.armour_defend = armour_defend
 	Global.enemy_hp = enemy_hp
@@ -38,6 +39,7 @@ func _ready() -> void:
 	player_bar.value = player_hp
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
+	hp_ui.text = "HP:" + str(player_hp)
 	
 
 	
@@ -73,6 +75,5 @@ func _enemy_attack() -> void:
 		battle_end()
 
 func battle_end() -> void:
-	Global.player_hp = player_hp
-	Global.max_player_hp = player_hp
+	Global.battle_update(total_damage_attack)
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/battle_end.tscn")

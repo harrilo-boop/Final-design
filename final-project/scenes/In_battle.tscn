@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c2llhgubrrgix"]
 
 [ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/battle.gd" id="1_acoj8"]
-[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/player.tscn" id="2_a7cga"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
 font_size = 40
@@ -28,9 +27,6 @@ player_bar = NodePath("Stats_UI/Playerhp")
 enemy_bar = NodePath("Stats_UI/Enemyhp")
 attack_button = NodePath("Control/ATK_button/VBoxContainer/Attack")
 technique_button = NodePath("Control/TECH_button/VBoxContainer/TECH_button")
-
-[node name="player" parent="." unique_id=88700311 instance=ExtResource("2_a7cga")]
-position = Vector2(268, 348)
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 437.0
