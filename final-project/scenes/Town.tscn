@@ -21,6 +21,9 @@ size = Vector2(165, 109)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgxhk"]
 size = Vector2(85, 109.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66q70"]
+size = Vector2(150.5, 55.5)
+
 [node name="Node2D" type="Node2D" unique_id=165869705 node_paths=PackedStringArray("player")]
 script = ExtResource("1_26hdk")
 player = NodePath("player")
@@ -54,15 +57,22 @@ shape = SubResource("RectangleShape2D_gry36")
 [node name="weapon_armor_collision" type="Area2D" parent="." unique_id=2110656389]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_armor_collision" unique_id=912306859]
-position = Vector2(850, 294)
+position = Vector2(852, 247)
 shape = SubResource("RectangleShape2D_8xh0m")
 debug_color = Color(0.5971114, 0.4493575, 0.8054929, 0.41960785)
 
 [node name="technique_collision" type="Area2D" parent="." unique_id=123608754]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="technique_collision" unique_id=1557270617]
-position = Vector2(111, 287)
+position = Vector2(111, 256)
 shape = SubResource("RectangleShape2D_hgxhk")
+debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
+
+[node name="item_collision" type="Area2D" parent="." unique_id=1278787642]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item_collision" unique_id=1253486559]
+position = Vector2(265, -6)
+shape = SubResource("RectangleShape2D_66q70")
 debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 
 [connection signal="body_entered" from="Leave_town" to="." method="_leave_town"]

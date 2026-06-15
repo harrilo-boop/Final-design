@@ -13,9 +13,9 @@ func _ready() -> void:
 #Check the player  in the correct shop area so can trade the correct order
 func _process(delta: float) -> void:
 	if can_trade_1 == true and Input.is_action_just_pressed("ui_interact"):
-		print("Weapon & Armor shop opened")
+		print("Weapon & Armor shop opened") #wait for weapon/armour system made
 	elif can_trade_2 == true and Input.is_action_just_pressed("ui_interact"):
-		print("Technique shop opened")
+		print("Technique shop opened") #wait for technique system finished
 
 #Method for player to leave town(Changing scene)
 func _leave_town(body: Node2D) -> void:

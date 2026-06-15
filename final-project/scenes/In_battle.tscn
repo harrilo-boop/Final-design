@@ -54,6 +54,9 @@ offset_right = 1151.0
 offset_bottom = 437.0
 color = Color(1, 1, 1, 0.54509807)
 
+[node name="Change_turn" type="Timer" parent="." unique_id=1282682776]
+one_shot = true
+
 [node name="Stats_UI" type="CanvasLayer" parent="." unique_id=1623192407]
 
 [node name="Turn_label" type="Label" parent="Stats_UI" unique_id=1158720786]
@@ -169,8 +172,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Escape"
 
-[node name="Change_turn" type="Timer" parent="." unique_id=1282682776]
-one_shot = true
-
-[connection signal="pressed" from="Control/ATK_button/VBoxContainer/Attack" to="." method="_attack_choose"]
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
+[connection signal="pressed" from="Control/ATK_button/VBoxContainer/Attack" to="." method="_attack_choose"]

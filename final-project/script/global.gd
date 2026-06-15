@@ -52,4 +52,4 @@ func check_levelup() -> void:
 		player_xp -= xp_needed
 		xp_level += 1
 		xp_needed = level_up(xp_level)
-		print(xp_level , "and" , xp_needed)
+		print(xp_level , "and" , xp_needed) #For testing use
