@@ -20,17 +20,13 @@ var max_level:int = 100
 var last_position: Vector2 = Vector2.ZERO
 var previous_scene: String = ""
 
-#Player's stats
-var weapon_attack:int = 1
-var armour_defend:int = 1
-
 #Enemy's health
 var enemy_hp:int = 5
 var max_enemy_hp:int = 5
 
 #Enemy's stats
-var enemy_attack:int = 1
-var enemy_defend:int = 0
+var enemy_atk:int = 1
+var enemy_def:int = 0
 
 var current_level:int = 0
 
