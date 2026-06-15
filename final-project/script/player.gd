@@ -9,6 +9,7 @@ var last_direction: Vector2 = Vector2.RIGHT
 var hitbox_offset: Vector2
 var last_position: Vector2 = Vector2(0,0)
 
+@export var player: CharacterBody2D
 @export var pivot: Marker2D
 @export var sword_area: Area2D
 @export var sword_collision: CollisionShape2D
@@ -18,6 +19,10 @@ func _ready() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
 	hitbox_offset = sword_area.position
+	if Global.last_position != Vector2.ZERO:
+		global_position = Global.last_position
+		Global.last_position = Vector2.ZERO
+	
 
 func _process(delta: float) -> void:
 	move_player()
@@ -73,6 +78,7 @@ func _on_sword_hit(body: Node) -> void:
 		_enter_battle()
 
 func _enter_battle() -> void: 
+	Global.last_position = global_position
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/In_battle.tscn")
 	#Enter a battle and change the scene 
 

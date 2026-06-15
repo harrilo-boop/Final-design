@@ -12,6 +12,7 @@ var enemy_hp: int = 5
 var max_enemy_hp:int = 5
 var enemy_attack:int = 2
 var enemy_defend:int = 0 
+var xp_earn:int = 1
 var total_damage_attack:int = 0
 var total_enemy_attack:int = 0 
 
@@ -35,13 +36,12 @@ func _ready() -> void:
 	Global.max_enemy_hp = max_enemy_hp
 	Global.enemy_attack = enemy_attack
 	Global.enemy_defend = enemy_defend
+	Global.xp_earn = xp_earn
 	player_bar.max_value = max_hp
 	player_bar.value = player_hp
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
-	
-
 	
 func _attack_choose() -> void:
 	if player_turn == true and enemy_turn == false:
@@ -55,6 +55,7 @@ func _attack_choose() -> void:
 			enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 			change_turn.start()
 		if enemy_hp == 0:
+			xp_earn += 10
 			battle_end() 
 		
 
@@ -75,5 +76,6 @@ func _enemy_attack() -> void:
 		battle_end()
 
 func battle_end() -> void:
-	Global.battle_update(total_damage_attack)
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/battle_end.tscn")
+	Global.battle_hp_update(total_damage_attack)
+	Global.battle_xp_update(xp_earn)
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")

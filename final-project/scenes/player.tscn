@@ -8,8 +8,9 @@ radius = 44.102154
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(60.6875, 64.5)
 
-[node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("pivot", "sword_area", "sword_collision", "timer")]
+[node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("player", "pivot", "sword_area", "sword_collision", "timer")]
 script = ExtResource("1_3vyb7")
+player = NodePath(".")
 pivot = NodePath("Marker2D")
 sword_area = NodePath("sword_area")
 sword_collision = NodePath("sword_area/sword_collision")

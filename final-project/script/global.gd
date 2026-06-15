@@ -1,24 +1,55 @@
 extends Node
 #All Variables for player in game
 
+#Player's health
 var player_hp:int = 10
 var max_player_hp:int = 10
 
+#Player's technique point
 var player_tp:int = 20
 var max_tp:int = 20
 
-var current_level:int = 0
+#Player's experience system
 var player_xp:int = 0
-var last_position: Vector2 = Vector2.ZERO
+var xp_earn: int = 0
+var xp_level:int = 1
+var xp_needed:int = 0
+var max_level:int = 100
 
+#For locating player's last position before entering the battle
+var last_position: Vector2 = Vector2.ZERO
+var previous_scene: String = ""
+
+#Player's stats
 var weapon_attack:int = 1
 var armour_defend:int = 1
 
+#Enemy's health
 var enemy_hp:int = 5
 var max_enemy_hp:int = 5
 
+#Enemy's stats
 var enemy_attack:int = 1
 var enemy_defend:int = 0
 
-func battle_update(total_enemy_attack: int) -> void:
+var current_level:int = 0
+
+#Updating player's health after battle
+func battle_hp_update(total_enemy_attack: int) -> void:
 	player_hp = player_hp - total_enemy_attack
+
+func battle_xp_update(xp_earn: int) -> void:
+	player_xp = player_xp + xp_earn
+	check_levelup()
+
+func level_up(xp_level: int) -> int:
+	var basic_xp:int = 10
+	return int(basic_xp * xp_level)
+	
+
+func check_levelup() -> void:
+	if player_xp >= xp_needed and xp_level <= max_level:
+		player_xp -= xp_needed
+		xp_level += 1
+		xp_needed = level_up(xp_level)
+		print(xp_level , "and" , xp_needed)
