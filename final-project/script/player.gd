@@ -23,6 +23,7 @@ func _ready() -> void:
 		global_position = Global.last_position
 		Global.last_position = Vector2.ZERO
 	
+	
 
 func _process(delta: float) -> void:
 	move_player()

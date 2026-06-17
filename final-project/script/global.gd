@@ -5,9 +5,11 @@ extends Node
 var player_hp:int = 10
 var max_player_hp:int = 10
 
-#Player's technique point
+#Player's stats
 var player_tp:int = 20
 var max_tp:int = 20
+var weapon_atk:int = 2
+var armor_def:int = 1
 
 #Player's experience system
 var player_xp:int = 0
