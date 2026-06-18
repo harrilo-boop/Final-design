@@ -66,10 +66,7 @@ offset_top = 164.0
 offset_right = 371.0
 offset_bottom = 226.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Resume_button" unique_id=1139522574]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="Resume_button/VBoxContainer" unique_id=2083115308]
+[node name="Button" type="Button" parent="Resume_button" unique_id=2083115308]
 layout_mode = 2
 
 [node name="Stats_button" type="PanelContainer" parent="." unique_id=1626214296]
@@ -79,8 +76,5 @@ offset_top = 292.0
 offset_right = 371.0
 offset_bottom = 362.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Stats_button" unique_id=1284962599]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="Stats_button/VBoxContainer" unique_id=1439874625]
+[node name="Button" type="Button" parent="Stats_button" unique_id=1439874625]
 layout_mode = 2

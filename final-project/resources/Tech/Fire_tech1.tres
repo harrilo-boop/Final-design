@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="tech_resource" format=3 uid="uid://pt3lpxpf8yoo"]
+
+[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/tech_resource.gd" id="1_rc4ei"]
+
+[resource]
+script = ExtResource("1_rc4ei")
+tech_name = "Flame"
+tech_atk = 3
+tech_tp = 2
+metadata/_custom_type_script = "uid://cdhyyklnof0xc"

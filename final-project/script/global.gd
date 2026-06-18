@@ -11,6 +11,9 @@ var max_tp:int = 20
 var weapon_atk:int = 2
 var armor_def:int = 1
 
+#Player's tech options
+#HOLD IT---------------
+
 #Player's experience system
 var player_xp:int = 0
 var xp_earn: int = 0
@@ -27,7 +30,7 @@ var enemy_hp:int = 5
 var max_enemy_hp:int = 5
 
 #Enemy's stats
-var enemy_atk:int = 1
+var enemy_atk:int = 2
 var enemy_def:int = 0
 
 var current_level:int = 0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="tech_resource" format=3 uid="uid://blgxb611kfmh2"]
+
+[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/tech_resource.gd" id="1_pix6e"]
+
+[resource]
+script = ExtResource("1_pix6e")
+tech_name = "Heal (Low)"
+abiliy = 5
+tech_atk = 0
+tech_tp = 4
+metadata/_custom_type_script = "uid://cdhyyklnof0xc"

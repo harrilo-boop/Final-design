@@ -17,7 +17,15 @@ bg_color = Color(0.70980394, 0.14117648, 0.15294118, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqpje"]
 bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "attack_button", "technique_button", "option_1", "option_2", "option_3", "option_4")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acoj8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17rcu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4isp"]
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "attack_button", "technique_button", "item_button", "escape_button", "option_1", "option_2", "option_3", "option_4")]
 script = ExtResource("1_acoj8")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -27,6 +35,8 @@ player_bar = NodePath("Stats_UI/Playerhp")
 enemy_bar = NodePath("Stats_UI/Enemyhp")
 attack_button = NodePath("Options_button/Attack_button/Attack")
 technique_button = NodePath("Options_button/Tech_button/Tech")
+item_button = NodePath("Options_button/Item_button/Item")
+escape_button = NodePath("Options_button/Escape_button/Escape")
 option_1 = NodePath("Tech_options/Option1_button/Option1")
 option_2 = NodePath("Tech_options/Option2_button/Option2")
 option_3 = NodePath("Tech_options/Option3_button/Option3")
@@ -123,12 +133,13 @@ offset_top = -3.0
 offset_right = 1153.0
 offset_bottom = 645.0
 
-[node name="Attack_button" type="VBoxContainer" parent="Options_button" unique_id=1634632411]
+[node name="Attack_button" type="PanelContainer" parent="Options_button" unique_id=1283688561]
 layout_mode = 0
-offset_left = 188.0
+offset_left = 189.0
 offset_top = 468.0
-offset_right = 497.0
-offset_bottom = 513.0
+offset_right = 498.0
+offset_bottom = 518.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_acoj8")
 
 [node name="Attack" type="Button" parent="Options_button/Attack_button" unique_id=993049186]
 light_mask = 2
@@ -136,12 +147,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Attack"
 
-[node name="Tech_button" type="VBoxContainer" parent="Options_button" unique_id=1166125510]
+[node name="Tech_button" type="PanelContainer" parent="Options_button" unique_id=722236232]
 layout_mode = 0
 offset_left = 655.0
 offset_top = 472.0
 offset_right = 923.0
 offset_bottom = 522.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ebmv")
 
 [node name="Tech" type="Button" parent="Options_button/Tech_button" unique_id=1098732909]
 layout_mode = 2
@@ -149,12 +161,13 @@ theme_override_font_sizes/font_size = 30
 text = "Technique
 "
 
-[node name="Item_button" type="VBoxContainer" parent="Options_button" unique_id=452750976]
+[node name="Item_button" type="PanelContainer" parent="Options_button" unique_id=239581285]
 layout_mode = 0
 offset_left = 188.0
-offset_top = 548.0
-offset_right = 497.0
-offset_bottom = 602.0
+offset_top = 547.0
+offset_right = 498.0
+offset_bottom = 598.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_17rcu")
 
 [node name="Item" type="Button" parent="Options_button/Item_button" unique_id=1580386765]
 layout_mode = 2
@@ -162,12 +175,13 @@ theme_override_font_sizes/font_size = 30
 text = "Item
 "
 
-[node name="Escape_button" type="VBoxContainer" parent="Options_button" unique_id=1507830194]
+[node name="Escape_button" type="PanelContainer" parent="Options_button" unique_id=252714309]
 layout_mode = 0
 offset_left = 654.0
 offset_top = 550.0
-offset_right = 923.0
+offset_right = 924.0
 offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i4isp")
 
 [node name="Escape" type="Button" parent="Options_button/Escape_button" unique_id=137392479]
 layout_mode = 2
@@ -175,6 +189,7 @@ theme_override_font_sizes/font_size = 30
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -182,7 +197,7 @@ offset_top = 430.0
 offset_right = 1033.0
 offset_bottom = 626.0
 
-[node name="Option1_button" type="VBoxContainer" parent="Tech_options" unique_id=1694246537]
+[node name="Option1_button" type="PanelContainer" parent="Tech_options" unique_id=668214016]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 34.0
@@ -195,12 +210,12 @@ theme_override_font_sizes/font_size = 30
 disabled = true
 text = "Option1"
 
-[node name="Option2_button" type="VBoxContainer" parent="Tech_options" unique_id=1716487616]
+[node name="Option2_button" type="PanelContainer" parent="Tech_options" unique_id=375338635]
 layout_mode = 0
 offset_left = 478.0
 offset_top = 34.0
 offset_right = 889.0
-offset_bottom = 87.0
+offset_bottom = 85.0
 
 [node name="Option2" type="Button" parent="Tech_options/Option2_button" unique_id=2138890355]
 layout_mode = 2
@@ -208,7 +223,7 @@ theme_override_font_sizes/font_size = 30
 disabled = true
 text = "Option2"
 
-[node name="Option3_button" type="VBoxContainer" parent="Tech_options" unique_id=120738379]
+[node name="Option3_button" type="PanelContainer" parent="Tech_options" unique_id=1996222225]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 115.0
@@ -222,9 +237,9 @@ disabled = true
 text = "Option3
 "
 
-[node name="Option4_button" type="VBoxContainer" parent="Tech_options" unique_id=165370390]
+[node name="Option4_button" type="PanelContainer" parent="Tech_options" unique_id=781572589]
 layout_mode = 0
-offset_left = 478.0
+offset_left = 479.0
 offset_top = 115.0
 offset_right = 889.0
 offset_bottom = 165.0
@@ -237,3 +252,4 @@ text = "Option4"
 
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
+[connection signal="pressed" from="Options_button/Tech_button/Tech" to="." method="_on_tech_pressed"]

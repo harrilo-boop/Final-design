@@ -19,12 +19,8 @@ func _ready() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
 	hitbox_offset = sword_area.position
-	if Global.last_position != Vector2.ZERO:
-		global_position = Global.last_position
-		Global.last_position = Vector2.ZERO
+	Global.last_position = Vector2.ZERO
 	
-	
-
 func _process(delta: float) -> void:
 	move_player()
 	handle_attack()
@@ -83,6 +79,9 @@ func _enter_battle() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/In_battle.tscn")
 	#Enter a battle and change the scene 
 
-
 func _attack_timeout() -> void:
 	end_attack()
+
+func _to_town(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Town.tscn")
