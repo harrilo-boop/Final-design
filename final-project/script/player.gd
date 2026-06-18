@@ -19,6 +19,9 @@ func _ready() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
 	hitbox_offset = sword_area.position
+	if Global.last_position != Vector2.ZERO:
+		global_position = Global.last_position
+		Global.last_position = Vector2.ZERO
 	Global.last_position = Vector2.ZERO
 	
 func _process(delta: float) -> void:

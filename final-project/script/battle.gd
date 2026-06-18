@@ -28,16 +28,9 @@ var total_enemy_atk:int = 0
 @export var change_turn: Timer
 @export var player_bar: ProgressBar
 @export var enemy_bar: ProgressBar
-#The options button of battle
-@export var attack_button: Button
-@export var technique_button: Button
-@export var item_button: Button
-@export var escape_button: Button
-#The options button of technique bar
-@export var option_1: Button
-@export var option_2: Button
-@export var option_3: Button
-@export var option_4: Button
+@export var options_button: Control
+@export var tech_options: Control
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,10 +47,8 @@ func _ready() -> void:
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
-	option_1.hide()
-	option_2.hide()
-	option_3.hide()
-	option_4.hide()
+	options_button.show()
+	tech_options.hide()
 	
 func _attack_choose() -> void:
 	if player_turn == true and enemy_turn == false:
@@ -96,14 +87,7 @@ func battle_end() -> void:
 	Global.battle_xp_update(xp_earn)
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")
 
-
 func _on_tech_pressed() -> void:
-	attack_button.hide()
-	technique_button.hide()
-	item_button.hide()
-	escape_button.hide()
-	option_1.show() 
-	option_2.show()
-	option_3.show()
-	option_4.show()
+	options_button.hide()
+	tech_options.show()
 	

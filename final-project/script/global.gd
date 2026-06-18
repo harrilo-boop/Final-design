@@ -1,6 +1,7 @@
 extends Node
 #All Variables for player in game
 
+@export var weapon_stats: Resource
 #Player's health
 var player_hp:int = 10
 var max_player_hp:int = 10
@@ -47,10 +48,12 @@ func level_up(xp_level: int) -> int:
 	var basic_xp:int = 10
 	return int(basic_xp * xp_level)
 	
-
 func check_levelup() -> void:
 	if player_xp >= xp_needed and xp_level <= max_level:
 		player_xp -= xp_needed
 		xp_level += 1
 		xp_needed = level_up(xp_level)
 		print(xp_level , "and" , xp_needed) #For testing use
+
+func current_weapon() -> void:
+	weapon_atk = weapon_stats.weapon_atk

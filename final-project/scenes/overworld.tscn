@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bocov7t2rxj7c" path="res://scenes/enemy.tscn" id="2_0wfyh"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ktt"]
+size = Vector2(126, 60)
+
 [node name="Node2D" type="Node2D" unique_id=173114822]
 
 [node name="player" parent="." unique_id=88700311 instance=ExtResource("1_o5qli")]
@@ -10,3 +13,11 @@ position = Vector2(409, 266)
 
 [node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("2_0wfyh")]
 position = Vector2(592, 296)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1879005621]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1036665933]
+position = Vector2(163, 186)
+shape = SubResource("RectangleShape2D_16ktt")
+
+[connection signal="body_entered" from="Area2D" to="player" method="_to_town"]

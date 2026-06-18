@@ -25,7 +25,15 @@ bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4isp"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "attack_button", "technique_button", "item_button", "escape_button", "option_1", "option_2", "option_3", "option_4")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3odsw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvrq4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12hua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4e4d"]
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options")]
 script = ExtResource("1_acoj8")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -33,14 +41,8 @@ enemy_ui = NodePath("Stats_UI/Enemyhp_label")
 change_turn = NodePath("Change_turn")
 player_bar = NodePath("Stats_UI/Playerhp")
 enemy_bar = NodePath("Stats_UI/Enemyhp")
-attack_button = NodePath("Options_button/Attack_button/Attack")
-technique_button = NodePath("Options_button/Tech_button/Tech")
-item_button = NodePath("Options_button/Item_button/Item")
-escape_button = NodePath("Options_button/Escape_button/Escape")
-option_1 = NodePath("Tech_options/Option1_button/Option1")
-option_2 = NodePath("Tech_options/Option2_button/Option2")
-option_3 = NodePath("Tech_options/Option3_button/Option3")
-option_4 = NodePath("Tech_options/Option4_button/Option4")
+options_button = NodePath("Options_button")
+tech_options = NodePath("Tech_options")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 414.0
@@ -178,7 +180,7 @@ text = "Item
 [node name="Escape_button" type="PanelContainer" parent="Options_button" unique_id=252714309]
 layout_mode = 0
 offset_left = 654.0
-offset_top = 550.0
+offset_top = 548.0
 offset_right = 924.0
 offset_bottom = 600.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i4isp")
@@ -189,7 +191,6 @@ theme_override_font_sizes/font_size = 30
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -202,7 +203,8 @@ layout_mode = 0
 offset_left = 37.0
 offset_top = 34.0
 offset_right = 447.0
-offset_bottom = 84.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3odsw")
 
 [node name="Option1" type="Button" parent="Tech_options/Option1_button" unique_id=746009828]
 layout_mode = 2
@@ -215,7 +217,8 @@ layout_mode = 0
 offset_left = 478.0
 offset_top = 34.0
 offset_right = 889.0
-offset_bottom = 85.0
+offset_bottom = 89.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qvrq4")
 
 [node name="Option2" type="Button" parent="Tech_options/Option2_button" unique_id=2138890355]
 layout_mode = 2
@@ -226,9 +229,10 @@ text = "Option2"
 [node name="Option3_button" type="PanelContainer" parent="Tech_options" unique_id=1996222225]
 layout_mode = 0
 offset_left = 37.0
-offset_top = 115.0
+offset_top = 113.0
 offset_right = 447.0
 offset_bottom = 165.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_12hua")
 
 [node name="Option3" type="Button" parent="Tech_options/Option3_button" unique_id=1542140674]
 layout_mode = 2
@@ -243,6 +247,7 @@ offset_left = 479.0
 offset_top = 115.0
 offset_right = 889.0
 offset_bottom = 165.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4e4d")
 
 [node name="Option4" type="Button" parent="Tech_options/Option4_button" unique_id=1251498681]
 layout_mode = 2
