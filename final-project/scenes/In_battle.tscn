@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://c2llhgubrrgix"]
 
 [ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/battle.gd" id="1_acoj8"]
+[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/resource_tech.gd" id="2_a7cga"]
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/resource_enemy.gd" id="3_vqpje"]
+
+[sub_resource type="Resource" id="Resource_vqpje"]
+script = ExtResource("2_a7cga")
+metadata/_custom_type_script = "uid://cdhyyklnof0xc"
+
+[sub_resource type="Resource" id="Resource_4ebmv"]
+script = ExtResource("3_vqpje")
+metadata/_custom_type_script = "uid://dfpgh1ebpmoho"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
 font_size = 40
@@ -33,7 +43,7 @@ bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4e4d"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options")]
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4")]
 script = ExtResource("1_acoj8")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -43,6 +53,12 @@ player_bar = NodePath("Stats_UI/Playerhp")
 enemy_bar = NodePath("Stats_UI/Enemyhp")
 options_button = NodePath("Options_button")
 tech_options = NodePath("Tech_options")
+tech_resource = SubResource("Resource_vqpje")
+enemy_resource = SubResource("Resource_4ebmv")
+tech_1 = NodePath("Tech_options/Option1_button/Option1")
+tech_2 = NodePath("Tech_options/Option2_button/Option2")
+tech_3 = NodePath("Tech_options/Option3_button/Option3")
+tech_4 = NodePath("Tech_options/Option4_button/Option4")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 414.0

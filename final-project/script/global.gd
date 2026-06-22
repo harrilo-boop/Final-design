@@ -2,6 +2,8 @@ extends Node
 #All Variables for player in game
 
 @export var weapon_stats: Resource
+@export var armor_stats: Resource
+
 #Player's health
 var player_hp:int = 10
 var max_player_hp:int = 10
@@ -13,7 +15,7 @@ var weapon_atk:int = 2
 var armor_def:int = 1
 
 #Player's tech options
-#HOLD IT---------------
+var equipped_tech: Array[tech_resource] = [null, null, null, null]
 
 #Player's experience system
 var player_xp:int = 0
@@ -37,6 +39,12 @@ var enemy_def:int = 0
 var current_level:int = 0
 
 #Updating player's health after battle
+func _ready() -> void:
+	equipped_tech[0] = load("res://resources/Tech/Fire_tech1.tres")
+	equipped_tech[1] = load("res://resources/Tech/Water_tech1.tres")
+	equipped_tech[2] = null
+	equipped_tech[3] = null
+
 func battle_hp_update(total_enemy_attack: int) -> void:
 	player_hp = player_hp - total_enemy_attack
 
@@ -55,5 +63,6 @@ func check_levelup() -> void:
 		xp_needed = level_up(xp_level)
 		print(xp_level , "and" , xp_needed) #For testing use
 
-func current_weapon() -> void:
+func current_stats() -> void:
 	weapon_atk = weapon_stats.weapon_atk
+	armor_def = armor_stats.armor_def

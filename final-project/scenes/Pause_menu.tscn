@@ -10,6 +10,12 @@ outline_color = Color(0.23753911, 0.23753914, 0.23753911, 1)
 font_size = 40
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c20xd"]
+bg_color = Color(0.62355983, 0.6235599, 0.6235597, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lddbi"]
+bg_color = Color(0.62352943, 0.62352943, 0.62352943, 1)
+
 [node name="Control" type="Control" unique_id=1893809416]
 layout_mode = 3
 anchors_preset = 15
@@ -65,9 +71,12 @@ offset_left = 80.0
 offset_top = 164.0
 offset_right = 371.0
 offset_bottom = 226.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c20xd")
 
 [node name="Button" type="Button" parent="Resume_button" unique_id=2083115308]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Resume"
 
 [node name="Stats_button" type="PanelContainer" parent="." unique_id=1626214296]
 layout_mode = 0
@@ -75,6 +84,9 @@ offset_left = 80.0
 offset_top = 292.0
 offset_right = 371.0
 offset_bottom = 362.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lddbi")
 
 [node name="Button" type="Button" parent="Stats_button" unique_id=1439874625]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Stats"

@@ -16,11 +16,11 @@ var max_enemy_hp:int = 5
 var enemy_atk:int = 1
 var enemy_def:int = 0 
 #Other options button variables
+var equipped_tech: Array[tech_resource] = [null, null, null, null]
 
 #Damage calculate variables
 var total_damage_atk:int = 0
 var total_enemy_atk:int = 0 
-
 
 @export var turn_label: Label
 @export var hp_ui: Label
@@ -30,6 +30,12 @@ var total_enemy_atk:int = 0
 @export var enemy_bar: ProgressBar
 @export var options_button: Control
 @export var tech_options: Control
+@export var tech_resource: Resource
+@export var enemy_resource: Resource
+@export var tech_1: Button
+@export var tech_2: Button
+@export var tech_3: Button
+@export var tech_4: Button
 
 
 # Called when the node enters the scene tree for the first time.
@@ -47,20 +53,33 @@ func _ready() -> void:
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
+	equipped_tech = Global.equipped_tech
+
 	options_button.show()
 	tech_options.hide()
-	
+
+func player_turn_change() -> void:
+	player_turn = false
+	enemy_turn = true
+	turn_label.text = "Enemy's Turn"
+	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
+	change_turn.start()
+
+func enemy_turn_change() -> void:
+	player_turn = true
+	enemy_turn = false
+	turn_label.text = "Your Turn"
+	hp_ui.text = "HP:" + str(player_hp)
+	change_turn.start()
+
 func _attack_choose() -> void:
 	if player_turn == true and enemy_turn == false:
 		if enemy_hp >= 1: #wait for more steps!!
 			total_damage_atk = max(0, weapon_atk - enemy_def)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
 			enemy_bar.value = enemy_hp
-			player_turn = false
-			enemy_turn = true
-			turn_label.text = "Enemy's Turn"
-			enemy_ui.text = "Enemy HP:" + str(enemy_hp)
-			change_turn.start()
+			player_bar.value = player_hp
+			player_turn_change()
 		if enemy_hp == 0:
 			xp_earn += 10
 			battle_end() 
@@ -74,11 +93,7 @@ func _enemy_attack() -> void:
 	if player_hp >= 1:
 		total_enemy_atk = max(0, enemy_atk - armor_def)
 		player_hp = max(0, player_hp - total_enemy_atk)
-		player_bar.value = player_hp
-		player_turn = true
-		enemy_turn = false
-		turn_label.text = "Your Turn"
-		hp_ui.text = "HP:" + str(player_hp)
+		enemy_turn_change()
 	if player_hp <= 0:
 		battle_end()
 
@@ -90,4 +105,25 @@ func battle_end() -> void:
 func _on_tech_pressed() -> void:
 	options_button.hide()
 	tech_options.show()
-	
+	for tech in Global.equipped_tech:
+		if tech != null:
+			tech_1.text = equipped_tech[0].tech_name
+			tech_2.text = equipped_tech[1].tech_name
+			tech_3.text = equipped_tech[2].tech_name
+			tech_4.text = equipped_tech[3].tech_name
+		elif tech == null:
+			tech_1.text = "Blank"
+			tech_2.text = "Blank"
+			tech_3.text = "Blank"
+			tech_4.text = "Blank"
+
+
+func tech_damage_check(tech: tech_resource) -> void:
+	var tech_damage = tech_resource.tech_atk
+	var ability_type = tech_resource.ability
+	if enemy_resource.weak == ability_type:
+		tech_damage *= 2 #Hit the weakness get critical
+	elif enemy_resource.resist == ability_type:
+		tech_damage /= 2 #Hit the resist get half damage
+	enemy_hp = max(0,enemy_hp - tech_damage)
+	enemy_bar.value = enemy_hp

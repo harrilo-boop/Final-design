@@ -27,6 +27,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	move_player()
 	handle_attack()
+	if Input.is_action_just_pressed("ui_pause"):
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Pause_menu.tscn")
+
 
 func move_player() -> void:
 	var direction: Vector2 = Vector2(0.0, 0.0)
@@ -81,7 +84,7 @@ func _enter_battle() -> void:
 	Global.last_position = global_position
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/In_battle.tscn")
 	#Enter a battle and change the scene 
-
+	
 func _attack_timeout() -> void:
 	end_attack()
 
