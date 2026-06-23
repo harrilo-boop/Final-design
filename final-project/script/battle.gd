@@ -7,6 +7,8 @@ var update_stats:bool = false
 #Player variables
 var player_hp:int = 1
 var max_hp:int = 1
+var player_tp:int = 1
+var max_tp:int = 1
 var weapon_atk:int = 2
 var armor_def:int = 1
 var xp_earn:int = 1
@@ -17,7 +19,6 @@ var enemy_atk:int = 1
 var enemy_def:int = 0 
 #Other options button variables
 var equipped_tech: Array[tech_resource] = [null, null, null, null]
-
 #Damage calculate variables
 var total_damage_atk:int = 0
 var total_enemy_atk:int = 0 
@@ -42,6 +43,8 @@ var total_enemy_atk:int = 0
 func _ready() -> void:
 	player_hp = Global.player_hp #connect the autoload data to battle
 	max_hp = Global.max_player_hp
+	player_tp = Global.player_tp
+	max_tp = Global.player_tp
 	weapon_atk = Global.weapon_atk
 	enemy_hp = Global.enemy_hp
 	max_enemy_hp = Global.max_enemy_hp
@@ -74,7 +77,7 @@ func enemy_turn_change() -> void:
 
 func _attack_choose() -> void:
 	if player_turn == true and enemy_turn == false:
-		if enemy_hp >= 1: #wait for more steps!!
+		if enemy_hp >= 1: 
 			total_damage_atk = max(0, weapon_atk - enemy_def)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
 			enemy_bar.value = enemy_hp
@@ -104,19 +107,19 @@ func battle_end() -> void:
 
 func _on_tech_pressed() -> void:
 	options_button.hide()
-	tech_options.show()
-	for tech in Global.equipped_tech:
-		if tech != null:
-			tech_1.text = equipped_tech[0].tech_name
-			tech_2.text = equipped_tech[1].tech_name
-			tech_3.text = equipped_tech[2].tech_name
-			tech_4.text = equipped_tech[3].tech_name
-		elif tech == null:
-			tech_1.text = "Blank"
-			tech_2.text = "Blank"
-			tech_3.text = "Blank"
-			tech_4.text = "Blank"
+	tech_options.show()	
+	var tech_buttons: Array = [tech_1, tech_2, tech_3, tech_4]
+	for i in range(4):
+		if i < Global.equipped_tech.size() and Global.equipped_tech[i] != null:
+			var current_tech = Global.equipped_tech[i]
+			tech_buttons[i].text = current_tech.tech_name
+			tech_buttons[i].disabled = false
+		else:
+			tech_buttons[i].text = "Blank"
+			tech_buttons[i].disabled = true
 
+
+	
 
 func tech_damage_check(tech: tech_resource) -> void:
 	var tech_damage = tech_resource.tech_atk

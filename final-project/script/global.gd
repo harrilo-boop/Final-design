@@ -3,6 +3,7 @@ extends Node
 
 @export var weapon_stats: Resource
 @export var armor_stats: Resource
+@export var tech_resource: Resource
 
 #Player's health
 var player_hp:int = 10
