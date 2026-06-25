@@ -40,13 +40,20 @@ var current_level:int = 0
 
 #Dictionary for all techniques
 var techs = {
+	#Ability-----Fire
 	"Flame" : load("res://resources/Tech/Fire_tech1.tres"),
-	"Water ball": load("res://resources/Tech/Water_tech1.tres"), 
-	"Heal (Low)": load("res://resources/Tech/Heal_tech1.tres"),
-	"Wind blow": load("res://resources/Tech/Wind_tech1.tres")
+	#Ability-----Water
+	"Water ball": load("res://resources/Tech/Water_tech1.tres"),
+	#Ability-----Electric
+	#Ability-----Wind
+	"Wind blow": load("res://resources/Tech/Wind_tech1.tres"),
+	#Ability-----Support
+	#Ability-----Heal 
+	"Heal (Low)": load("res://resources/Tech/Heal_tech1.tres")
 }
 
 
+#Current technique using as start condition
 func _ready() -> void:
 	equipped_tech[0] = load("res://resources/Tech/Fire_tech1.tres")
 	equipped_tech[1] = load("res://resources/Tech/Water_tech1.tres")

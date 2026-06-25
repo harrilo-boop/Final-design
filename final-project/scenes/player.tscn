@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_g2els")
 [node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
 
 [node name="attack_cooldown" type="Timer" parent="." unique_id=1134980537]
+wait_time = 0.2
 one_shot = true
 
 [node name="sword_area" type="Area2D" parent="." unique_id=109049469]

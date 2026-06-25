@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cynbs4bpbf8y0"]
 
+[ext_resource type="Script" uid="uid://caxhfi5qa13t3" path="res://script/pause_menu.gd" id="1_cymmp"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_vxewe"]
 font_size = 60
 font_color = Color(0.7941207, 0.7941206, 0.7941208, 1)
@@ -23,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cymmp")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=571541587]
 layout_mode = 0
@@ -90,3 +93,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lddbi")
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Stats"
+
+[connection signal="pressed" from="Resume_button/Button" to="." method="_resume"]

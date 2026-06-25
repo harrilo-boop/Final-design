@@ -57,10 +57,9 @@ func _ready() -> void:
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
 	equipped_tech = Global.equipped_tech
-
 	options_button.show()
 	tech_options.hide()
-
+	
 func player_turn_change() -> void:
 	player_turn = false
 	enemy_turn = true
@@ -86,7 +85,7 @@ func _attack_choose() -> void:
 			player_bar.value = player_hp
 			player_turn_change()
 		if enemy_hp == 0:
-			xp_earn += 10
+			xp_earn = enemy_resource.xp_give
 			battle_end() 
 
 #Enemy turn's settings
@@ -147,12 +146,9 @@ func _tech_options(tech: String) -> void:
 
 func _on_option_1_pressed() -> void:
 	_tech_options(tech_1.text)
-	
 func _on_option_2_pressed() -> void:
 	_tech_options(tech_2.text)
-
 func _on_option_3_pressed() -> void:
 	_tech_options(tech_3.text)
-
 func _on_option_4_pressed() -> void:
 	_tech_options(tech_4.text)
