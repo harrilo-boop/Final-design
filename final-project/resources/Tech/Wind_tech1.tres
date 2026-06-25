@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_pix6e")
-tech_name = "Heal (Low)"
-abiliy = 5
-tech_atk = 0
-tech_tp = 4
+tech_name = "Wind blow"
+ability = 4
+tech_atk = 4
+tech_tp = 3
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"

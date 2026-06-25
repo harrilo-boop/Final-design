@@ -8,5 +8,5 @@ class_name enemy_resource
 @export var enemy_hp:int = 0
 @export var xp_give:int = 1
 
-enum weakness{Fire, Water, Electric, Wind}
-enum resistance{Fire, Water, Electric, Wind}
+enum weakness{None, Fire, Water, Electric, Wind}
+enum resistance{None, Fire, Water, Electric, Wind}

@@ -9,7 +9,7 @@ var player_hp:int = 1
 var max_hp:int = 1
 var player_tp:int = 1
 var max_tp:int = 1
-var weapon_atk:int = 2
+var weapon_atk:int = 1
 var armor_def:int = 1
 var xp_earn:int = 1
 #Enemy variables
@@ -66,6 +66,7 @@ func player_turn_change() -> void:
 	enemy_turn = true
 	turn_label.text = "Enemy's Turn"
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
+	enemy_bar.value = enemy_hp
 	change_turn.start()
 
 func enemy_turn_change() -> void:
@@ -73,6 +74,7 @@ func enemy_turn_change() -> void:
 	enemy_turn = false
 	turn_label.text = "Your Turn"
 	hp_ui.text = "HP:" + str(player_hp)
+	player_bar.value = player_hp
 	change_turn.start()
 
 func _attack_choose() -> void:
@@ -109,17 +111,14 @@ func _on_tech_pressed() -> void:
 	options_button.hide()
 	tech_options.show()	
 	var tech_buttons: Array = [tech_1, tech_2, tech_3, tech_4]
-	for i in range(4):
-		if i < Global.equipped_tech.size() and Global.equipped_tech[i] != null:
-			var current_tech = Global.equipped_tech[i]
-			tech_buttons[i].text = current_tech.tech_name
-			tech_buttons[i].disabled = false
+	for tech in range(4):
+		if tech < Global.equipped_tech.size() and Global.equipped_tech[tech] != null:
+			var current_tech = Global.equipped_tech[tech]
+			tech_buttons[tech].text = current_tech.tech_name
+			tech_buttons[tech].disabled = false
 		else:
-			tech_buttons[i].text = "Blank"
-			tech_buttons[i].disabled = true
-
-
-	
+			tech_buttons[tech].text = "Blank"
+			tech_buttons[tech].disabled = true
 
 func tech_damage_check(tech: tech_resource) -> void:
 	var tech_damage = tech_resource.tech_atk
@@ -128,5 +127,32 @@ func tech_damage_check(tech: tech_resource) -> void:
 		tech_damage *= 2 #Hit the weakness get critical
 	elif enemy_resource.resist == ability_type:
 		tech_damage /= 2 #Hit the resist get half damage
-	enemy_hp = max(0,enemy_hp - tech_damage)
+	total_damage_atk = tech_damage
+	enemy_hp = max(0,enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
+	player_turn_change()
+	player_tp = player_tp - tech_resource.tech_tp
+	print(player_tp , "TP")
+
+func _tech_options(tech: String) -> void:
+	if player_turn == true and enemy_turn == false:
+		var current_tech = Global.equipped_tech
+		tech_resource = Global.techs[tech]
+		tech_damage_check(tech_resource)
+		tech_options.hide()
+		options_button.show()
+	if enemy_hp == 0:
+			xp_earn += 10
+			battle_end()
+
+func _on_option_1_pressed() -> void:
+	_tech_options(tech_1.text)
+	
+func _on_option_2_pressed() -> void:
+	_tech_options(tech_2.text)
+
+func _on_option_3_pressed() -> void:
+	_tech_options(tech_3.text)
+
+func _on_option_4_pressed() -> void:
+	_tech_options(tech_4.text)

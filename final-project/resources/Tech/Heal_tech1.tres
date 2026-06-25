@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_1pffe")
 tech_name = "Heal (Low)"
-abiliy = 5
+ability = 6
 tech_atk = 0
 tech_hp = 4
 tech_tp = 4

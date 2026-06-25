@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_rc4ei")
 tech_name = "Flame"
-tech_atk = 3
+ability = 1
+tech_atk = 4
 tech_tp = 2
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"
