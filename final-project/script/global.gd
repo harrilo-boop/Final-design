@@ -1,5 +1,7 @@
 extends Node
 #All Variables for player in game
+
+
 @export var weapon_resource: Resource
 @export var armor_resource: Resource
 @export var tech_resource: Resource
@@ -11,11 +13,13 @@ var max_player_hp:int = 10
 #Player's stats
 var player_tp:int = 20
 var max_tp:int = 20
-var weapon_atk:int = 2
+var weapon_atk:int = 1
 var armor_def:int = 1
 
-#Player's tech options
+#Player's current
 var equipped_tech: Array[tech_resource] = [null, null, null, null]
+var current_weapon: Array[weapon_resource] = [null]
+var current_armor: Array[armor_resource] = [null]
 
 #Player's experience system
 var player_xp:int = 0
@@ -26,7 +30,6 @@ var max_level:int = 100
 
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO
-var previous_scene: String = ""
 
 #Enemy's health
 var enemy_hp:int = 10
@@ -52,6 +55,11 @@ var techs = {
 	"Heal (Low)": load("res://resources/Tech/Heal_tech1.tres")
 }
 
+var weapons = {
+	#All weapons
+	"Starter sword": load("res://resources/Weapon/Weapon_base1.tres"),
+	"Wood sword": load("res://resources/Weapon/Weapon_base2.tres")
+}
 
 #Current technique using as start condition
 func _ready() -> void:
@@ -59,32 +67,33 @@ func _ready() -> void:
 	equipped_tech[1] = load("res://resources/Tech/Water_tech1.tres")
 	equipped_tech[2] = null
 	equipped_tech[3] = null
+	current_weapon[0] = load("res://resources/Weapon/Weapon_base1.tres")
+	current_armor[0] = load("res://resources/Armor/Armor_base1.tres")
 
-
+func player_stats() -> void:
+	#Current weapon using
+	weapon_atk = current_armor[0].weapon_atk
+	#Current armor using
+	armor_def = armor_resource.armor_def
+	
+#Updating player's health after battle
 func battle_hp_update(total_enemy_attack: int) -> void: 
-	#Updating player's health after battle
 	player_hp = player_hp - total_enemy_attack
 
+#Updating player's xp after battle
 func battle_xp_update(xp_earn: int) -> void:
-	#Updating player's xp after battle
 	player_xp = player_xp + xp_earn
 	check_levelup()
 
+#Setting the xp requirement for every level
 func level_up(xp_level: int) -> int:
-	#Setting the xp requirement for every level
 	var basic_xp:int = 10
 	return int(basic_xp * xp_level)
-	
+
+#Checkinng whever can player level up
 func check_levelup() -> void:
-	#Checkinng whever can player level up
 	if player_xp >= xp_needed and xp_level <= max_level:
 		player_xp -= xp_needed
 		xp_level += 1
 		xp_needed = level_up(xp_level)
-		print(xp_level , "and" , xp_needed) #For testing use
-
-func player_stats() -> void:
-	#Current weapon using
-	weapon_atk = weapon_resource.weapon_atk
-	#Current armor using
-	armor_def = armor_resource.armor_def
+		print("Lv.", xp_level , "and" , xp_needed, "Require for next level") #For testing use

@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_kjib2")
 weapon_name = "Starter sword"
-weapon_atk = 2
+weapon_atk = 5
 metadata/_custom_type_script = "uid://3carq7cxrsxi"

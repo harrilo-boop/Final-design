@@ -23,13 +23,13 @@ func _ready() -> void:
 		global_position = Global.last_position
 		Global.last_position = Vector2.ZERO
 	Global.last_position = Vector2.ZERO
+
 	
 func _process(delta: float) -> void:
 	move_player()
 	handle_attack()
 	if Input.is_action_just_pressed("ui_pause"):
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Pause_menu.tscn")
-
 
 func move_player() -> void:
 	var direction: Vector2 = Vector2(0.0, 0.0)
@@ -90,5 +90,5 @@ func _attack_timeout() -> void:
 
 func _to_town(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		Global.last_position = global_position
+		Global.last_position = global_position	
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Town.tscn")

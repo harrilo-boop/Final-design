@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://c8wqwmqpf3roy"]
+
+[ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/resource_item.gd" id="1_h1nvb"]
+
+[resource]
+script = ExtResource("1_h1nvb")
+type = 2
+defend_amount = 5
+duration_round = 3
+metadata/_custom_type_script = "uid://dbd68g4nt4do"

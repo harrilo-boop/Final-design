@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bocov7t2rxj7c" path="res://scenes/enemy.tscn" id="2_0wfyh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ktt"]
-size = Vector2(126, 60)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2ss0"]
+size = Vector2(151, 69.5)
 
 [node name="Node2D" type="Node2D" unique_id=173114822]
 
@@ -14,10 +14,18 @@ position = Vector2(409, 266)
 [node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("2_0wfyh")]
 position = Vector2(592, 296)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1879005621]
+[node name="Itembox(Testing)" type="Area2D" parent="." unique_id=1072021278]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1036665933]
-position = Vector2(163, 186)
-shape = SubResource("RectangleShape2D_16ktt")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Itembox(Testing)" unique_id=1292341469]
+position = Vector2(556, 115)
+shape = SubResource("RectangleShape2D_u2ss0")
+debug_color = Color(0.97490984, 0.84476835, 0.36578062, 0.41960785)
 
-[connection signal="body_entered" from="Area2D" to="player" method="_to_town"]
+[node name="To_Town" type="Area2D" parent="." unique_id=1537175516]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="To_Town" unique_id=1001402411]
+position = Vector2(142, 217)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_u2ss0")
+
+[connection signal="body_entered" from="To_Town" to="player" method="_to_town"]

@@ -12,9 +12,6 @@ size = Vector2(415, 299)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5sqg"]
 size = Vector2(189, 306)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gry36"]
-size = Vector2(174, 345.25)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xh0m"]
 size = Vector2(165, 109)
 
@@ -23,6 +20,9 @@ size = Vector2(85, 109.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66q70"]
 size = Vector2(150.5, 55.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gry36"]
+size = Vector2(106.5, 349.75)
 
 [node name="Node2D" type="Node2D" unique_id=165869705 node_paths=PackedStringArray("player")]
 script = ExtResource("1_26hdk")
@@ -48,12 +48,6 @@ debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
 [node name="player" parent="." unique_id=88700311 instance=ExtResource("1_vf4ci")]
 position = Vector2(1084, 467)
 
-[node name="Leave_town" type="Area2D" parent="." unique_id=873986512]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_town" unique_id=1560306548]
-position = Vector2(1244, 467)
-shape = SubResource("RectangleShape2D_gry36")
-
 [node name="weapon_armor_collision" type="Area2D" parent="." unique_id=2110656389]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_armor_collision" unique_id=912306859]
@@ -75,8 +69,14 @@ position = Vector2(265, -6)
 shape = SubResource("RectangleShape2D_66q70")
 debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 
-[connection signal="body_entered" from="Leave_town" to="." method="_leave_town"]
+[node name="To_Town" type="Area2D" parent="." unique_id=833547404]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="To_Town" unique_id=174576523]
+position = Vector2(1204.75, 473.125)
+shape = SubResource("RectangleShape2D_gry36")
+
 [connection signal="body_entered" from="weapon_armor_collision" to="." method="_WAshop_enter"]
 [connection signal="body_exited" from="weapon_armor_collision" to="." method="_WAshop_leave"]
 [connection signal="body_entered" from="technique_collision" to="." method="_Tshop_enter"]
 [connection signal="body_exited" from="technique_collision" to="." method="_Tshop_leave"]
+[connection signal="body_entered" from="To_Town" to="." method="_leave_town"]

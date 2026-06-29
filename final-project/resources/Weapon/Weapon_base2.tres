@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_q48t2")
 weapon_name = "Wood sword"
-weapon_atk = 2
+weapon_atk = 4
 metadata/_custom_type_script = "uid://3carq7cxrsxi"
