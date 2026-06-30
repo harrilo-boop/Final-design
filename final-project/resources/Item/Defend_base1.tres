@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_h1nvb")
+item_name = "Temporary sheild"
 type = 2
 defend_amount = 5
 duration_round = 3

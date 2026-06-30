@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/battle.gd" id="1_acoj8"]
 [ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/resource_tech.gd" id="2_a7cga"]
-[ext_resource type="Resource" uid="uid://bnbc5fi4nmlgj" path="res://resources/Enemy/Enemy_base3.tres" id="3_vqpje"]
+[ext_resource type="Resource" uid="uid://beb1twq6mgtrh" path="res://resources/Enemy/Enemy_base1.tres" id="3_vqpje"]
 
 [sub_resource type="Resource" id="Resource_vqpje"]
 script = ExtResource("2_a7cga")
@@ -271,6 +271,7 @@ text = "Option4"
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
 [connection signal="pressed" from="Options_button/Tech_button/Tech" to="." method="_on_tech_pressed"]
+[connection signal="pressed" from="Options_button/Escape_button/Escape" to="." method="_escape"]
 [connection signal="pressed" from="Tech_options/Option1_button/Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Tech_options/Option2_button/Option2" to="." method="_on_option_2_pressed"]
 [connection signal="pressed" from="Tech_options/Option3_button/Option3" to="." method="_on_option_3_pressed"]

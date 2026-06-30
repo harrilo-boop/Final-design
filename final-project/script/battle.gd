@@ -16,9 +16,10 @@ var xp_earn:int = 1
 var enemy_hp: int = 5
 var max_enemy_hp:int = 5
 var enemy_atk:int = 1
-var enemy_def:int = 0 
 #Other options button variables
 var equipped_tech: Array[tech_resource] = [null, null, null, null]
+var equipped_weapon = null
+var equipped_armor = null
 #Damage calculate variables
 var total_damage_atk:int = 0
 var total_enemy_atk:int = 0 
@@ -45,11 +46,11 @@ func _ready() -> void:
 	max_hp = Global.max_player_hp
 	player_tp = Global.player_tp
 	max_tp = Global.player_tp
-	weapon_atk = Global.weapon_atk
 	enemy_hp = Global.enemy_hp
+	equipped_weapon = Global.equipped_weapon
+	equipped_armor = Global.equipped_armor
 	max_enemy_hp = Global.max_enemy_hp
 	enemy_atk = Global.enemy_atk
-	enemy_def = Global.enemy_def
 	xp_earn = Global.xp_earn
 	player_bar.max_value = max_hp
 	player_bar.value = player_hp
@@ -77,9 +78,9 @@ func enemy_turn_change() -> void:
 	change_turn.start()
 
 func _attack_choose() -> void:
-	if player_turn == true and enemy_turn == false:
+	if player_turn == true and enemy_turn == false and equipped_weapon != null:
 		if enemy_hp >= 1: 
-			total_damage_atk = max(0, weapon_atk - enemy_def)
+			total_damage_atk = max(0, equipped_weapon.weapon_atk)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
 			enemy_bar.value = enemy_hp
 			player_bar.value = player_hp
@@ -90,12 +91,12 @@ func _attack_choose() -> void:
 
 #Enemy turn's settings
 func _enemy_turn() -> void:
-	if enemy_turn == true and player_turn == false:
+	if enemy_turn == true and player_turn == false and equipped_armor != null:
 		_enemy_attack()
  
 func _enemy_attack() -> void:
 	if player_hp >= 1:
-		total_enemy_atk = max(0, enemy_atk - armor_def)
+		total_enemy_atk = max(0, enemy_atk - equipped_armor.armor_def)
 		player_hp = max(0, player_hp - total_enemy_atk)
 		enemy_turn_change()
 	if player_hp <= 0:
@@ -141,10 +142,10 @@ func _tech_options(tech: String) -> void:
 		tech_options.hide()
 		options_button.show()
 	if enemy_hp == 0:
-			xp_earn += 10
+			xp_earn = enemy_resource.xp_give
 			battle_end()
 
-func _on_option_1_pressed() -> void:
+func _on_option_1_pressed() -> void:	
 	_tech_options(tech_1.text)
 func _on_option_2_pressed() -> void:
 	_tech_options(tech_2.text)
@@ -152,3 +153,6 @@ func _on_option_3_pressed() -> void:
 	_tech_options(tech_3.text)
 func _on_option_4_pressed() -> void:
 	_tech_options(tech_4.text)
+	
+func _escape() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")

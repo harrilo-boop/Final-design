@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="armor_resource" format=3 uid="uid://dcdi2cx0aal1c"]
+
+[ext_resource type="Script" uid="uid://b8rslv1msax1s" path="res://script/resource_armor.gd" id="1_jmq6d"]
+
+[resource]
+script = ExtResource("1_jmq6d")
+armor_name = "Wood armor"
+armor_def = 2
+metadata/_custom_type_script = "uid://b8rslv1msax1s"
