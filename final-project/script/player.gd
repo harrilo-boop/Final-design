@@ -1,4 +1,6 @@
 extends CharacterBody2D
+
+class_name Player
 #THE PLAYER SCRIPT WITH OVERWORLD SETTINGS
 
 var speed:float = 500
@@ -23,14 +25,17 @@ func _ready() -> void:
 		global_position = Global.last_position
 		Global.last_position = Vector2.ZERO
 	Global.last_position = Vector2.ZERO
-
 	
 func _process(delta: float) -> void:
 	move_player()
 	handle_attack()
 	if Input.is_action_just_pressed("ui_pause"):
+		Global.last_position = global_position
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Pause_menu.tscn")
 
+func _on_spawn(position: Vector2, direction: String) -> void:
+	global_position = position
+	
 func move_player() -> void:
 	var direction: Vector2 = Vector2(0.0, 0.0)
 	direction.x = Input.get_axis("ui_left", "ui_right")
@@ -87,8 +92,3 @@ func _enter_battle() -> void:
 	
 func _attack_timeout() -> void:
 	end_attack()
-
-func _to_town(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		Global.last_position = global_position	
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/Town.tscn")

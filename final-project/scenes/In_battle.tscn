@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2llhgubrrgix"]
 
 [ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/battle.gd" id="1_acoj8"]
-[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/resource_tech.gd" id="2_a7cga"]
+[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/Resource_script/resource_tech.gd" id="2_a7cga"]
 [ext_resource type="Resource" uid="uid://beb1twq6mgtrh" path="res://resources/Enemy/Enemy_base1.tres" id="3_vqpje"]
 
 [sub_resource type="Resource" id="Resource_vqpje"]

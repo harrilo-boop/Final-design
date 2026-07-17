@@ -18,6 +18,7 @@ config/icon="res://asset/icon.svg"
 [autoload]
 
 Global="*uid://cwstl6pnesyab"
+NavigationManager="*uid://cb0gy2pceu062"
 
 [input]
 

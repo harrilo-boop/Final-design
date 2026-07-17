@@ -16,12 +16,7 @@ func _process(delta: float) -> void:
 		print("Weapon & Armor shop opened") #wait for weapon/armour system made
 	elif can_trade_2 == true and Input.is_action_just_pressed("ui_interact"):
 		print("Technique shop opened") #wait for technique system finished
-
-#Method for player to leave town(Changing scene)
-func _leave_town(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")
-
+ 
 #IMPROVEMENT FOR FUNCTION BELOW
 #Checking where the player is 
 func _WAshop_enter(body: Node2D) -> void:

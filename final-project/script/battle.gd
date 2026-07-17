@@ -82,8 +82,6 @@ func _attack_choose() -> void:
 		if enemy_hp >= 1: 
 			total_damage_atk = max(0, equipped_weapon.weapon_atk)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
-			enemy_bar.value = enemy_hp
-			player_bar.value = player_hp
 			player_turn_change()
 		if enemy_hp == 0:
 			xp_earn = enemy_resource.xp_give

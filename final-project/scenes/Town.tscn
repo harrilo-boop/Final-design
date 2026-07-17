@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b88a4y3sddpuy"]
 
-[ext_resource type="Script" uid="uid://k5vjrv5vja6m" path="res://script/town.gd" id="1_26hdk"]
+[ext_resource type="Script" uid="uid://k5vjrv5vja6m" path="res://script/Map_script/town.gd" id="1_26hdk"]
 [ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/player.tscn" id="1_vf4ci"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/door.tscn" id="3_j1obe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26hdk"]
 size = Vector2(410.5, 301.25)
@@ -21,12 +22,10 @@ size = Vector2(85, 109.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66q70"]
 size = Vector2(150.5, 55.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gry36"]
-size = Vector2(106.5, 349.75)
-
-[node name="Node2D" type="Node2D" unique_id=165869705 node_paths=PackedStringArray("player")]
+[node name="Node2D" type="Node2D" unique_id=165869705]
 script = ExtResource("1_26hdk")
-player = NodePath("player")
+
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_vf4ci")]
 
 [node name="Town collisions (Demo)" type="Area2D" parent="." unique_id=636475663]
 
@@ -44,9 +43,6 @@ debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
 position = Vector2(95, 155)
 shape = SubResource("RectangleShape2D_g5sqg")
 debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
-
-[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_vf4ci")]
-position = Vector2(1084, 467)
 
 [node name="weapon_armor_collision" type="Area2D" parent="." unique_id=2110656389]
 
@@ -69,14 +65,20 @@ position = Vector2(265, -6)
 shape = SubResource("RectangleShape2D_66q70")
 debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 
-[node name="To_Town" type="Area2D" parent="." unique_id=833547404]
+[node name="Door" type="Node" parent="." unique_id=1050435022]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="To_Town" unique_id=174576523]
-position = Vector2(1204.75, 473.125)
-shape = SubResource("RectangleShape2D_gry36")
+[node name="Door_overworld" parent="Door" unique_id=154942317 instance=ExtResource("3_j1obe")]
+position = Vector2(1202, 451)
+door_tag = "town_door"
+level_to_load = "overworld"
+destination_tag = "overworld_door"
+
+[node name="CollisionShape2D" parent="Door/Door_overworld" index="0" unique_id=1285604296]
+position = Vector2(44.585938, 22)
 
 [connection signal="body_entered" from="weapon_armor_collision" to="." method="_WAshop_enter"]
 [connection signal="body_exited" from="weapon_armor_collision" to="." method="_WAshop_leave"]
 [connection signal="body_entered" from="technique_collision" to="." method="_Tshop_enter"]
 [connection signal="body_exited" from="technique_collision" to="." method="_Tshop_leave"]
-[connection signal="body_entered" from="To_Town" to="." method="_leave_town"]
+
+[editable path="Door/Door_overworld"]

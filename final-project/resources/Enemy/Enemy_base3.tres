@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://bnbc5fi4nmlgj"]
 
-[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/resource_enemy.gd" id="1_syrnj"]
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_syrnj"]
 
 [resource]
 script = ExtResource("1_syrnj")
