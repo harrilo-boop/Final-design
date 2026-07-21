@@ -12,6 +12,7 @@ var max_tp:int = 1
 var weapon_atk:int = 1
 var armor_def:int = 1
 var xp_earn:int = 1
+var xp_level:int = 1
 #Enemy variables
 var enemy_hp: int = 5
 var max_enemy_hp:int = 5
@@ -38,7 +39,8 @@ var total_enemy_atk:int = 0
 @export var tech_2: Button
 @export var tech_3: Button
 @export var tech_4: Button
-
+@export var learn_tech_yes: Button
+@export var learn_tech_no: Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,6 +54,7 @@ func _ready() -> void:
 	max_enemy_hp = Global.max_enemy_hp
 	enemy_atk = Global.enemy_atk
 	xp_earn = Global.xp_earn
+	xp_level = Global.xp_level
 	player_bar.max_value = max_hp
 	player_bar.value = player_hp
 	enemy_bar.max_value = max_enemy_hp
@@ -60,6 +63,8 @@ func _ready() -> void:
 	equipped_tech = Global.equipped_tech
 	options_button.show()
 	tech_options.hide()
+	learn_tech_yes.hide()
+	learn_tech_no.hide()
 	
 func player_turn_change() -> void:
 	player_turn = false
@@ -101,6 +106,8 @@ func _enemy_attack() -> void:
 		battle_end()
 
 func battle_end() -> void:
+	learn_tech_yes.show()
+	learn_tech_no.show()
 	Global.battle_hp_update(total_damage_atk)
 	Global.battle_xp_update(xp_earn)
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")

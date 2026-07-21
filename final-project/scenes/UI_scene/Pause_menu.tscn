@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cynbs4bpbf8y0"]
 
-[ext_resource type="Script" uid="uid://caxhfi5qa13t3" path="res://script/pause_menu.gd" id="1_cymmp"]
+[ext_resource type="Script" uid="uid://caxhfi5qa13t3" path="res://script/System_script/pause_menu.gd" id="1_cymmp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vxewe"]
 font_size = 60
@@ -86,7 +86,7 @@ layout_mode = 0
 offset_left = 80.0
 offset_top = 292.0
 offset_right = 371.0
-offset_bottom = 362.0
+offset_bottom = 365.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lddbi")
 
 [node name="Button" type="Button" parent="Stats_button" unique_id=1439874625]
@@ -94,4 +94,18 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Stats"
 
+[node name="End_button" type="PanelContainer" parent="." unique_id=285681020]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 445.0
+offset_right = 371.0
+offset_bottom = 520.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lddbi")
+
+[node name="Button" type="Button" parent="End_button" unique_id=775029706]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
 [connection signal="pressed" from="Resume_button/Button" to="." method="_resume"]
+[connection signal="pressed" from="End_button/Button" to="." method="_quit"]

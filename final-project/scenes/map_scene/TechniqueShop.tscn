@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b8bj656ceasvv"]
+
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/character_scene/player.tscn" id="1_747ce"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/item_scene/door.tscn" id="2_eevfu"]
+
+[node name="Node2D" type="Node2D" unique_id=814564217]
+
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_747ce")]
+
+[node name="Node" type="Node" parent="." unique_id=595983437]
+
+[node name="Door_Tleave" parent="Node" unique_id=154942317 instance=ExtResource("2_eevfu")]
+door_tag = "Tleave_door"
+level_to_load = "Town"
+destination_tag = "Tshop_door"
+
+[node name="CollisionShape2D" parent="Node/Door_Tleave" index="0" unique_id=1285604296]
+debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
+
+[editable path="Node/Door_Tleave"]

@@ -6,6 +6,7 @@ class_name Player
 var speed:float = 500
 var is_attacking: bool = false
 var can_attack: bool = true
+var open_itembox: bool = false
 var return_from_battle:bool = true
 var last_direction: Vector2 = Vector2.RIGHT
 var hitbox_offset: Vector2
@@ -32,6 +33,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_pause"):
 		Global.last_position = global_position
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Pause_menu.tscn")
+	if Input.is_action_just_pressed("ui_run"):
+		speed = speed * 1.2
+	elif Input.is_action_just_released("ui_run"):
+		speed = speed / 1.2
+	if Input.is_action_just_pressed("ui_interact") and open_itembox == true:
+		print("Itembox")
 
 func _on_spawn(position: Vector2, direction: String) -> void:
 	global_position = position
@@ -92,3 +99,7 @@ func _enter_battle() -> void:
 	
 func _attack_timeout() -> void:
 	end_attack()
+
+func _open_itembox(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		open_itembox = true

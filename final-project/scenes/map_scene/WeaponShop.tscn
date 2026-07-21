@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://td54dut6byvr"]
+
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/item_scene/door.tscn" id="1_cufwh"]
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/character_scene/player.tscn" id="1_jfdg3"]
+
+[node name="Node2D" type="Node2D" unique_id=34395998]
+
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_jfdg3")]
+
+[node name="Node" type="Node" parent="." unique_id=1148208155]
+
+[node name="Door_Wleave" parent="Node" unique_id=154942317 instance=ExtResource("1_cufwh")]
+door_tag = "Wleave_door"
+level_to_load = "Town"
+destination_tag = "Wshop_door"
+
+[node name="CollisionShape2D" parent="Node/Door_Wleave" index="0" unique_id=1285604296]
+position = Vector2(719, 271)
+debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
+
+[node name="Marker2D" parent="Node/Door_Wleave" index="1" unique_id=1382765507]
+position = Vector2(720, 88)
+
+[editable path="Node/Door_Wleave"]

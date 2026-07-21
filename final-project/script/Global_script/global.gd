@@ -106,8 +106,8 @@ func check_levelup() -> void:
 		xp_needed = level_up(xp_level)
 	print("Lv.", xp_level , "| " , player_xp, "/" , xp_needed, "Current Experience") #For testing use
 
-func learn_new_skill(new_tech: tech_resource) -> void:
-	for space in equipped_tech:
-		if equipped_tech[space] == null:
-			equipped_tech[space] = new_tech
-			return
+func learn_new_skill() -> void:
+	var tech_level = tech_resource.required_level
+	if xp_level >= tech_level and equipped_tech == null:
+		pass
+	

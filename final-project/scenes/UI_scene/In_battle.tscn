@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c2llhgubrrgix"]
 
-[ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/battle.gd" id="1_acoj8"]
-[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/Resource_script/resource_tech.gd" id="2_a7cga"]
-[ext_resource type="Resource" uid="uid://beb1twq6mgtrh" path="res://resources/Enemy/Enemy_base1.tres" id="3_vqpje"]
+[ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/System_script/battle.gd" id="1_cve37"]
+[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/Resource_script/resource_tech.gd" id="2_4uc4m"]
+[ext_resource type="Resource" uid="uid://beb1twq6mgtrh" path="res://resources/Enemy/Enemy_base1.tres" id="3_35c1n"]
 
 [sub_resource type="Resource" id="Resource_vqpje"]
-script = ExtResource("2_a7cga")
+script = ExtResource("2_4uc4m")
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
@@ -39,8 +39,18 @@ bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4e4d"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4")]
-script = ExtResource("1_acoj8")
+[sub_resource type="LabelSettings" id="LabelSettings_4ebmv"]
+font_size = 50
+font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5r8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j1hs"]
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "learn_tech_yes", "learn_tech_no")]
+script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
 enemy_ui = NodePath("Stats_UI/Enemyhp_label")
@@ -50,11 +60,13 @@ enemy_bar = NodePath("Stats_UI/Enemyhp")
 options_button = NodePath("Options_button")
 tech_options = NodePath("Tech_options")
 tech_resource = SubResource("Resource_vqpje")
-enemy_resource = ExtResource("3_vqpje")
+enemy_resource = ExtResource("3_35c1n")
 tech_1 = NodePath("Tech_options/Option1_button/Option1")
 tech_2 = NodePath("Tech_options/Option2_button/Option2")
 tech_3 = NodePath("Tech_options/Option3_button/Option3")
 tech_4 = NodePath("Tech_options/Option4_button/Option4")
+learn_tech_yes = NodePath("Battle_End/PanelContainer/Learn_yes")
+learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 414.0
@@ -267,6 +279,52 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 disabled = true
 text = "Option4"
+
+[node name="Battle_End" type="Control" parent="." unique_id=1639699643]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 70.0
+offset_top = 428.0
+offset_right = 1069.0
+offset_bottom = 629.0
+
+[node name="Conclusion_label" type="Label" parent="Battle_End" unique_id=1848710145]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 119.0
+offset_right = 832.0
+offset_bottom = 188.0
+text = "Testing..."
+label_settings = SubResource("LabelSettings_4ebmv")
+
+[node name="PanelContainer" type="PanelContainer" parent="Battle_End" unique_id=1758822929]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 103.0
+offset_right = 981.0
+offset_bottom = 187.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
+
+[node name="Learn_yes" type="Button" parent="Battle_End/PanelContainer" unique_id=1364264214]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ft0od")
+text = "NO"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Battle_End" unique_id=474629690]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 10.0
+offset_right = 981.0
+offset_bottom = 94.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
+
+[node name="Learn_no" type="Button" parent="Battle_End/PanelContainer2" unique_id=891959614]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_5j1hs")
+text = "YES"
 
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
