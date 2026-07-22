@@ -5,6 +5,7 @@ class_name item_resource
 @export_group("Main_item")
 @export var item_icon: Texture2D
 @export var item_name: String
+@export var item_code:int = 0 
 
 @export_group("Classification")
 enum item_type{none, attack, defend, heal, other}

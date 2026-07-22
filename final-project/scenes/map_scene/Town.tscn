@@ -8,13 +8,10 @@
 size = Vector2(410.5, 301.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1obe"]
-size = Vector2(415, 299)
+size = Vector2(420, 299)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5sqg"]
-size = Vector2(189, 306)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_66q70"]
-size = Vector2(150.5, 55.5)
+size = Vector2(199.5, 306)
 
 [node name="Node2D" type="Node2D" unique_id=165869705]
 script = ExtResource("1_mwtde")
@@ -29,21 +26,14 @@ shape = SubResource("RectangleShape2D_26hdk")
 debug_color = Color(0.7798533, 0.4334869, 0.16744968, 0.41960785)
 
 [node name="Armour_Collision (Demo)" type="CollisionShape2D" parent="Town collisions (Demo)" unique_id=1729347945]
-position = Vector2(546.5, 152)
+position = Vector2(544, 152)
 shape = SubResource("RectangleShape2D_j1obe")
 debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
 
 [node name="Technique_Collision (Demo)" type="CollisionShape2D" parent="Town collisions (Demo)" unique_id=1741882379]
-position = Vector2(95, 155)
+position = Vector2(100.25, 155)
 shape = SubResource("RectangleShape2D_g5sqg")
 debug_color = Color(0.78039217, 0.43529412, 0.16862746, 0.41960785)
-
-[node name="item_collision" type="Area2D" parent="." unique_id=1278787642]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="item_collision" unique_id=1253486559]
-position = Vector2(265, -6)
-shape = SubResource("RectangleShape2D_66q70")
-debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 
 [node name="Door" type="Node" parent="." unique_id=1050435022]
 
@@ -88,6 +78,21 @@ debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
 [node name="Marker2D" parent="Door3/DoorTshop" index="1" unique_id=1382765507]
 position = Vector2(106, 324)
 
+[node name="Door4" type="Node" parent="." unique_id=228051005]
+
+[node name="DoorIshop" parent="Door4" unique_id=1239898197 instance=ExtResource("3_1i66g")]
+door_tag = "Ishop_door"
+level_to_load = "ItemShop"
+destination_tag = "Ileave_door"
+
+[node name="CollisionShape2D" parent="Door4/DoorIshop" index="0" unique_id=1285604296]
+position = Vector2(267, -106)
+debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
+
+[node name="Marker2D" parent="Door4/DoorIshop" index="1" unique_id=1382765507]
+position = Vector2(266, 39)
+
 [editable path="Door/Door_overworld"]
 [editable path="Door2/Door_Wshop"]
 [editable path="Door3/DoorTshop"]
+[editable path="Door4/DoorIshop"]

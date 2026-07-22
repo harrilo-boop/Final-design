@@ -4,6 +4,7 @@ const SCENE_OVERWORLD = preload("res://scenes/map_scene/overworld.tscn")
 const SCENE_TOWN = preload("res://scenes/map_scene/Town.tscn")
 const SCENE_WSHOP = preload("res://scenes/map_scene/WeaponShop.tscn")
 const SCENE_TSHOP = preload("res://scenes/map_scene/TechniqueShop.tscn")
+const SCENE_ISHOP = preload("res://scenes/map_scene/ItemShop.tscn")
 
 var spawn_door_tag: String = ""
 var player_is_transitioning: bool = false
@@ -21,6 +22,8 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 			scene_to_load = SCENE_WSHOP	
 		"TechniqueShop":
 			scene_to_load = SCENE_TSHOP
+		"ItemShop":
+			scene_to_load = SCENE_ISHOP
 		
 	if scene_to_load == null:
 		return

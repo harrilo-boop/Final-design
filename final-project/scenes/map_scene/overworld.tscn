@@ -31,6 +31,7 @@ position = Vector2(-303, 155)
 
 [node name="Itembox1" parent="." unique_id=327047994 instance=ExtResource("4_swx75")]
 position = Vector2(-231, 107)
+itembox_tag = "001"
 
 [connection signal="body_entered" from="Itembox1" to="player" method="_open_itembox"]
 

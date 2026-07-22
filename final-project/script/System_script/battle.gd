@@ -18,7 +18,12 @@ var enemy_hp: int = 5
 var max_enemy_hp:int = 5
 var enemy_atk:int = 1
 #Other options button variables
-var equipped_tech: Array[tech_resource] = [null, null, null, null]
+var equipped_tech:Array[tech_resource] = [
+	null,
+	null,
+	null,
+	null
+]
 var equipped_weapon = null
 var equipped_armor = null
 #Damage calculate variables
@@ -55,17 +60,19 @@ func _ready() -> void:
 	enemy_atk = Global.enemy_atk
 	xp_earn = Global.xp_earn
 	xp_level = Global.xp_level
-	player_bar.max_value = max_hp
-	player_bar.value = player_hp
-	enemy_bar.max_value = max_enemy_hp
-	enemy_bar.value = enemy_hp
-	hp_ui.text = "HP:" + str(player_hp)
 	equipped_tech = Global.equipped_tech
 	options_button.show()
 	tech_options.hide()
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
 	
+func _process(delta) -> void:
+	player_bar.value = player_hp
+	player_bar.max_value = max_hp
+	enemy_bar.max_value = max_enemy_hp
+	enemy_bar.value = enemy_hp
+	hp_ui.text = "HP:" + str(player_hp)
+
 func player_turn_change() -> void:
 	player_turn = false
 	enemy_turn = true
@@ -79,9 +86,8 @@ func enemy_turn_change() -> void:
 	enemy_turn = false
 	turn_label.text = "Your Turn"
 	hp_ui.text = "HP:" + str(player_hp)
-	player_bar.value = player_hp
 	change_turn.start()
-
+	
 func _attack_choose() -> void:
 	if player_turn == true and enemy_turn == false and equipped_weapon != null:
 		if enemy_hp >= 1: 
@@ -108,9 +114,9 @@ func _enemy_attack() -> void:
 func battle_end() -> void:
 	learn_tech_yes.show()
 	learn_tech_no.show()
-	Global.battle_hp_update(total_damage_atk)
+	Global.battle_stats_update(total_damage_atk)
 	Global.battle_xp_update(xp_earn)
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
 
 func _on_tech_pressed() -> void:
 	options_button.hide()
@@ -158,6 +164,5 @@ func _on_option_3_pressed() -> void:
 	_tech_options(tech_3.text)
 func _on_option_4_pressed() -> void:
 	_tech_options(tech_4.text)
-	
 func _escape() -> void:
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/overworld.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")

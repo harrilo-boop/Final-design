@@ -8,7 +8,7 @@ extends Node
 
 #Player's health
 var player_hp:int = 20
-var max_player_hp:int = 10
+var max_player_hp:int = 20
 
 #Player's stats
 var player_tp:int = 20
@@ -17,7 +17,14 @@ var weapon_atk:int = 1
 var armor_def:int = 1
 
 #Player's current stats
-var equipped_tech: Array[tech_resource] = [null, null, null, null]
+const MAX_TECH = 4
+var equipped_tech:Array[tech_resource] = [
+	null,
+	null,
+	null,
+	null
+]
+var inventory: Array[item_resource] = [null, null, null, null, null, null, null, null]
 var equipped_weapon = null
 var equipped_armor = null
 
@@ -48,6 +55,7 @@ var armors = {
 	"Starter armor": load("res://resources/Armor/Armor_base1.tres"),
 	"Wood armor": load("res://resources/Armor/Armor_base2.tres")
 }
+
 var techs = {
 	#Ability-----Fire
 	"Flame" : load("res://resources/Tech/Fire_tech1.tres"),
@@ -69,12 +77,13 @@ var items = {
 
 #Current technique using as start condition
 func _ready() -> void:
-	equipped_tech[0] = load("res://resources/Tech/Fire_tech1.tres")
-	equipped_tech[1] = load("res://resources/Tech/Water_tech1.tres")
+	equipped_tech[0] = techs["Flame"]
+	equipped_tech[1] = techs["Water ball"]
 	equipped_tech[2] = null
 	equipped_tech[3] = null
 	equipped_weapon = load("res://resources/Weapon/Weapon_base1.tres")
 	equipped_armor = load("res://resources/Armor/Armor_base1.tres")
+	xp_needed = level_up(xp_level)
 
 func player_stats() -> void:
 	#Current weapon using
@@ -82,11 +91,11 @@ func player_stats() -> void:
 	#Current armor using
 	armor_def = equipped_armor.armor_def
 
-
 #Updating player's health after battle
-func battle_hp_update(total_enemy_attack: int) -> void: 
+func battle_stats_update(total_enemy_attack: int) -> void: 
 	player_hp = player_hp - total_enemy_attack
-	
+	player_tp = player_tp - total_enemy_attack
+
 #Updating player's xp after battle
 func battle_xp_update(xp_earn: int) -> void:
 	player_xp = player_xp + xp_earn
@@ -99,15 +108,26 @@ func level_up(xp_level: int) -> int:
 	return int(basic_xp * pow(xp_level, xp_power))
 
 #Checkinng whever can player level up
-func check_levelup() -> void:
-	if player_xp >= xp_needed and xp_level <= max_level:
-		player_xp = player_xp - xp_needed
+func check_levelup():
+	while player_xp >= xp_needed and xp_level < max_level:
+		player_xp -= xp_needed
 		xp_level += 1
 		xp_needed = level_up(xp_level)
-	print("Lv.", xp_level , "| " , player_xp, "/" , xp_needed, "Current Experience") #For testing use
+		check_new_tech()
+	print("Lv.", xp_level, "| " , player_xp, "/" , xp_needed, "Current Experience")
+	
+func check_new_tech() -> void:
+	for tech in techs.values():
+		if tech.required_level == xp_level:
+			learn_new_skill(tech)
 
-func learn_new_skill() -> void:
-	var tech_level = tech_resource.required_level
-	if xp_level >= tech_level and equipped_tech == null:
-		pass
+func learn_new_skill(new_tech:tech_resource) -> void:
+	if equipped_tech.has(new_tech):
+		return
+	for i in range(MAX_TECH):
+		if equipped_tech[i] == null:
+			equipped_tech[i] = new_tech
+			print("Learned ", new_tech.tech_name)
+			return
+	print("Need Replace Skill")
 	

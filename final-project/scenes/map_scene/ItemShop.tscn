@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bed1unljgi4u"]
+
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/character_scene/player.tscn" id="1_ph0rs"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/item_scene/door.tscn" id="2_xlusp"]
+
+[node name="Node2D" type="Node2D" unique_id=1412643661]
+
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_ph0rs")]
+position = Vector2(300, 0)
+
+[node name="Door" type="Node" parent="." unique_id=1203934943]
+
+[node name="Door_Ileave" parent="Door" unique_id=154942317 instance=ExtResource("2_xlusp")]
+door_tag = "Ileave_door"
+level_to_load = "Town"
+destination_tag = "Ishop_door"
+
+[node name="CollisionShape2D" parent="Door/Door_Ileave" index="0" unique_id=1285604296]
+debug_color = Color(0.59607846, 0.4509804, 0.8039216, 0.41960785)
+
+[node name="Marker2D" parent="Door/Door_Ileave" index="1" unique_id=1382765507]
+position = Vector2(1, -194)
+
+[editable path="Door/Door_Ileave"]

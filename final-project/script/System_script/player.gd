@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	handle_attack()
 	if Input.is_action_just_pressed("ui_pause"):
 		Global.last_position = global_position
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/Pause_menu.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/Pause_menu.tscn")
 	if Input.is_action_just_pressed("ui_run"):
 		speed = speed * 1.2
 	elif Input.is_action_just_released("ui_run"):
@@ -94,7 +94,7 @@ func _on_sword_hit(body: Node) -> void:
 
 func _enter_battle() -> void: 
 	Global.last_position = global_position
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/In_battle.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/In_battle.tscn")
 	#Enter a battle and change the scene 
 	
 func _attack_timeout() -> void:

@@ -6,8 +6,7 @@
 script = ExtResource("1_1pffe")
 tech_name = "Heal (Low)"
 ability = 6
-tech_atk = 0
 tech_hp = 4
 tech_tp = 4
-required_level = 2
+required_level = 5
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"

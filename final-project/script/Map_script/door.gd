@@ -1,10 +1,9 @@
-class_name Door
 extends Area2D
+class_name Door
 
 @export var door_tag: String
 @export var level_to_load: String
 @export var destination_tag: String
-@export var spawn_direction: String = "down"
 @export var spawn: Marker2D
 
 var player_is_blocked: bool = false
