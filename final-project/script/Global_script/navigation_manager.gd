@@ -16,14 +16,19 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 	match level_tag:
 		"overworld":
 			scene_to_load = SCENE_OVERWORLD
+			Global.last_scene = "overworld"
 		"Town":
 			scene_to_load = SCENE_TOWN
+			Global.last_scene = "Town"
 		"WeaponShop":
 			scene_to_load = SCENE_WSHOP	
+			Global.last_scene = "WeaponShop"
 		"TechniqueShop":
 			scene_to_load = SCENE_TSHOP
+			Global.last_scene = "TechniqueShop"
 		"ItemShop":
 			scene_to_load = SCENE_ISHOP
+			Global.last_scene = "ItemShop"
 		
 	if scene_to_load == null:
 		return

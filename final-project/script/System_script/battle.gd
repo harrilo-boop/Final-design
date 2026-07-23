@@ -66,12 +66,15 @@ func _ready() -> void:
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
 	
-func _process(delta) -> void:
+func _process(delta: float) -> void:
 	player_bar.value = player_hp
 	player_bar.max_value = max_hp
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
+	if Input.is_action_just_pressed("ui_cancel"):
+		options_button.show()
+		tech_options.hide()
 
 func player_turn_change() -> void:
 	player_turn = false
@@ -154,6 +157,7 @@ func _tech_options(tech: String) -> void:
 		options_button.show()
 	if enemy_hp == 0:
 			xp_earn = enemy_resource.xp_give
+			print(player_hp)
 			battle_end()
 
 func _on_option_1_pressed() -> void:	
@@ -164,5 +168,6 @@ func _on_option_3_pressed() -> void:
 	_tech_options(tech_3.text)
 func _on_option_4_pressed() -> void:
 	_tech_options(tech_4.text)
+
 func _escape() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")

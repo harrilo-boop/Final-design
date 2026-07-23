@@ -37,6 +37,7 @@ var max_level:int = 100
 
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO
+var last_scene:String = "overworld"
 
 #Enemy's stats
 var enemy_hp:int = 10
@@ -59,6 +60,7 @@ var armors = {
 var techs = {
 	#Ability-----Fire
 	"Flame" : load("res://resources/Tech/Fire_tech1.tres"),
+	"Fire ball": load("res://resources/Tech/Fire_tech2.tres"),
 	#Ability-----Water
 	"Water ball": load("res://resources/Tech/Water_tech1.tres"),
 	#Ability-----Electric
@@ -81,8 +83,8 @@ func _ready() -> void:
 	equipped_tech[1] = techs["Water ball"]
 	equipped_tech[2] = null
 	equipped_tech[3] = null
-	equipped_weapon = load("res://resources/Weapon/Weapon_base1.tres")
-	equipped_armor = load("res://resources/Armor/Armor_base1.tres")
+	equipped_weapon = weapons["Starter sword"]
+	equipped_armor = armors["Starter armor"]
 	xp_needed = level_up(xp_level)
 
 func player_stats() -> void:
@@ -130,4 +132,5 @@ func learn_new_skill(new_tech:tech_resource) -> void:
 			print("Learned ", new_tech.tech_name)
 			return
 	print("Need Replace Skill")
+	
 	
