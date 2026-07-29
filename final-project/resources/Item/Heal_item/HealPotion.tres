@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConsumableItemData" format=3 uid="uid://whgj4nx5a1ca"]
+
+[ext_resource type="Script" uid="uid://gacep1hahf6f" path="res://script/Resource_script/Item/consumable_item.gd" id="1_qgpvt"]
+
+[resource]
+script = ExtResource("1_qgpvt")
+heal_gain = 5
+item_name = "Heal Potion"
+description = "+5 heal player"
+max_stack_size = 10
+metadata/_custom_type_script = "uid://gacep1hahf6f"

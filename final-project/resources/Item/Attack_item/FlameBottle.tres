@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AtkItemData" format=3 uid="uid://dlg77o8t5kxb5"]
+
+[ext_resource type="Script" uid="uid://dqhntiuxvj7ve" path="res://script/Resource_script/Item/attack_item.gd" id="1_8foue"]
+
+[resource]
+script = ExtResource("1_8foue")
+item_damage = 3
+ability_type = 1
+item_name = "Flame bottle"
+description = "Fire type attackable item"
+max_stack_size = 5
+metadata/_custom_type_script = "uid://dqhntiuxvj7ve"

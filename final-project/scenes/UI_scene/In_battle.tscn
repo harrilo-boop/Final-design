@@ -45,12 +45,13 @@ font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5r8l"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j1hs"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "learn_tech_yes", "learn_tech_no")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("Battle_end", "turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "learn_tech_yes", "learn_tech_no", "learn_label")]
 script = ExtResource("1_cve37")
+Battle_end = NodePath("Battle_End")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
 enemy_ui = NodePath("Stats_UI/Enemyhp_label")
@@ -67,6 +68,7 @@ tech_3 = NodePath("Tech_options/Option3_button/Option3")
 tech_4 = NodePath("Tech_options/Option4_button/Option4")
 learn_tech_yes = NodePath("Battle_End/PanelContainer/Learn_yes")
 learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
+learn_label = NodePath("Battle_End/learn_label")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 414.0
@@ -281,7 +283,6 @@ disabled = true
 text = "Option4"
 
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 70.0
@@ -289,7 +290,7 @@ offset_top = 428.0
 offset_right = 1069.0
 offset_bottom = 629.0
 
-[node name="Conclusion_label" type="Label" parent="Battle_End" unique_id=1848710145]
+[node name="learn_label" type="Label" parent="Battle_End" unique_id=1848710145]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 119.0
@@ -298,21 +299,7 @@ offset_bottom = 188.0
 text = "Testing..."
 label_settings = SubResource("LabelSettings_4ebmv")
 
-[node name="PanelContainer" type="PanelContainer" parent="Battle_End" unique_id=1758822929]
-layout_mode = 0
-offset_left = 787.0
-offset_top = 103.0
-offset_right = 981.0
-offset_bottom = 187.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
-
-[node name="Learn_yes" type="Button" parent="Battle_End/PanelContainer" unique_id=1364264214]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_ft0od")
-text = "NO"
-
-[node name="PanelContainer2" type="PanelContainer" parent="Battle_End" unique_id=474629690]
+[node name="PanelContainer" type="PanelContainer" parent="Battle_End" unique_id=474629690]
 layout_mode = 0
 offset_left = 787.0
 offset_top = 10.0
@@ -320,11 +307,25 @@ offset_right = 981.0
 offset_bottom = 94.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
 
-[node name="Learn_no" type="Button" parent="Battle_End/PanelContainer2" unique_id=891959614]
+[node name="Learn_yes" type="Button" parent="Battle_End/PanelContainer" unique_id=891959614]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_5j1hs")
 text = "YES"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Battle_End" unique_id=1758822929]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 103.0
+offset_right = 981.0
+offset_bottom = 187.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
+
+[node name="Learn_no" type="Button" parent="Battle_End/PanelContainer2" unique_id=1364264214]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ft0od")
+text = "NO"
 
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
@@ -334,3 +335,5 @@ text = "YES"
 [connection signal="pressed" from="Tech_options/Option2_button/Option2" to="." method="_on_option_2_pressed"]
 [connection signal="pressed" from="Tech_options/Option3_button/Option3" to="." method="_on_option_3_pressed"]
 [connection signal="pressed" from="Tech_options/Option4_button/Option4" to="." method="_on_option_4_pressed"]
+[connection signal="pressed" from="Battle_End/PanelContainer/Learn_yes" to="." method="replace_tech"]
+[connection signal="pressed" from="Battle_End/PanelContainer2/Learn_no" to="." method="not_replace_tech"]

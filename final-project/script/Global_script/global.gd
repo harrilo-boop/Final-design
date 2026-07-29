@@ -5,6 +5,7 @@ extends Node
 @export var weapon_resource: Resource
 @export var armor_resource: Resource
 @export var tech_resource: Resource
+@export var item_resource: Resource
 
 #Player's health
 var player_hp:int = 20
@@ -18,15 +19,16 @@ var armor_def:int = 1
 
 #Player's current stats
 const MAX_TECH = 4
+var new_tech: tech_resource = null
 var equipped_tech:Array[tech_resource] = [
 	null,
 	null,
 	null,
 	null
 ]
-var inventory: Array[item_resource] = [null, null, null, null, null, null, null, null]
 var equipped_weapon = null
 var equipped_armor = null
+var tech_replace:bool = false
 
 #Player's experience system
 var player_xp:int = 0
@@ -71,10 +73,10 @@ var techs = {
 	"Heal (Low)": load("res://resources/Tech/Heal_tech1.tres")
 }
 
-
 var items = {
-	"Heal Potion": load("res://resources/Item/Heal_base1.tres"),
-	"Temporary sheild": load("res://resources/Item/Defend_base1.tres")
+	"Flame bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
+	"TemporarySheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
+	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres")
 }
 
 #Current technique using as start condition
@@ -94,14 +96,21 @@ func player_stats() -> void:
 	armor_def = equipped_armor.armor_def
 
 #Updating player's health after battle
-func battle_stats_update(total_enemy_attack: int) -> void: 
-	player_hp = player_hp - total_enemy_attack
-	player_tp = player_tp - total_enemy_attack
+func battle_hp_update(current_hp: int):
+	player_hp = current_hp
 
+#Updating player's tech after battle
+func battle_tp_update(current_tp: int) -> void:
+	player_tp = current_tp
+
+func replace_player_tech(index: int, tech: tech_resource) -> void:
+	equipped_tech[index] = tech
+	
 #Updating player's xp after battle
-func battle_xp_update(xp_earn: int) -> void:
-	player_xp = player_xp + xp_earn
+func battle_xp_update(xp_earn: int) -> bool:
+	player_xp += xp_earn
 	check_levelup()
+	return new_tech != null
 	
 #Setting the xp requirement for every level
 func level_up(xp_level: int) -> int:
@@ -123,14 +132,13 @@ func check_new_tech() -> void:
 		if tech.required_level == xp_level:
 			learn_new_skill(tech)
 
-func learn_new_skill(new_tech:tech_resource) -> void:
+func learn_new_skill(new_tech: tech_resource) -> void:
 	if equipped_tech.has(new_tech):
 		return
 	for i in range(MAX_TECH):
 		if equipped_tech[i] == null:
-			equipped_tech[i] = new_tech
+			replace_player_tech(i, new_tech)
 			print("Learned ", new_tech.tech_name)
 			return
-	print("Need Replace Skill")
-	
+	self.new_tech = new_tech
 	

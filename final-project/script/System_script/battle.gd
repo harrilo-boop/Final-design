@@ -26,10 +26,13 @@ var equipped_tech:Array[tech_resource] = [
 ]
 var equipped_weapon = null
 var equipped_armor = null
+var replacing_tech: bool = false
+
 #Damage calculate variables
 var total_damage_atk:int = 0
 var total_enemy_atk:int = 0 
 
+@export var Battle_end: Control
 @export var turn_label: Label
 @export var hp_ui: Label
 @export var enemy_ui: Label
@@ -46,6 +49,7 @@ var total_enemy_atk:int = 0
 @export var tech_4: Button
 @export var learn_tech_yes: Button
 @export var learn_tech_no: Button
+@export var learn_label: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -63,9 +67,12 @@ func _ready() -> void:
 	equipped_tech = Global.equipped_tech
 	options_button.show()
 	tech_options.hide()
+	Battle_end.hide()
+	learn_label.hide()
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
-	
+
+
 func _process(delta: float) -> void:
 	player_bar.value = player_hp
 	player_bar.max_value = max_hp
@@ -115,11 +122,16 @@ func _enemy_attack() -> void:
 		battle_end()
 
 func battle_end() -> void:
-	learn_tech_yes.show()
-	learn_tech_no.show()
-	Global.battle_stats_update(total_damage_atk)
+	Global.battle_hp_update(player_hp)
+	Global.battle_tp_update(player_tp)
 	Global.battle_xp_update(xp_earn)
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
+	print("New Tech =", Global.new_tech)
+	if Global.new_tech != null:
+		print("Show UI")
+		show_learn_ui()
+	else:
+		print("Finish Battle")
+		finish_battle()
 
 func _on_tech_pressed() -> void:
 	options_button.hide()
@@ -160,14 +172,52 @@ func _tech_options(tech: String) -> void:
 			print(player_hp)
 			battle_end()
 
-func _on_option_1_pressed() -> void:	
-	_tech_options(tech_1.text)
+func _on_option_1_pressed() -> void:
+	select_tech(0)
 func _on_option_2_pressed() -> void:
-	_tech_options(tech_2.text)
+	select_tech(1)
 func _on_option_3_pressed() -> void:
-	_tech_options(tech_3.text)
+	select_tech(2)
 func _on_option_4_pressed() -> void:
-	_tech_options(tech_4.text)
+	select_tech(3)
 
 func _escape() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
+
+func select_tech(index:int)->void:
+	if replacing_tech:
+		Global.replace_player_tech(index, Global.new_tech)
+		Global.new_tech = null
+		replacing_tech = false
+		tech_options.hide()
+		finish_battle()
+		return
+	_tech_options(Global.equipped_tech[index].tech_name)
+		
+func replace_tech() -> void:
+	Battle_end.hide()
+	replace_tech()
+	replacing_tech = true
+	options_button.hide()
+	tech_options.show()
+	var tech_buttons = [tech_1, tech_2, tech_3, tech_4]
+	for i in range(4):
+		tech_buttons[i].text = Global.equipped_tech[i].tech_name
+
+func not_replace_tech() -> void:
+	Global.new_tech = null
+		
+func show_learn_ui():
+	player_turn = false
+	enemy_turn = false
+	change_turn.stop()
+	options_button.hide()
+	tech_options.hide()
+	Battle_end.show()
+	learn_label.show()
+	learn_tech_yes.show()
+	learn_tech_no.show()
+	learn_label.text = "Learn " + Global.new_tech.tech_name + " ?"
+	
+func finish_battle():
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")	

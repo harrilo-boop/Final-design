@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cg7dhxiq2vh30"]
 
 [ext_resource type="Script" uid="uid://dl30bxs27dggi" path="res://script/System_script/player.gd" id="1_746yo"]
+[ext_resource type="Script" uid="uid://cny2173vrtks8" path="res://script/Resource_script/Item/inventory.gd" id="2_qinw1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 44.102154
@@ -32,6 +33,9 @@ shape = SubResource("RectangleShape2D_3vyb7")
 debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
+
+[node name="Inventory" type="Node2D" parent="." unique_id=110546891]
+script = ExtResource("2_qinw1")
 
 [connection signal="timeout" from="attack_cooldown" to="." method="_attack_timeout"]
 [connection signal="body_entered" from="sword_area" to="." method="_on_sword_hit"]

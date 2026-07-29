@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DefItemData" format=3 uid="uid://4vwemhopeyxw"]
+
+[ext_resource type="Script" uid="uid://bno41lls7iyee" path="res://script/Resource_script/Item/DefendItemData.gd" id="1_h66ti"]
+
+[resource]
+script = ExtResource("1_h66ti")
+defend_amount = 3
+duration_round = 2
+item_name = "Temporary Sheild"
+description = "Summon a temporary sheild resist damage"
+max_stack_size = 3
+metadata/_custom_type_script = "uid://bno41lls7iyee"

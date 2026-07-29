@@ -8,5 +8,5 @@ tech_name = "Fire ball"
 ability = 1
 tech_atk = 6
 tech_tp = 5
-required_level = 3
+required_level = 2
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"
