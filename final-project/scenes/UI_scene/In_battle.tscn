@@ -39,6 +39,38 @@ bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4e4d"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cve37"]
+bg_color = Color(0.43519226, 0.4351923, 0.43519217, 1)
+border_width_left = 5
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.2665752, 0.26657522, 0.26657504, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hhvv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uc4m"]
+bg_color = Color(0.43529412, 0.43529412, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1vla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35c1n"]
+bg_color = Color(0.43529412, 0.43529412, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_118um"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4c7e"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_4ebmv"]
 font_size = 50
 font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
@@ -71,28 +103,28 @@ learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
 learn_label = NodePath("Battle_End/learn_label")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
-offset_top = 414.0
+offset_top = 306.0
 offset_right = 1151.0
 offset_bottom = 645.0
 color = Color(1, 1, 1, 0.54509807)
 
 [node name="Demo2" type="ColorRect" parent="." unique_id=1986585398]
-offset_top = 100.0
-offset_right = 18.0
-offset_bottom = 414.0
+offset_top = 38.0
+offset_right = 34.0
+offset_bottom = 306.0
 color = Color(1, 1, 1, 0.54509807)
 
 [node name="Demo3" type="ColorRect" parent="." unique_id=76555446]
 offset_top = -2.0
 offset_right = 1151.0
-offset_bottom = 100.0
+offset_bottom = 38.0
 color = Color(1, 1, 1, 0.54509807)
 
 [node name="Demo4" type="ColorRect" parent="." unique_id=1031463089]
-offset_left = 1130.0
-offset_top = 100.0
+offset_left = 1114.0
+offset_top = 38.0
 offset_right = 1151.0
-offset_bottom = 414.0
+offset_bottom = 306.0
 color = Color(1, 1, 1, 0.54509807)
 
 [node name="Demo5" type="ColorRect" parent="." unique_id=1570822014]
@@ -108,26 +140,26 @@ one_shot = true
 [node name="Stats_UI" type="CanvasLayer" parent="." unique_id=1623192407]
 
 [node name="Turn_label" type="Label" parent="Stats_UI" unique_id=1158720786]
-offset_left = 476.0
-offset_top = 31.0
-offset_right = 673.0
-offset_bottom = 86.0
+offset_left = 468.0
+offset_top = 325.0
+offset_right = 665.0
+offset_bottom = 380.0
 text = "Your Turn"
 label_settings = SubResource("LabelSettings_vqpje")
 
 [node name="Playerhp_label" type="Label" parent="Stats_UI" unique_id=1482086477]
-offset_left = 164.0
-offset_top = -8.0
-offset_right = 299.0
-offset_bottom = 93.0
+offset_left = 70.0
+offset_top = 316.0
+offset_right = 205.0
+offset_bottom = 417.0
 text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Playerhp" type="ProgressBar" parent="Stats_UI" unique_id=746096015]
-offset_left = 30.0
-offset_top = 40.0
-offset_right = 399.0
-offset_bottom = 77.0
+offset_left = 70.0
+offset_top = 371.0
+offset_right = 439.0
+offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
 max_value = 20.0
@@ -135,19 +167,20 @@ step = 1.0
 show_percentage = false
 
 [node name="Enemyhp_label" type="Label" parent="Stats_UI" unique_id=1139744857]
-offset_left = 780.0
-offset_top = -2.0
-offset_right = 1058.0
-offset_bottom = 93.0
-text = "Enemy Hp: 10
+offset_left = 703.0
+offset_top = 255.0
+offset_right = 825.0
+offset_bottom = 426.0
+text = "
+HP: 10
 "
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Enemyhp" type="ProgressBar" parent="Stats_UI" unique_id=2081252063]
-offset_left = 746.0
-offset_top = 45.0
-offset_right = 1115.0
-offset_bottom = 82.0
+offset_left = 703.0
+offset_top = 369.0
+offset_right = 1072.0
+offset_bottom = 406.0
 theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
 max_value = 10.0
@@ -282,6 +315,98 @@ theme_override_font_sizes/font_size = 30
 disabled = true
 text = "Option4"
 
+[node name="Item_options" type="Control" parent="." unique_id=576367030]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 69.0
+offset_top = 431.0
+offset_right = 1071.0
+offset_bottom = 623.0
+
+[node name="Item_option1" type="PanelContainer" parent="Item_options" unique_id=1701552615]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 143.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cve37")
+
+[node name="Button" type="Button" parent="Item_options/Item_option1" unique_id=876481550]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5hhvv")
+
+[node name="Item_option2" type="PanelContainer" parent="Item_options" unique_id=1276427197]
+layout_mode = 0
+offset_left = 143.0
+offset_top = -1.0
+offset_right = 286.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4uc4m")
+
+[node name="Button" type="Button" parent="Item_options/Item_option2" unique_id=170935863]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_e1vla")
+
+[node name="Item_option3" type="PanelContainer" parent="Item_options" unique_id=103027249]
+layout_mode = 0
+offset_left = 286.0
+offset_top = -1.0
+offset_right = 430.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
+
+[node name="Button" type="Button" parent="Item_options/Item_option3" unique_id=2091822582]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_118um")
+
+[node name="Item_option4" type="PanelContainer" parent="Item_options" unique_id=758110210]
+layout_mode = 0
+offset_left = 430.0
+offset_top = -1.0
+offset_right = 574.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
+
+[node name="Button" type="Button" parent="Item_options/Item_option4" unique_id=851522161]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+
+[node name="Item_option5" type="PanelContainer" parent="Item_options" unique_id=1503840276]
+layout_mode = 0
+offset_left = 574.0
+offset_top = -1.0
+offset_right = 718.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
+
+[node name="Button" type="Button" parent="Item_options/Item_option5" unique_id=1032514747]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+
+[node name="Item_option6" type="PanelContainer" parent="Item_options" unique_id=1156812255]
+layout_mode = 0
+offset_left = 718.0
+offset_top = -1.0
+offset_right = 862.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
+
+[node name="Button" type="Button" parent="Item_options/Item_option6" unique_id=1135773307]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+
+[node name="Item_option7" type="PanelContainer" parent="Item_options" unique_id=2096267956]
+layout_mode = 0
+offset_left = 862.0
+offset_top = -1.0
+offset_right = 1006.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
+
+[node name="Button" type="Button" parent="Item_options/Item_option7" unique_id=992541165]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
 layout_mode = 3
 anchors_preset = 0
@@ -330,6 +455,7 @@ text = "NO"
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
 [connection signal="pressed" from="Options_button/Tech_button/Tech" to="." method="_on_tech_pressed"]
+[connection signal="pressed" from="Options_button/Item_button/Item" to="." method="_on_item_pressed"]
 [connection signal="pressed" from="Options_button/Escape_button/Escape" to="." method="_escape"]
 [connection signal="pressed" from="Tech_options/Option1_button/Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Tech_options/Option2_button/Option2" to="." method="_on_option_2_pressed"]

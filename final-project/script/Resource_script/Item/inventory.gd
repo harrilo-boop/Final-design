@@ -9,7 +9,7 @@ signal UpdatedInventory
 signal UpdatedSlot(slot: ItemSlot)
 
 var item_slots: Array[ItemSlot]
-@export var size:int = 8
+@export var size:int = 7
 @export var start_items: Dictionary[item_resource, int]
 
 func _ready():

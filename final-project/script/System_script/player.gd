@@ -11,6 +11,7 @@ var return_from_battle:bool = true
 var last_direction: Vector2 = Vector2.RIGHT
 var hitbox_offset: Vector2
 var last_position: Vector2 = Vector2(0,0)
+var battle_entered_by:String = ""
 
 @export var player: CharacterBody2D
 @export var pivot: Marker2D
@@ -94,7 +95,8 @@ func _on_sword_hit(body: Node) -> void:
 
 func _enter_battle() -> void: 
 	Global.last_position = global_position
-	Global.battle_entered_by = "player"
+	battle_entered_by = "player"
+	Global.battle_entered_by = battle_entered_by
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/In_battle.tscn")
 	#Enter a battle and change the scene 
 	

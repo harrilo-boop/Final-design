@@ -46,6 +46,14 @@ var total_enemy_atk:int = 0
 @export var tech_2: Button
 @export var tech_3: Button
 @export var tech_4: Button
+@export var item_options: Control
+@export var item_1: Button
+@export var item_2: Button
+@export var item_3: Button
+@export var item_4: Button
+@export var item_5: Button
+@export var item_6: Button
+@export var item_7: Button
 @export var Battle_end: Control
 @export var learn_tech_yes: Button
 @export var learn_tech_no: Button
@@ -74,6 +82,7 @@ func _ready() -> void:
 		enemy_turn = true
 	options_button.show()
 	tech_options.hide()
+#	item_options.hide()
 	Battle_end.hide()
 	learn_label.hide()
 	learn_tech_yes.hide()
@@ -90,6 +99,7 @@ func _process(delta: float) -> void:
 		options_button.show()
 		tech_options.hide()
 
+#Changing turn by player to enemy
 func player_turn_change() -> void:
 	player_turn = false
 	enemy_turn = true
@@ -105,6 +115,7 @@ func enemy_turn_change() -> void:
 	hp_ui.text = "HP:" + str(player_hp)
 	change_turn.start()
 	
+#Player's basic attack-----------------------------------------------
 func _attack_choose() -> void:
 	if player_turn == true and enemy_turn == false and equipped_weapon != null:
 		if enemy_hp >= 1: 
@@ -128,17 +139,7 @@ func _enemy_attack() -> void:
 	if player_hp <= 0:
 		battle_end()
 
-func battle_end() -> void:
-	Global.battle_hp_update(player_hp)
-	Global.battle_tp_update(player_tp)
-	Global.battle_xp_update(xp_earn)
-	if Global.new_tech != null:
-		print("Show UI")
-		show_learn_ui()
-	elif Global.new_tech == null:
-		print("Finish Battle")
-		finish_battle()
-
+#Player's technique attack settings----------------------------------
 func _on_tech_pressed() -> void:
 	options_button.hide()
 	tech_options.show()	
@@ -187,10 +188,6 @@ func _on_option_3_pressed() -> void:
 func _on_option_4_pressed() -> void:
 	select_tech(3)
 
-func _escape() -> void:
-	if player_turn == true and enemy_turn == false:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
-
 func select_tech(index:int)->void:
 	if replacing_tech:
 		Global.replace_player_tech(index, Global.new_tech)
@@ -200,7 +197,31 @@ func select_tech(index:int)->void:
 		finish_battle()
 		return
 	_tech_options(Global.equipped_tech[index].tech_name)
-		
+
+#Player's using item settings----------------------------------------	
+func _on_item_pressed() -> void:
+	options_button.hide()
+	item_options.show()
+	var item_buttons: Array= [item_1, item_2, item_3, item_4, item_5, item_6, item_7]
+	for item in range(7):
+		pass #Show sprite and name and stack number
+
+#Player's leaving battle settings------------------------------------
+func battle_end() -> void:
+	Global.battle_hp_update(player_hp)
+	Global.battle_tp_update(player_tp)
+	Global.battle_xp_update(xp_earn)
+	if Global.new_tech != null:
+		print("Show UI")
+		show_learn_ui()
+	elif Global.new_tech == null:
+		print("Finish Battle")
+		finish_battle()
+
+func _escape() -> void:
+	if player_turn == true and enemy_turn == false:
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
+	
 func replace_tech() -> void:
 	Battle_end.hide()
 	replacing_tech = true
@@ -212,7 +233,14 @@ func replace_tech() -> void:
 
 func not_replace_tech() -> void:
 	Global.new_tech = null
-		
+	replacing_tech = false
+	Battle_end.hide()
+	learn_label.hide()
+	learn_tech_yes.hide()
+	learn_tech_no.hide()
+
+	finish_battle()
+
 func show_learn_ui():
 	player_turn = false
 	enemy_turn = false
@@ -224,6 +252,6 @@ func show_learn_ui():
 	learn_tech_yes.show()
 	learn_tech_no.show()
 	learn_label.text = "Learn " + Global.new_tech.tech_name + " ?"
-	
+
 func finish_battle():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")	

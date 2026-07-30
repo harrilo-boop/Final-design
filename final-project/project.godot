@@ -19,6 +19,8 @@ config/icon="res://asset/icon.svg"
 
 Global="*uid://cwstl6pnesyab"
 NavigationManager="*uid://cb0gy2pceu062"
+ItemManager="*uid://cpxcfwo214xnw"
+InventoryManager="*uid://cny2173vrtks8"
 
 [input]
 

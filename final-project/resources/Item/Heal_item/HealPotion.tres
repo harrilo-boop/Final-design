@@ -1,11 +1,18 @@
 [gd_resource type="Resource" script_class="ConsumableItemData" format=3 uid="uid://whgj4nx5a1ca"]
 
-[ext_resource type="Script" uid="uid://gacep1hahf6f" path="res://script/Resource_script/Item/consumable_item.gd" id="1_qgpvt"]
+[sub_resource type="GDScript" id="GDScript_wlehw"]
+script/source = "class_name ConsumableItemData
+extends item_resource
+
+@export var heal_gain:int = 1
+@export var atk_boost:int = 1
+"
 
 [resource]
-script = ExtResource("1_qgpvt")
+script = SubResource("GDScript_wlehw")
 heal_gain = 5
 item_name = "Heal Potion"
 description = "+5 heal player"
-max_stack_size = 5
-metadata/_custom_type_script = "uid://gacep1hahf6f"
+max_stack_size = 10
+effect_type = 1
+heal_amount = 5

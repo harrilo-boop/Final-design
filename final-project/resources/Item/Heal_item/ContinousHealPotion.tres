@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://b0hjevao7s2sb"]
+
+[ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/Resource_script/Item/resource_item.gd" id="1_6j5ue"]
+
+[resource]
+script = ExtResource("1_6j5ue")
+item_name = "Continous Heal Potion"
+description = "Heal player in 3 round"
+max_stack_size = 10
+use_in_world = false
+effect_type = 1
+heal_amount = 3
+duration = 3
+metadata/_custom_type_script = "uid://dbd68g4nt4do"

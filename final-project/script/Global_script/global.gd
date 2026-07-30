@@ -77,7 +77,8 @@ var techs = {
 var items = {
 	"Flame bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
 	"TemporarySheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
-	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres")
+	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),
+	"Continous Heal Potion": load("res://resources/Item/Heal_item/ContinousHealPotion.tres")
 }
 
 #Current technique using as start condition
