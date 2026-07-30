@@ -3,6 +3,9 @@ extends Node
 var player_hp:int = 1
 var player_regen:int = 1
 var player_regen_turn:int = 1
+var total_damage_atk:int = 1
+var enemy_hp:int = 1
+var defend_turn:int = 1
 
 @export var item: item_resource
 @export var player: CharacterBody2D
@@ -35,8 +38,15 @@ func use_regen(item):
 	player_regen_turn = item.duration
 
 func use_damage(item):
-	pass
-	
+	var item_ability = item.ability
+	total_damage_atk = item.damage
+	if item_ability == enemy_resource.weakness:
+		total_damage_atk *= 2
+	elif item_ability == enemy_resource.resistance:
+		total_damage_atk /= 2
+	enemy_hp -= total_damage_atk
 
 func use_shield(item):
-	pass
+	player_hp += item.defend_amount
+	defend_turn = item.duration
+	

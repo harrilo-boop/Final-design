@@ -81,7 +81,7 @@ font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
 script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -97,6 +97,14 @@ tech_1 = NodePath("Tech_options/Option1_button/Option1")
 tech_2 = NodePath("Tech_options/Option2_button/Option2")
 tech_3 = NodePath("Tech_options/Option3_button/Option3")
 tech_4 = NodePath("Tech_options/Option4_button/Option4")
+item_options = NodePath("Item_options")
+item_1 = NodePath("Item_options/Item_option1/Item_1")
+item_2 = NodePath("Item_options/Item_option2/Item_2")
+item_3 = NodePath("Item_options/Item_option3/Item_3")
+item_4 = NodePath("Item_options/Item_option4/Item_4")
+item_5 = NodePath("Item_options/Item_option5/Item_5")
+item_6 = NodePath("Item_options/Item_option6/Item_6")
+item_7 = NodePath("Item_options/Item_option7/Item_7")
 Battle_end = NodePath("Battle_End")
 learn_tech_yes = NodePath("Battle_End/PanelContainer/Learn_yes")
 learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
@@ -109,7 +117,7 @@ offset_bottom = 645.0
 color = Color(1, 1, 1, 0.54509807)
 
 [node name="Demo2" type="ColorRect" parent="." unique_id=1986585398]
-offset_top = 38.0
+offset_top = 48.0
 offset_right = 34.0
 offset_bottom = 306.0
 color = Color(1, 1, 1, 0.54509807)
@@ -117,12 +125,12 @@ color = Color(1, 1, 1, 0.54509807)
 [node name="Demo3" type="ColorRect" parent="." unique_id=76555446]
 offset_top = -2.0
 offset_right = 1151.0
-offset_bottom = 38.0
+offset_bottom = 48.0
 color = Color(1, 1, 1, 0.54509807)
 
 [node name="Demo4" type="ColorRect" parent="." unique_id=1031463089]
 offset_left = 1114.0
-offset_top = 38.0
+offset_top = 48.0
 offset_right = 1151.0
 offset_bottom = 306.0
 color = Color(1, 1, 1, 0.54509807)
@@ -140,10 +148,10 @@ one_shot = true
 [node name="Stats_UI" type="CanvasLayer" parent="." unique_id=1623192407]
 
 [node name="Turn_label" type="Label" parent="Stats_UI" unique_id=1158720786]
-offset_left = 468.0
-offset_top = 325.0
-offset_right = 665.0
-offset_bottom = 380.0
+offset_left = 451.0
+offset_top = -5.0
+offset_right = 643.0
+offset_bottom = 50.0
 text = "Your Turn"
 label_settings = SubResource("LabelSettings_vqpje")
 
@@ -151,7 +159,7 @@ label_settings = SubResource("LabelSettings_vqpje")
 offset_left = 70.0
 offset_top = 316.0
 offset_right = 205.0
-offset_bottom = 417.0
+offset_bottom = 371.0
 text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
@@ -167,13 +175,11 @@ step = 1.0
 show_percentage = false
 
 [node name="Enemyhp_label" type="Label" parent="Stats_UI" unique_id=1139744857]
-offset_left = 703.0
-offset_top = 255.0
-offset_right = 825.0
-offset_bottom = 426.0
-text = "
-HP: 10
-"
+offset_left = 705.0
+offset_top = 317.0
+offset_right = 827.0
+offset_bottom = 372.0
+text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Enemyhp" type="ProgressBar" parent="Stats_UI" unique_id=2081252063]
@@ -188,6 +194,7 @@ step = 1.0
 show_percentage = false
 
 [node name="Options_button" type="Control" parent="." unique_id=478916685]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -251,6 +258,7 @@ theme_override_font_sizes/font_size = 30
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -331,7 +339,7 @@ offset_right = 143.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cve37")
 
-[node name="Button" type="Button" parent="Item_options/Item_option1" unique_id=876481550]
+[node name="Item_1" type="Button" parent="Item_options/Item_option1" unique_id=876481550]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5hhvv")
 
@@ -343,7 +351,7 @@ offset_right = 286.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4uc4m")
 
-[node name="Button" type="Button" parent="Item_options/Item_option2" unique_id=170935863]
+[node name="Item_2" type="Button" parent="Item_options/Item_option2" unique_id=170935863]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_e1vla")
 
@@ -355,7 +363,7 @@ offset_right = 430.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 
-[node name="Button" type="Button" parent="Item_options/Item_option3" unique_id=2091822582]
+[node name="Item_3" type="Button" parent="Item_options/Item_option3" unique_id=2091822582]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_118um")
 
@@ -367,7 +375,7 @@ offset_right = 574.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 
-[node name="Button" type="Button" parent="Item_options/Item_option4" unique_id=851522161]
+[node name="Item_4" type="Button" parent="Item_options/Item_option4" unique_id=851522161]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 
@@ -379,7 +387,7 @@ offset_right = 718.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 
-[node name="Button" type="Button" parent="Item_options/Item_option5" unique_id=1032514747]
+[node name="Item_5" type="Button" parent="Item_options/Item_option5" unique_id=1032514747]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 
@@ -391,7 +399,7 @@ offset_right = 862.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 
-[node name="Button" type="Button" parent="Item_options/Item_option6" unique_id=1135773307]
+[node name="Item_6" type="Button" parent="Item_options/Item_option6" unique_id=1135773307]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 
@@ -403,7 +411,7 @@ offset_right = 1006.0
 offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 
-[node name="Button" type="Button" parent="Item_options/Item_option7" unique_id=992541165]
+[node name="Item_7" type="Button" parent="Item_options/Item_option7" unique_id=992541165]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 

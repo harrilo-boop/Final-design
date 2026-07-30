@@ -27,6 +27,7 @@ var equipped_tech:Array[tech_resource] = [
 var equipped_weapon = null
 var equipped_armor = null
 var replacing_tech: bool = false
+var item_choosing:bool = false
 
 #Damage calculate variables
 var total_damage_atk:int = 0
@@ -82,7 +83,7 @@ func _ready() -> void:
 		enemy_turn = true
 	options_button.show()
 	tech_options.hide()
-#	item_options.hide()
+	item_options.hide()
 	Battle_end.hide()
 	learn_label.hide()
 	learn_tech_yes.hide()
@@ -98,12 +99,16 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and replacing_tech == false:
 		options_button.show()
 		tech_options.hide()
-
+	if Input.is_action_just_pressed("ui_cancel") and item_choosing == true:
+		options_button.show()
+		item_options.hide()
+		item_choosing = false
+		
 #Changing turn by player to enemy
 func player_turn_change() -> void:
 	player_turn = false
 	enemy_turn = true
-	turn_label.text = "Enemy's Turn"
+	turn_label.text = "Enemy'sd Turn"
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 	enemy_bar.value = enemy_hp
 	change_turn.start()
@@ -202,9 +207,10 @@ func select_tech(index:int)->void:
 func _on_item_pressed() -> void:
 	options_button.hide()
 	item_options.show()
+	item_choosing = true
 	var item_buttons: Array= [item_1, item_2, item_3, item_4, item_5, item_6, item_7]
-	for item in range(7):
-		pass #Show sprite and name and stack number
+	#for item in range(7):
+	#	pass #Show sprite and name and stack number
 
 #Player's leaving battle settings------------------------------------
 func battle_end() -> void:
