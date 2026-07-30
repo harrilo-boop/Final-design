@@ -196,7 +196,6 @@ func select_tech(index:int)->void:
 		
 func replace_tech() -> void:
 	Battle_end.hide()
-	replace_tech()
 	replacing_tech = true
 	options_button.hide()
 	tech_options.show()
