@@ -8,5 +8,5 @@ item_damage = 3
 ability_type = 1
 item_name = "Flame bottle"
 description = "Fire type attackable item"
-max_stack_size = 5
+max_stack_size = 3
 metadata/_custom_type_script = "uid://dqhntiuxvj7ve"

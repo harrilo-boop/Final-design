@@ -1,10 +1,31 @@
 [gd_scene format=3 uid="uid://bocov7t2rxj7c"]
 
+[ext_resource type="Script" uid="uid://yib0k8kw8snq" path="res://script/System_script/enemy.gd" id="1_ps6yo"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 42.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=790093923 groups=["Enemy"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7x4n"]
+size = Vector2(69, 52.75)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=790093923 node_paths=PackedStringArray("attack_area_timer") groups=["Enemy"]]
+script = ExtResource("1_ps6yo")
+attack_area_timer = NodePath("attack_area_timer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497424036]
 shape = SubResource("CircleShape2D_8tegq")
 debug_color = Color(0.96854955, 0.16239247, 0.19665086, 0.41960785)
+
+[node name="Enemy_attack_area" type="Area2D" parent="." unique_id=2119028333]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_attack_area" unique_id=1921234853]
+position = Vector2(0, 74.625)
+shape = SubResource("RectangleShape2D_u7x4n")
+debug_color = Color(0.6745098, 0.3254902, 0.972549, 0.41960785)
+
+[node name="attack_area_timer" type="Timer" parent="." unique_id=1973593113]
+one_shot = true
+
+[connection signal="body_entered" from="Enemy_attack_area" to="." method="enter_attack_area"]
+[connection signal="body_exited" from="Enemy_attack_area" to="." method="leave_attack_area"]
+[connection signal="timeout" from="attack_area_timer" to="." method="_enter_battle_enemy"]

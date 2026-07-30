@@ -7,5 +7,5 @@ script = ExtResource("1_qgpvt")
 heal_gain = 5
 item_name = "Heal Potion"
 description = "+5 heal player"
-max_stack_size = 10
+max_stack_size = 5
 metadata/_custom_type_script = "uid://gacep1hahf6f"

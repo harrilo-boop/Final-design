@@ -94,6 +94,7 @@ func _on_sword_hit(body: Node) -> void:
 
 func _enter_battle() -> void: 
 	Global.last_position = global_position
+	Global.battle_entered_by = "player"
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/In_battle.tscn")
 	#Enter a battle and change the scene 
 	

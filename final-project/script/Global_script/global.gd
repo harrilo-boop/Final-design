@@ -40,6 +40,7 @@ var max_level:int = 100
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO
 var last_scene:String = "overworld"
+var battle_entered_by:String = "player"
 
 #Enemy's stats
 var enemy_hp:int = 10
@@ -125,7 +126,7 @@ func check_levelup():
 		xp_level += 1
 		xp_needed = level_up(xp_level)
 		check_new_tech()
-	print("Lv.", xp_level, "| " , player_xp, "/" , xp_needed, "Current Experience")
+	print("Lv.", xp_level, "| " , player_xp, "/" , xp_needed, "Current experience to next level")
 	
 func check_new_tech() -> void:
 	for tech in techs.values():

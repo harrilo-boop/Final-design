@@ -32,7 +32,6 @@ var replacing_tech: bool = false
 var total_damage_atk:int = 0
 var total_enemy_atk:int = 0 
 
-@export var Battle_end: Control
 @export var turn_label: Label
 @export var hp_ui: Label
 @export var enemy_ui: Label
@@ -47,13 +46,15 @@ var total_enemy_atk:int = 0
 @export var tech_2: Button
 @export var tech_3: Button
 @export var tech_4: Button
+@export var Battle_end: Control
 @export var learn_tech_yes: Button
 @export var learn_tech_no: Button
 @export var learn_label: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_hp = Global.player_hp #connect the autoload data to battle
+	#connect the autoload data to battle
+	player_hp = Global.player_hp 
 	max_hp = Global.max_player_hp
 	player_tp = Global.player_tp
 	max_tp = Global.player_tp
@@ -65,6 +66,12 @@ func _ready() -> void:
 	xp_earn = Global.xp_earn
 	xp_level = Global.xp_level
 	equipped_tech = Global.equipped_tech
+	if Global.battle_entered_by == "player":
+		player_turn = true
+		enemy_turn = false
+	elif Global.battle_entered_by == "enemy":
+		player_turn = false
+		enemy_turn = true
 	options_button.show()
 	tech_options.hide()
 	Battle_end.hide()
@@ -79,7 +86,7 @@ func _process(delta: float) -> void:
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and replacing_tech == false:
 		options_button.show()
 		tech_options.hide()
 
@@ -125,11 +132,10 @@ func battle_end() -> void:
 	Global.battle_hp_update(player_hp)
 	Global.battle_tp_update(player_tp)
 	Global.battle_xp_update(xp_earn)
-	print("New Tech =", Global.new_tech)
 	if Global.new_tech != null:
 		print("Show UI")
 		show_learn_ui()
-	else:
+	elif Global.new_tech == null:
 		print("Finish Battle")
 		finish_battle()
 
@@ -182,7 +188,8 @@ func _on_option_4_pressed() -> void:
 	select_tech(3)
 
 func _escape() -> void:
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
+	if player_turn == true and enemy_turn == false:
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
 
 func select_tech(index:int)->void:
 	if replacing_tech:
