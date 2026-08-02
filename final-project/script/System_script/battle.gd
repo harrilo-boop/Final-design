@@ -10,7 +10,6 @@ var max_hp:int = 1
 var player_tp:int = 1
 var max_tp:int = 1
 var weapon_atk:int = 1
-var armor_def:int = 1
 var xp_earn:int = 1
 var xp_level:int = 1
 #Enemy variables
@@ -25,9 +24,13 @@ var equipped_tech:Array[tech_resource] = [
 	null
 ]
 var equipped_weapon = null
-var equipped_armor = null
 var replacing_tech: bool = false
 var item_choosing:bool = false
+var item_buttons: Array[Button]
+var regen_amount = 0
+var regen_turn = 0
+var shield_amount = 0
+var shield_turn = 0
 
 #Damage calculate variables
 var total_damage_atk:int = 0
@@ -43,18 +46,12 @@ var total_enemy_atk:int = 0
 @export var tech_options: Control
 @export var tech_resource: Resource
 @export var enemy_resource: Resource
+@export var item_resource: Resource
 @export var tech_1: Button
 @export var tech_2: Button
 @export var tech_3: Button
 @export var tech_4: Button
 @export var item_options: Control
-@export var item_1: Button
-@export var item_2: Button
-@export var item_3: Button
-@export var item_4: Button
-@export var item_5: Button
-@export var item_6: Button
-@export var item_7: Button
 @export var Battle_end: Control
 @export var learn_tech_yes: Button
 @export var learn_tech_no: Button
@@ -69,7 +66,6 @@ func _ready() -> void:
 	max_tp = Global.player_tp
 	enemy_hp = Global.enemy_hp
 	equipped_weapon = Global.equipped_weapon
-	equipped_armor = Global.equipped_armor
 	max_enemy_hp = Global.max_enemy_hp
 	enemy_atk = Global.enemy_atk
 	xp_earn = Global.xp_earn
@@ -81,6 +77,12 @@ func _ready() -> void:
 	elif Global.battle_entered_by == "enemy":
 		player_turn = false
 		enemy_turn = true
+	for child in item_options.get_children():
+		if child is Button:
+			item_buttons.append(child)
+	for i in range(item_buttons.size()):
+		item_buttons[i].pressed.connect(select_item.bind(i))
+	update_item_buttons()
 	options_button.show()
 	tech_options.hide()
 	item_options.hide()
@@ -112,6 +114,7 @@ func player_turn_change() -> void:
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 	enemy_bar.value = enemy_hp
 	change_turn.start()
+	apply_buff()
 
 func enemy_turn_change() -> void:
 	player_turn = true
@@ -133,12 +136,12 @@ func _attack_choose() -> void:
 
 #Enemy turn's settings
 func _enemy_turn() -> void:
-	if enemy_turn == true and player_turn == false and equipped_armor != null:
+	if enemy_turn == true and player_turn == false:
 		_enemy_attack()
  
 func _enemy_attack() -> void:
 	if player_hp >= 1:
-		total_enemy_atk = max(0, enemy_atk - equipped_armor.armor_def)
+		total_enemy_atk = max(0, enemy_atk - shield_amount)
 		player_hp = max(0, player_hp - total_enemy_atk)
 		enemy_turn_change()
 	if player_hp <= 0:
@@ -204,13 +207,40 @@ func select_tech(index:int)->void:
 	_tech_options(Global.equipped_tech[index].tech_name)
 
 #Player's using item settings----------------------------------------	
-func _on_item_pressed() -> void:
+func update_item_buttons():
 	options_button.hide()
 	item_options.show()
-	item_choosing = true
-	var item_buttons: Array= [item_1, item_2, item_3, item_4, item_5, item_6, item_7]
-	#for item in range(7):
-	#	pass #Show sprite and name and stack number
+	for i in range(item_buttons.size()):
+		if i >= Global.inventory.item_slots.size():
+			item_buttons[i].disabled = true
+			item_buttons[i].text = "Empty"
+			continue
+		var slot = Global.inventory.item_slots[i]
+		if slot.item == null:
+			item_buttons[i].disabled = true
+			item_buttons[i].text = "Empty"
+		else:
+			item_buttons[i].disabled = false
+			item_buttons[i].text = slot.item.item_name
+
+func select_item(index:int):
+	var slot = Global.inventory.item_slots[index]
+	if slot.item == null:
+		return
+	ItemManager.use_item(slot.item,self)
+	Global.inventory.remove_item(slot.item)
+	update_item_buttons()
+	player_turn_change()
+
+func apply_buff():
+	if regen_turn > 0:
+		player_hp += regen_amount
+		player_hp = min(player_hp,max_hp)
+		regen_turn -= 1
+	if shield_turn > 0:
+		shield_turn -= 1
+		if shield_turn == 0:
+			shield_amount = 0
 
 #Player's leaving battle settings------------------------------------
 func battle_end() -> void:

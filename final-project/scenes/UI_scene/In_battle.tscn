@@ -81,7 +81,7 @@ font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
 script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -98,13 +98,6 @@ tech_2 = NodePath("Tech_options/Option2_button/Option2")
 tech_3 = NodePath("Tech_options/Option3_button/Option3")
 tech_4 = NodePath("Tech_options/Option4_button/Option4")
 item_options = NodePath("Item_options")
-item_1 = NodePath("Item_options/Item_option1/Item_1")
-item_2 = NodePath("Item_options/Item_option2/Item_2")
-item_3 = NodePath("Item_options/Item_option3/Item_3")
-item_4 = NodePath("Item_options/Item_option4/Item_4")
-item_5 = NodePath("Item_options/Item_option5/Item_5")
-item_6 = NodePath("Item_options/Item_option6/Item_6")
-item_7 = NodePath("Item_options/Item_option7/Item_7")
 Battle_end = NodePath("Battle_End")
 learn_tech_yes = NodePath("Battle_End/PanelContainer/Learn_yes")
 learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
@@ -194,7 +187,6 @@ step = 1.0
 show_percentage = false
 
 [node name="Options_button" type="Control" parent="." unique_id=478916685]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -258,7 +250,6 @@ theme_override_font_sizes/font_size = 30
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -324,7 +315,6 @@ disabled = true
 text = "Option4"
 
 [node name="Item_options" type="Control" parent="." unique_id=576367030]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 69.0
@@ -463,7 +453,7 @@ text = "NO"
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
 [connection signal="pressed" from="Options_button/Tech_button/Tech" to="." method="_on_tech_pressed"]
-[connection signal="pressed" from="Options_button/Item_button/Item" to="." method="_on_item_pressed"]
+[connection signal="pressed" from="Options_button/Item_button/Item" to="." method="update_item_buttons"]
 [connection signal="pressed" from="Options_button/Escape_button/Escape" to="." method="_escape"]
 [connection signal="pressed" from="Tech_options/Option1_button/Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Tech_options/Option2_button/Option2" to="." method="_on_option_2_pressed"]

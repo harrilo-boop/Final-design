@@ -3,7 +3,6 @@ extends Node
 
 
 @export var weapon_resource: Resource
-@export var armor_resource: Resource
 @export var tech_resource: Resource
 @export var item_resource: Resource
 
@@ -15,7 +14,6 @@ var max_player_hp:int = 20
 var player_tp:int = 20
 var max_tp:int = 20
 var weapon_atk:int = 1
-var armor_def:int = 1
 
 #Player's current stats
 const MAX_TECH = 4
@@ -27,8 +25,8 @@ var equipped_tech:Array[tech_resource] = [
 	null
 ]
 var equipped_weapon = null
-var equipped_armor = null
 var tech_replace:bool = false
+var inventory: Inventory
 
 #Player's experience system
 var player_xp:int = 0
@@ -55,11 +53,6 @@ var weapons = {
 	"Wood sword": load("res://resources/Weapon/Weapon_base2.tres")
 }
 
-var armors = {
-	"Starter armor": load("res://resources/Armor/Armor_base1.tres"),
-	"Wood armor": load("res://resources/Armor/Armor_base2.tres")
-}
-
 var techs = {
 	#Ability-----Fire
 	"Flame" : load("res://resources/Tech/Fire_tech1.tres"),
@@ -79,6 +72,7 @@ var items = {
 	"TemporarySheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
 	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),
 	"Continous Heal Potion": load("res://resources/Item/Heal_item/ContinousHealPotion.tres")
+	
 }
 
 #Current technique using as start condition
@@ -88,14 +82,13 @@ func _ready() -> void:
 	equipped_tech[2] = null
 	equipped_tech[3] = null
 	equipped_weapon = weapons["Starter sword"]
-	equipped_armor = armors["Starter armor"]
 	xp_needed = level_up(xp_level)
+	inventory = Inventory.new()
+	add_child(inventory)
 
 func player_stats() -> void:
 	#Current weapon using
 	weapon_atk = equipped_weapon.weapon_atk
-	#Current armor using
-	armor_def = equipped_armor.armor_def
 
 #Updating player's health after battle
 func battle_hp_update(current_hp: int):

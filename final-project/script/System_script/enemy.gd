@@ -18,8 +18,8 @@ func _process(delta: float) -> void:
 	#if not player == null:
 		#look_at(player.global_position)
 		#velocity = Vector2(1, 0).rotated(rotation) * speed
-	pass	
-
+	pass
+	
 func enter_attack_area(body: Node) -> void:
 	if body == self:
 		return

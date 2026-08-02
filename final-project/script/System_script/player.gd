@@ -38,8 +38,6 @@ func _process(delta: float) -> void:
 		speed = speed * 1.2
 	elif Input.is_action_just_released("ui_run"):
 		speed = speed / 1.2
-	if Input.is_action_just_pressed("ui_interact") and open_itembox == true:
-		print("Itembox")
 
 func _on_spawn(position: Vector2, direction: String) -> void:
 	global_position = position
@@ -103,6 +101,6 @@ func _enter_battle() -> void:
 func _attack_timeout() -> void:
 	end_attack()
 
-func _open_itembox(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		open_itembox = true
+func _on_chest_opened():
+	print("Get heal potion")
+	Global.inventory.add_item(Global.items["Heal Potion"])
