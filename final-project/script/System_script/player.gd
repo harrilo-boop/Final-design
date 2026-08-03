@@ -100,7 +100,3 @@ func _enter_battle() -> void:
 	
 func _attack_timeout() -> void:
 	end_attack()
-
-func _on_chest_opened():
-	print("Get heal potion")
-	Global.inventory.add_item(Global.items["Heal Potion"])

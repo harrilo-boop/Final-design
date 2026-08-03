@@ -26,7 +26,7 @@ var equipped_tech:Array[tech_resource] = [
 var equipped_weapon = null
 var replacing_tech: bool = false
 var item_choosing:bool = false
-var item_buttons: Array[Button]
+var item_buttons: Array[Button] = []
 var regen_amount = 0
 var regen_turn = 0
 var shield_amount = 0
@@ -52,6 +52,13 @@ var total_enemy_atk:int = 0
 @export var tech_3: Button
 @export var tech_4: Button
 @export var item_options: Control
+@export var item_1: Button
+@export var item_2: Button
+@export var item_3: Button
+@export var item_4: Button
+@export var item_5: Button
+@export var item_6: Button
+@export var item_7: Button
 @export var Battle_end: Control
 @export var learn_tech_yes: Button
 @export var learn_tech_no: Button
@@ -77,12 +84,17 @@ func _ready() -> void:
 	elif Global.battle_entered_by == "enemy":
 		player_turn = false
 		enemy_turn = true
-	for child in item_options.get_children():
-		if child is Button:
-			item_buttons.append(child)
-	for i in range(item_buttons.size()):
-		item_buttons[i].pressed.connect(select_item.bind(i))
-	update_item_buttons()
+	item_buttons = [
+		item_1,
+		item_2,
+		item_3,
+		item_4,
+		item_5,
+		item_6,
+		item_7
+	]
+	print(item_buttons)
+	print(item_buttons.size())
 	options_button.show()
 	tech_options.hide()
 	item_options.hide()
@@ -90,7 +102,6 @@ func _ready() -> void:
 	learn_label.hide()
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
-
 
 func _process(delta: float) -> void:
 	player_bar.value = player_hp
@@ -110,7 +121,7 @@ func _process(delta: float) -> void:
 func player_turn_change() -> void:
 	player_turn = false
 	enemy_turn = true
-	turn_label.text = "Enemy'sd Turn"
+	turn_label.text = "Enemy's Turn"
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 	enemy_bar.value = enemy_hp
 	change_turn.start()
@@ -211,23 +222,21 @@ func _item_options():
 	options_button.hide()
 	item_options.show()
 	item_choosing = true
+	print(item_buttons)
+	print(item_buttons.size())
 	update_item_buttons()
-
-
+	
 func update_item_buttons():
 	for i in range(item_buttons.size()):
-		if i >= Global.inventory.item_slots.size():
-			item_buttons[i].disabled = true
-			item_buttons[i].text = "Empty"
-			continue
 		var slot = Global.inventory.item_slots[i]
 		if slot.item == null:
 			item_buttons[i].disabled = true
 			item_buttons[i].text = "Empty"
+			print(i, "Empty")
 		else:
+			print(i, slot.item.item_name)
 			item_buttons[i].disabled = false
 			item_buttons[i].text = slot.item.item_name
-
 func select_item(index:int):
 	var slot = Global.inventory.item_slots[index]
 	if slot.item == null:
@@ -236,6 +245,21 @@ func select_item(index:int):
 	Global.inventory.remove_item(slot.item)
 	player_turn_change()
 
+func _on_item_1_pressed():
+	select_item(0)
+func _on_item_2_pressed():
+	select_item(1)
+func _on_item_3_pressed():
+	select_item(2)
+func _on_item_4_pressed():
+	select_item(3)
+func _on_item_5_pressed():
+	select_item(4)
+func _on_item_6_pressed():
+	select_item(5)
+func _on_item_7_pressed():
+	select_item(6)
+	
 func apply_buff():
 	if regen_turn > 0:
 		player_hp += regen_amount

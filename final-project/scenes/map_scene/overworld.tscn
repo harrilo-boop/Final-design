@@ -34,6 +34,4 @@ position = Vector2(-231, 107)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]
 
-[connection signal="body_entered" from="Itembox1" to="player" method="_on_chest_opened"]
-
 [editable path="Door/Door_town"]

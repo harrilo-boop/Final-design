@@ -3,7 +3,7 @@ extends Node
 
 class ItemSlot:
 	var item: item_resource
-	var quantitiy: int
+	var quantity: int
 	
 signal UpdatedInventory
 signal UpdatedSlot(slot: ItemSlot)
@@ -27,13 +27,13 @@ func add_item(item: item_resource) -> bool:
 		slot.quantity += 1
 	else:
 		slot = get_empty_item_slot()
-		if not slot:
+		if slot == null:
 			return false
 		slot.item = item
 		slot.quantity = 1
 	UpdatedInventory.emit()
 	UpdatedSlot.emit(slot)
-	return false
+	return true
 
 #Removes an item from the inventory
 func remove_item(item: item_resource):
@@ -55,7 +55,7 @@ func remove_item_from_slot(slot: ItemSlot):
 
 #Returns an item slot containing specific item
 func get_item_slot(item: item_resource) -> ItemSlot:
-	for slot in item.slots:
+	for slot in item_slots:
 		if slot.item == item:
 			return slot
 	return null
@@ -63,12 +63,12 @@ func get_item_slot(item: item_resource) -> ItemSlot:
 #Returns an item slot with no item in it
 func get_empty_item_slot() -> ItemSlot:
 	for slot in item_slots:
-		if slot.items == null:
+		if slot.item == null:
 			return slot
 	return null
 
 func has_item(item: item_resource) -> bool:
-	for slot in item.slots:
+	for slot in item_slots:
 		if slot.item == item:
 			return true
 	return false

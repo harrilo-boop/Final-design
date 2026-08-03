@@ -81,7 +81,7 @@ font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
 script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -98,6 +98,13 @@ tech_2 = NodePath("Tech_options/Option2_button/Option2")
 tech_3 = NodePath("Tech_options/Option3_button/Option3")
 tech_4 = NodePath("Tech_options/Option4_button/Option4")
 item_options = NodePath("Item_options")
+item_1 = NodePath("Item_options/Item_option1/Item_1")
+item_2 = NodePath("Item_options/Item_option2/Item_2")
+item_3 = NodePath("Item_options/Item_option3/Item_3")
+item_4 = NodePath("Item_options/Item_option4/Item_4")
+item_5 = NodePath("Item_options/Item_option5/Item_5")
+item_6 = NodePath("Item_options/Item_option6/Item_6")
+item_7 = NodePath("Item_options/Item_option7/Item_7")
 Battle_end = NodePath("Battle_End")
 learn_tech_yes = NodePath("Battle_End/PanelContainer/Learn_yes")
 learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
@@ -459,12 +466,12 @@ text = "NO"
 [connection signal="pressed" from="Tech_options/Option2_button/Option2" to="." method="_on_option_2_pressed"]
 [connection signal="pressed" from="Tech_options/Option3_button/Option3" to="." method="_on_option_3_pressed"]
 [connection signal="pressed" from="Tech_options/Option4_button/Option4" to="." method="_on_option_4_pressed"]
-[connection signal="pressed" from="Item_options/Item_option1/Item_1" to="." method="select_item"]
-[connection signal="pressed" from="Item_options/Item_option2/Item_2" to="." method="select_item"]
-[connection signal="pressed" from="Item_options/Item_option3/Item_3" to="." method="select_item"]
-[connection signal="pressed" from="Item_options/Item_option4/Item_4" to="." method="select_item"]
-[connection signal="pressed" from="Item_options/Item_option5/Item_5" to="." method="select_item"]
-[connection signal="pressed" from="Item_options/Item_option6/Item_6" to="." method="select_item"]
-[connection signal="pressed" from="Item_options/Item_option7/Item_7" to="." method="select_item"]
+[connection signal="pressed" from="Item_options/Item_option1/Item_1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="Item_options/Item_option2/Item_2" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="Item_options/Item_option3/Item_3" to="." method="_on_item_3_pressed"]
+[connection signal="pressed" from="Item_options/Item_option4/Item_4" to="." method="_on_item_4_pressed"]
+[connection signal="pressed" from="Item_options/Item_option5/Item_5" to="." method="_on_item_5_pressed"]
+[connection signal="pressed" from="Item_options/Item_option6/Item_6" to="." method="_on_item_6_pressed"]
+[connection signal="pressed" from="Item_options/Item_option7/Item_7" to="." method="_on_item_7_pressed"]
 [connection signal="pressed" from="Battle_End/PanelContainer/Learn_yes" to="." method="replace_tech"]
 [connection signal="pressed" from="Battle_End/PanelContainer2/Learn_no" to="." method="not_replace_tech"]
