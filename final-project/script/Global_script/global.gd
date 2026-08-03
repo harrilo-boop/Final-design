@@ -70,9 +70,10 @@ var techs = {
 var items = {
 	"Flame bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
 	"TemporarySheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
+	"Wood Sheild": load("res://resources/Item/Defend_item/WoodSheild.tres"),
 	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),
-	"Continous Heal Potion": load("res://resources/Item/Heal_item/ContinousHealPotion.tres")
-	
+	"Continous Heal Potion": load("res://resources/Item/Heal_item/ContinousHealPotion.tres"),
+	"Strong Heal Potion": load("res://resources/Item/Heal_item/StrongHealPotion.tres")
 }
 
 #Current technique using as start condition
@@ -85,7 +86,7 @@ func _ready() -> void:
 	xp_needed = level_up(xp_level)
 	inventory = Inventory.new()
 	add_child(inventory)
-
+	
 func player_stats() -> void:
 	#Current weapon using
 	weapon_atk = equipped_weapon.weapon_atk

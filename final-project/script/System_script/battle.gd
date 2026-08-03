@@ -207,9 +207,14 @@ func select_tech(index:int)->void:
 	_tech_options(Global.equipped_tech[index].tech_name)
 
 #Player's using item settings----------------------------------------	
-func update_item_buttons():
+func _item_options():
 	options_button.hide()
 	item_options.show()
+	item_choosing = true
+	update_item_buttons()
+
+
+func update_item_buttons():
 	for i in range(item_buttons.size()):
 		if i >= Global.inventory.item_slots.size():
 			item_buttons[i].disabled = true
@@ -229,7 +234,6 @@ func select_item(index:int):
 		return
 	ItemManager.use_item(slot.item,self)
 	Global.inventory.remove_item(slot.item)
-	update_item_buttons()
 	player_turn_change()
 
 func apply_buff():
