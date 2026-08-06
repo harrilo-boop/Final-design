@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_7g5os")
-tech_name = "Water ball"
+tech_name = "Water Ball"
 ability = 2
 tech_atk = 2
 tech_tp = 1

@@ -33,7 +33,7 @@ var player_xp:int = 0
 var xp_earn: int = 0
 var xp_level:int = 1
 var xp_needed:int = 0
-var max_level:int = 100
+var max_level:int = 50
 
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO
@@ -55,22 +55,26 @@ var weapons = {
 
 var techs = {
 	#Ability-----Fire
-	"Flame" : load("res://resources/Tech/Fire_tech1.tres"),
-	"Fire ball": load("res://resources/Tech/Fire_tech2.tres"),
+	"Flame" : load("res://resources/Tech/Fire/Fire_tech1.tres"),
+	"Fire Ball": load("res://resources/Tech/Fire/Fire_tech2.tres"),
+	#Ability-----Ground
+	"Mud": load("res://resources/Tech/Ground/Ground_tech1.tres"),
+	"Earthquake": load("res://resources/Tech/Ground/Ground_tech5.tres"),
 	#Ability-----Water
-	"Water ball": load("res://resources/Tech/Water_tech1.tres"),
-	#Ability-----Electric
+	"Water Ball": load("res://resources/Tech/Water/Water_tech1.tres"),
 	#Ability-----Wind
-	"Wind blow": load("res://resources/Tech/Wind_tech1.tres"),
-	#Ability-----Support
-	#Ability-----Heal 
-	"Heal (Low)": load("res://resources/Tech/Heal_tech1.tres")
+	"Wind Blow": load("res://resources/Tech/Wind/Wind_tech1.tres"),
 }
 
 var items = {
-	"Flame bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
+	#Attackable_item-------------------------------------------------------------------------------
+	"Flame Bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
+	#Buff_player_item------------------------------------------------------------------------------
+	"Attack Up Potion": load("res://resources/Item/Buff_item/AttackUpPotion.tres"),
+	#Defendable_item-------------------------------------------------------------------------------
 	"TemporarySheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
 	"Wood Sheild": load("res://resources/Item/Defend_item/WoodSheild.tres"),
+	#Heal_player_item------------------------------------------------------------------------------
 	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),
 	"Continous Heal Potion": load("res://resources/Item/Heal_item/ContinousHealPotion.tres"),
 	"Strong Heal Potion": load("res://resources/Item/Heal_item/StrongHealPotion.tres")
@@ -79,7 +83,7 @@ var items = {
 #Current technique using as start condition
 func _ready() -> void:
 	equipped_tech[0] = techs["Flame"]
-	equipped_tech[1] = techs["Water ball"]
+	equipped_tech[1] = techs["Water Ball"]
 	equipped_tech[2] = null
 	equipped_tech[3] = null
 	equipped_weapon = weapons["Starter sword"]

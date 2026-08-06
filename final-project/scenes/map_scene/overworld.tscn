@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://i1yuy8vdpvvs"]
 
-[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/character_scene/player.tscn" id="1_raaoy"]
-[ext_resource type="PackedScene" uid="uid://bocov7t2rxj7c" path="res://scenes/character_scene/enemy.tscn" id="2_c4rv0"]
-[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/item_scene/door.tscn" id="3_vbapc"]
-[ext_resource type="PackedScene" uid="uid://g3x01mdihldn" path="res://scenes/item_scene/itembox.tscn" id="4_swx75"]
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/Character_scene/player.tscn" id="1_feswv"]
+[ext_resource type="PackedScene" uid="uid://bocov7t2rxj7c" path="res://scenes/Character_scene/enemy.tscn" id="2_2wux1"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/Object_scene/door.tscn" id="3_wqr2r"]
+[ext_resource type="PackedScene" uid="uid://g3x01mdihldn" path="res://scenes/Object_scene/itembox.tscn" id="4_a4k1r"]
 
 [sub_resource type="GDScript" id="GDScript_u2ss0"]
 
 [node name="Node2D" type="Node2D" unique_id=173114822]
 script = SubResource("GDScript_u2ss0")
 
-[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_raaoy")]
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("1_feswv")]
 
-[node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("2_c4rv0")]
+[node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("2_2wux1")]
 position = Vector2(242, 3)
 
 [node name="Door" type="Node" parent="." unique_id=1713063800]
 
-[node name="Door_town" parent="Door" unique_id=154942317 instance=ExtResource("3_vbapc")]
+[node name="Door_town" parent="Door" unique_id=154942317 instance=ExtResource("3_wqr2r")]
 position = Vector2(247, 255)
 door_tag = "overworld_door"
 level_to_load = "Town"
@@ -29,7 +29,7 @@ position = Vector2(-478, 162)
 [node name="Marker2D" parent="Door/Door_town" index="1" unique_id=1382765507]
 position = Vector2(-303, 155)
 
-[node name="Itembox1" parent="." unique_id=327047994 instance=ExtResource("4_swx75")]
+[node name="Itembox1" parent="." unique_id=327047994 instance=ExtResource("4_a4k1r")]
 position = Vector2(-231, 107)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]

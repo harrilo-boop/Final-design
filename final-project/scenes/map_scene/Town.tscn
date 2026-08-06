@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b88a4y3sddpuy"]
 
 [ext_resource type="Script" uid="uid://k5vjrv5vja6m" path="res://script/Map_script/town.gd" id="1_mwtde"]
-[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/character_scene/player.tscn" id="2_vtylr"]
-[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/item_scene/door.tscn" id="3_1i66g"]
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/Character_scene/player.tscn" id="2_vtylr"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/Object_scene/door.tscn" id="3_1i66g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26hdk"]
 size = Vector2(410.5, 301.25)

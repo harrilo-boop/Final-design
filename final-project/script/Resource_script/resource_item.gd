@@ -24,8 +24,7 @@ enum EffectType{
 
 @export var heal_amount := 0
 @export var damage := 0
-@export var ability := abilities.None
-enum abilities{None, Fire, Water, Electric, Wind}
+
 
 @export var defend_amount := 0
 @export var duration := 0

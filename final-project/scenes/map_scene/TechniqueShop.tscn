@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8bj656ceasvv"]
 
-[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/character_scene/player.tscn" id="1_747ce"]
-[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/item_scene/door.tscn" id="2_eevfu"]
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/Character_scene/player.tscn" id="1_747ce"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/Object_scene/door.tscn" id="2_eevfu"]
 
 [node name="Node2D" type="Node2D" unique_id=814564217]
 

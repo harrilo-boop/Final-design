@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_4nfat")
-tech_name = "Fire ball"
+tech_name = "Fire Ball"
 ability = 1
-tech_atk = 6
+tech_atk = 8
 tech_tp = 5
-required_level = 3
+required_level = 7
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"

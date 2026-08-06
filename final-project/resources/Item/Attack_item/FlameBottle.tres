@@ -11,12 +11,9 @@ enum Ability{None, Fire, Water, Electric, Wind}
 
 [resource]
 script = SubResource("GDScript_jcuwq")
-item_damage = 3
-ability_type = 1
 item_name = "Flame bottle"
-description = "Fire type attackable item"
+description = " Attackable item"
 max_stack_size = 5
 use_in_world = false
 effect_type = 3
 damage = 3
-ability = 1

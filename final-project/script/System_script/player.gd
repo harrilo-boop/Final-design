@@ -18,6 +18,7 @@ var battle_entered_by:String = ""
 @export var sword_area: Area2D
 @export var sword_collision: CollisionShape2D
 @export var timer: Timer
+@export var animatesprite: AnimatedSprite2D
 
 func _ready() -> void:
 	sword_area.monitoring = false
@@ -28,7 +29,7 @@ func _ready() -> void:
 		Global.last_position = Vector2.ZERO
 	Global.last_position = Vector2.ZERO
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	move_player()
 	handle_attack()
 	if Input.is_action_just_pressed("ui_pause"):
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_released("ui_run"):
 		speed = speed / 1.2
 
-func _on_spawn(position: Vector2, direction: String) -> void:
+func _on_spawn(_direction: String) -> void:
 	global_position = position
 	
 func move_player() -> void:
@@ -51,8 +52,10 @@ func move_player() -> void:
 		velocity = speed * direction.normalized()
 		last_direction = direction
 		update_hitbox_offset()
+		update_animation(direction)
 	else:
 		velocity = Vector2.ZERO
+		update_animation(Vector2.ZERO)
 	move_and_slide()
 
 func update_hitbox_offset() -> void:
@@ -68,6 +71,26 @@ func update_hitbox_offset() -> void:
 			sword_area.position = Vector2(0, distance)     
 		else:
 			sword_area.position = Vector2(0, -distance)  
+
+func update_animation(direction: Vector2) -> void:
+	if animatesprite == null:
+		return
+	if direction == Vector2.ZERO:
+		animatesprite.stop()
+		return
+	if abs(direction.x) > abs(direction.y):
+		animatesprite.animation = "left"
+		if direction.x > 0:
+			animatesprite.flip_h = true   
+		else:
+			animatesprite.flip_h = false  
+	else:
+		animatesprite.flip_h = false  
+		if direction.y > 0:
+			animatesprite.animation = "down"
+		else:
+			animatesprite.animation = "up"
+	animatesprite.play()
 
 func handle_attack() -> void:
 	if Input.is_action_just_pressed("ui_attack"):

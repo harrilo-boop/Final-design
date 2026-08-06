@@ -185,7 +185,7 @@ func tech_damage_check(tech: tech_resource) -> void:
 	player_turn_change()
 	player_tp = player_tp - tech_resource.tech_tp
 	print(player_tp , "TP")
-
+	
 func _tech_options(tech: String) -> void:
 	if player_turn == true and enemy_turn == false:
 		var current_tech = Global.equipped_tech
@@ -236,7 +236,7 @@ func update_item_buttons():
 		else:
 			print(i, slot.item.item_name)
 			item_buttons[i].disabled = false
-			item_buttons[i].text = slot.item.item_name
+			item_buttons[i].text = slot.item.item_name 
 func select_item(index:int):
 	var slot = Global.inventory.item_slots[index]
 	if slot.item == null:
