@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ucp48")
-tech_name = "Thunder Storm"
+tech_name = "Thunder Shock"
 ability = 2
 tech_atk = 32
 tech_tp = 15

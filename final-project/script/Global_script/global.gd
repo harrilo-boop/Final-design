@@ -45,8 +45,6 @@ var enemy_hp:int = 10
 var max_enemy_hp:int = 10
 var enemy_atk:int = 2
 
-var current_level:int = 0
-
 #Dictionary for all techniques
 var weapons = {
 	"Starter sword": load("res://resources/Weapon/Weapon_base1.tres"),

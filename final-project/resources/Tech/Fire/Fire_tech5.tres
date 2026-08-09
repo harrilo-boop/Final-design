@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="tech_resource" format=3 uid="uid://b7okmihbjy2d8"]
+
+[ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/Resource_script/resource_tech.gd" id="1_2jjrr"]
+
+[resource]
+script = ExtResource("1_2jjrr")
+tech_name = "Volcano Explosion"
+ability = 1
+tech_atk = 50
+tech_tp = 35
+required_level = 46
+metadata/_custom_type_script = "uid://cdhyyklnof0xc"

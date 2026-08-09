@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_4bee2")
-tech_name = "Earthquake"
+tech_name = "World Collapse"
 ability = 3
-tech_atk = 40
-tech_tp = 15
-required_level = 39
+tech_atk = 60
+tech_tp = 1
+required_level = 49
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"
