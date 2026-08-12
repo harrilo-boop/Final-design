@@ -1,6 +1,6 @@
 extends Resource
-class_name FloorResource
+class_name floor_Resource
 
 @export var floor:int
 
-@export var rooms:Array[room_resource]
+@export var rooms:Array[level_resource]

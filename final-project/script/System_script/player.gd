@@ -4,7 +4,7 @@ class_name Player
 #THE PLAYER SCRIPT WITH OVERWORLD SETTINGS
 
 var speed:float = 500
-var is_attacking: bool = false
+var is_attacking = false
 var can_attack: bool = true
 var open_itembox: bool = false
 var return_from_battle:bool = true
@@ -30,8 +30,8 @@ func _ready() -> void:
 	Global.last_position = Vector2.ZERO
 	
 func _process(_delta: float) -> void:
-	move_player()
 	handle_attack()
+	move_player()
 	if Input.is_action_just_pressed("ui_pause"):
 		Global.last_position = global_position
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/Pause_menu.tscn")
@@ -44,6 +44,10 @@ func _on_spawn(_direction: String) -> void:
 	global_position = position
 	
 func move_player() -> void:
+	if is_attacking:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	var direction: Vector2 = Vector2(0.0, 0.0)
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
@@ -93,11 +97,29 @@ func update_animation(direction: Vector2) -> void:
 	animatesprite.play()
 
 func handle_attack() -> void:
-	if Input.is_action_just_pressed("ui_attack"):
+	if Input.is_action_just_pressed("ui_attack") and can_attack and not is_attacking:
 		_start_attack()
+		update_attack_animation()
 
+func update_attack_animation() -> void:
+	if animatesprite == null:
+		return
+	if abs(last_direction.x) > abs(last_direction.y):
+		animatesprite.animation = "left_attack"
+		if last_direction.x > 0:
+			animatesprite.flip_h = true
+		else:
+			animatesprite.flip_h = false
+	else:
+		if last_direction.y > 0:
+			animatesprite.animation = "down_attack"
+		else:
+			animatesprite.animation = "up_attack"
+	animatesprite.play()
+	
 func _start_attack() -> void:
 	is_attacking = true
+	can_attack = false
 	sword_area.monitoring = true
 	sword_collision.disabled = false
 	timer.start()
@@ -105,8 +127,9 @@ func _start_attack() -> void:
 func end_attack() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
-	
 	is_attacking = false
+	can_attack = true
+	animatesprite.flip_h = false
 
 func _on_sword_hit(body: Node) -> void:
 	if body == self:

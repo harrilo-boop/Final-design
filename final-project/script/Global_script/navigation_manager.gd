@@ -3,7 +3,6 @@ extends Node
 const SCENE_OVERWORLD = preload("res://scenes/map_scene/overworld.tscn")
 const SCENE_TOWN = preload("res://scenes/map_scene/Town.tscn")
 const SCENE_WSHOP = preload("res://scenes/map_scene/WeaponShop.tscn")
-const SCENE_TSHOP = preload("res://scenes/map_scene/TechniqueShop.tscn")
 const SCENE_ISHOP = preload("res://scenes/map_scene/ItemShop.tscn")
 
 var spawn_door_tag: String = ""
@@ -23,9 +22,6 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 		"WeaponShop":
 			scene_to_load = SCENE_WSHOP	
 			Global.last_scene = "WeaponShop"
-		"TechniqueShop":
-			scene_to_load = SCENE_TSHOP
-			Global.last_scene = "TechniqueShop"
 		"ItemShop":
 			scene_to_load = SCENE_ISHOP
 			Global.last_scene = "ItemShop"

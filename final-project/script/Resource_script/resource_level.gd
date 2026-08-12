@@ -1,5 +1,5 @@
 extends Resource
-class_name room_resource
+class_name level_resource
 
 @export var room_type: Type
 @export var room_name: String

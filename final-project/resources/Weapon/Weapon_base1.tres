@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="weapon_resource" format=3 uid="uid://dm808x2x4hx8s"]
-
-[ext_resource type="Script" uid="uid://3carq7cxrsxi" path="res://script/Resource_script/resource_weapon.gd" id="1_kjib2"]
-
-[resource]
-script = ExtResource("1_kjib2")
-weapon_name = "Starter sword"
-weapon_atk = 3
-metadata/_custom_type_script = "uid://3carq7cxrsxi"

@@ -9,7 +9,7 @@ var player_hp:int = 1
 var max_hp:int = 1
 var player_tp:int = 1
 var max_tp:int = 1
-var weapon_atk:int = 1
+var player_atk:int = 1
 var xp_earn:int = 1
 var xp_level:int = 1
 #Enemy variables
@@ -23,7 +23,6 @@ var equipped_tech:Array[tech_resource] = [
 	null,
 	null
 ]
-var equipped_weapon = null
 var replacing_tech: bool = false
 var item_choosing:bool = false
 var item_buttons: Array[Button] = []
@@ -71,8 +70,8 @@ func _ready() -> void:
 	max_hp = Global.max_player_hp
 	player_tp = Global.player_tp
 	max_tp = Global.player_tp
+	player_atk = Global.player_atk
 	enemy_hp = Global.enemy_hp
-	equipped_weapon = Global.equipped_weapon
 	max_enemy_hp = Global.max_enemy_hp
 	enemy_atk = Global.enemy_atk
 	xp_earn = Global.xp_earn
@@ -136,9 +135,9 @@ func enemy_turn_change() -> void:
 	
 #Player's basic attack-----------------------------------------------
 func _attack_choose() -> void:
-	if player_turn == true and enemy_turn == false and equipped_weapon != null:
+	if player_turn == true and enemy_turn == false:
 		if enemy_hp >= 1: 
-			total_damage_atk = max(0, equipped_weapon.weapon_atk)
+			total_damage_atk = max(0, player_atk)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
 			player_turn_change()
 		if enemy_hp == 0:
@@ -223,7 +222,7 @@ func _item_options():
 	item_options.show()
 	item_choosing = true
 	print(item_buttons)
-	print(item_buttons.size())
+	print("item maximum stack = ", item_buttons.size())
 	update_item_buttons()
 	
 func update_item_buttons():

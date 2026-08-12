@@ -1,8 +1,6 @@
 extends Node
 #All Variables for player in game
 
-
-@export var weapon_resource: Resource
 @export var tech_resource: Resource
 @export var item_resource: Resource
 
@@ -13,7 +11,7 @@ var max_player_hp:int = 20
 #Player's stats
 var player_tp:int = 20
 var max_tp:int = 20
-var weapon_atk:int = 1
+var player_atk:int = 2
 
 #Player's current stats
 const MAX_TECH = 4
@@ -24,7 +22,7 @@ var equipped_tech:Array[tech_resource] = [
 	null,
 	null
 ]
-var equipped_weapon = null
+
 var tech_replace:bool = false
 var inventory: Inventory
 
@@ -46,11 +44,6 @@ var max_enemy_hp:int = 10
 var enemy_atk:int = 2
 
 #Dictionary for all techniques
-var weapons = {
-	"Starter sword": load("res://resources/Weapon/Weapon_base1.tres"),
-	"Wood sword": load("res://resources/Weapon/Weapon_base2.tres")
-}
-
 var techs = {
 	#Ability-----Fire
 	"Flame" : load("res://resources/Tech/Fire/Fire_tech1.tres"),
@@ -84,22 +77,23 @@ func _ready() -> void:
 	equipped_tech[1] = techs["Water Ball"]
 	equipped_tech[2] = null
 	equipped_tech[3] = null
-	equipped_weapon = weapons["Starter sword"]
 	xp_needed = level_up(xp_level)
 	inventory = Inventory.new()
 	add_child(inventory)
 	
-func player_stats() -> void:
-	#Current weapon using
-	weapon_atk = equipped_weapon.weapon_atk
 
 #Updating player's health after battle
 func battle_hp_update(current_hp: int):
 	player_hp = current_hp
 
 #Updating player's tech after battle
-func battle_tp_update(current_tp: int) -> void:
+func battle_tp_update(current_tp: int):
 	player_tp = current_tp
+
+func batte_atk_update(current_atk:int) -> int:
+	current_atk = player_atk
+	var atk_power:float = 1.1
+	return int(current_atk * pow(xp_level, atk_power))
 
 func replace_player_tech(index: int, tech: tech_resource) -> void:
 	equipped_tech[index] = tech
@@ -122,9 +116,11 @@ func check_levelup():
 		player_xp -= xp_needed
 		xp_level += 1
 		xp_needed = level_up(xp_level)
+		player_atk = batte_atk_update(player_atk)
 		check_new_tech()
 	print("Lv.", xp_level, "| " , player_xp, "/" , xp_needed, "Current experience to next level")
-	
+	print("Current Attack = ", player_atk)
+
 func check_new_tech() -> void:
 	for tech in techs.values():
 		if tech.required_level == xp_level:
