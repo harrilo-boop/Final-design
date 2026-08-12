@@ -57,9 +57,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_2pfod")
 }],
-"loop": true,
+"loop": false,
 "name": &"down_attack",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -73,7 +73,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"left",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -85,9 +85,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_imstb")
 }],
-"loop": true,
+"loop": false,
 "name": &"left_attack",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,9 +113,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_l0wk1")
 }],
-"loop": true,
+"loop": false,
 "name": &"up_attack",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
@@ -137,10 +137,8 @@ shape = SubResource("CircleShape2D_g2els")
 position = Vector2(0, -25)
 scale = Vector2(2.9542499, 2.945375)
 sprite_frames = SubResource("SpriteFrames_81s8p")
-animation = &"down_attack"
+animation = &"left"
 autoplay = "default"
-frame = 2
-frame_progress = 0.21432245
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
 
@@ -156,5 +154,5 @@ debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
 
-[connection signal="timeout" from="attack_cooldown" to="." method="_attack_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="end_attack"]
 [connection signal="body_entered" from="sword_area" to="." method="_on_sword_hit"]
