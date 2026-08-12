@@ -5,7 +5,6 @@ class_name Player
 
 var speed:float = 500
 var is_attacking = false
-var can_attack: bool = true
 var open_itembox: bool = false
 var return_from_battle:bool = true
 var last_direction: Vector2 = Vector2.DOWN
@@ -30,8 +29,9 @@ func _ready() -> void:
 	Global.last_position = Vector2.ZERO
 	
 func _process(_delta: float) -> void:
-	handle_attack()
 	move_player()
+	if Input.is_action_just_pressed("ui_attack") and not is_attacking:
+		_start_attack()
 	if Input.is_action_just_pressed("ui_pause"):
 		Global.last_position = global_position
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/Pause_menu.tscn")
@@ -40,9 +40,11 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_released("ui_run"):
 		speed = speed / 1.2
 
+
 func _on_spawn(_direction: String) -> void:
 	global_position = position
-	
+
+#Control player by the input
 func move_player() -> void:
 	if is_attacking:
 		velocity = Vector2.ZERO
@@ -76,6 +78,7 @@ func update_hitbox_offset() -> void:
 		else:
 			sword_area.position = Vector2(0, -distance)  
 
+#Finding which direction for animation movement
 func update_animation(direction: Vector2) -> void:
 	if animatesprite == null:
 		return
@@ -95,11 +98,7 @@ func update_animation(direction: Vector2) -> void:
 			animatesprite.animation = "up"
 	animatesprite.play()
 
-func handle_attack() -> void:
-	if Input.is_action_just_pressed("ui_attack") and can_attack and not is_attacking:
-		_start_attack()
-
-
+#Finding which direction for animation attack
 func update_attack_animation() -> void:
 	if animatesprite == null:
 		return
@@ -115,31 +114,30 @@ func update_attack_animation() -> void:
 		else:
 			animatesprite.play("up_attack")
 
-	
+#The attack starts
 func _start_attack() -> void:
-	is_attacking = true
-	can_attack = false
 	update_attack_animation()
+	is_attacking = true
 	sword_area.monitoring = true
 	sword_collision.disabled = false
 
+#The attack stops
 func end_attack() -> void:
 	if "attack" in animatesprite.animation:
+		is_attacking = false
 		sword_area.monitoring = false
 		sword_collision.disabled = true
-		is_attacking = false
-		can_attack = true
 
-
+#Detecting what is the player attacked
 func _on_sword_hit(body: Node) -> void:
 	if body == self:
 		return
 	if body.is_in_group("Enemy"):
 		_enter_battle()
 
+#Enter a battle and change the scene 
 func _enter_battle() -> void: 
 	Global.last_position = global_position
 	battle_entered_by = "player"
 	Global.battle_entered_by = battle_entered_by
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/In_battle.tscn")
-	#Enter a battle and change the scene 
