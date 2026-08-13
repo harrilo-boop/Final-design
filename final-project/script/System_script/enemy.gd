@@ -15,9 +15,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if not player == null:
+	#@if not player == null:
 		#look_at(player.global_position)
-		#velocity = Vector2(1, 0).rotated(rotation) * speed
+	#	velocity = Vector2(1, 0).rotated(rotation) * speed
 	pass
 	
 func enter_attack_area(body: Node) -> void:

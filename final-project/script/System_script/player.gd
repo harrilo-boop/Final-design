@@ -92,6 +92,7 @@ func update_animation(direction: Vector2) -> void:
 		else:
 			animatesprite.flip_h = false  
 	else:
+		animatesprite.flip_h = false
 		if direction.y > 0:
 			animatesprite.animation = "down"
 		else:
@@ -109,6 +110,7 @@ func update_attack_animation() -> void:
 		else:
 			animatesprite.flip_h = false
 	else:
+		animatesprite.flip_h = false
 		if last_direction.y > 0:
 			animatesprite.play("down_attack")
 		else:
@@ -118,15 +120,14 @@ func update_attack_animation() -> void:
 func _start_attack() -> void:
 	update_attack_animation()
 	is_attacking = true
-	sword_area.monitoring = true
-	sword_collision.disabled = false
 
 #The attack stops
 func end_attack() -> void:
 	if "attack" in animatesprite.animation:
 		is_attacking = false
-		sword_area.monitoring = false
-		sword_collision.disabled = true
+	sword_area.monitoring = true
+	sword_collision.disabled = false
+	timer.start()
 
 #Detecting what is the player attacked
 func _on_sword_hit(body: Node) -> void:
@@ -135,6 +136,11 @@ func _on_sword_hit(body: Node) -> void:
 	if body.is_in_group("Enemy"):
 		_enter_battle()
 
+func _attack_to_battle() -> void:
+	sword_area.monitoring = false
+	sword_collision.disabled = true
+	
+	
 #Enter a battle and change the scene 
 func _enter_battle() -> void: 
 	Global.last_position = global_position

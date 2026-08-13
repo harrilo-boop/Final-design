@@ -127,7 +127,7 @@ player = NodePath(".")
 pivot = NodePath("Marker2D")
 sword_area = NodePath("sword_area")
 sword_collision = NodePath("sword_area/sword_collision")
-timer = NodePath("attack_cooldown")
+timer = NodePath("attack_battle")
 animatesprite = NodePath("AnimatedSprite2D")
 
 [node name="player_collision" type="CollisionShape2D" parent="." unique_id=1006971222]
@@ -142,9 +142,8 @@ autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
 
-[node name="attack_cooldown" type="Timer" parent="." unique_id=1134980537]
-wait_time = 0.2
-one_shot = true
+[node name="attack_battle" type="Timer" parent="." unique_id=1816504997]
+wait_time = 0.1
 
 [node name="sword_area" type="Area2D" parent="." unique_id=109049469]
 
@@ -155,4 +154,5 @@ debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="end_attack"]
+[connection signal="timeout" from="attack_battle" to="." method="_attack_to_battle"]
 [connection signal="body_entered" from="sword_area" to="." method="_on_sword_hit"]

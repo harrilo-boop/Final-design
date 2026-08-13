@@ -22,11 +22,8 @@ enum EffectType{
 	TELEPORT
 }
 
-@export var heal_amount := 0
-@export var damage := 0
-
-
-@export var defend_amount := 0
-@export var duration := 0
-@export var target_scene := ""
-@export var target_position := Vector2.ZERO
+@export var heal_amount:int = 0
+@export var tp_amount:int = 0
+@export var damage:int = 0
+@export var defend_amount:int = 0
+@export var duration:int= 0

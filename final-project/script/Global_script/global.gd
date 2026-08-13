@@ -45,18 +45,27 @@ var enemy_atk:int = 2
 
 #Dictionary for all techniques
 var techs = {
-	#Ability-----Fire
+	#Ability(Fire)----------------------------------------------------------------------------------
 	"Flame" : load("res://resources/Tech/Fire/Fire_tech1.tres"),
 	"Fire Ball": load("res://resources/Tech/Fire/Fire_tech2.tres"),
-	#Ability-----Ground
+	"Heat Wave": load("res://resources/Tech/Fire/Fire_tech3.tres"),
+	"Blizzard": load("res://resources/Tech/Fire/Fire_tech4.tres"),
+	"Volcano Explosion": load("res://resources/Tech/Fire/Fire_tech5.tres"),
+	#Ability(Ground)-------------------------------------------------------------------------------
 	"Mud": load("res://resources/Tech/Ground/Ground_tech1.tres"),
 	"Earthquake": load("res://resources/Tech/Ground/Ground_tech5.tres"),
-	#Ability-----Water
+	"Nature Power": load("res://resources/Tech/Ground/Ground_tech4.tres"),
+	"World Collapse": load("res://resources/Tech/Ground/Ground_tech5.tres"),
+	#Ability(Water)--------------------------------------------------------------------------------
 	"Water Ball": load("res://resources/Tech/Water/Water_tech1.tres"),
-	#Ability-----Wind
+	"Thunder Shock": load("res://resources/Tech/Water/Water_tech4.tres"),
+	"Tsunami": load("res://resources/Tech/Water/Water_tech5.tres"),
+	#Ability(Wind)---------------------------------------------------------------------------------
 	"Wind Blow": load("res://resources/Tech/Wind/Wind_tech1.tres"),
+	"Hurricane": load("res://resources/Tech/Wind/Wind_tech3.tres"),
+	"Echoes": load("res://resources/Tech/Wind/Wind_tech4.tres"),
+	"Triple Typhoon": load("res://resources/Tech/Wind/Wind_tech5.tres")
 }
-
 var items = {
 	#Attackable_item-------------------------------------------------------------------------------
 	"Flame Bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
@@ -89,10 +98,20 @@ func battle_hp_update(current_hp: int):
 #Updating player's tech after battle
 func battle_tp_update(current_tp: int):
 	player_tp = current_tp
+	
+func hp_max_increase(levelup_hp: int) -> int:
+	levelup_hp = max_player_hp
+	var hp_power:float = 1.3
+	return int(levelup_hp * pow(xp_level, hp_power))
 
-func batte_atk_update(current_atk:int) -> int:
+func tp_max_increase(levelup_tp: int) -> int:
+	levelup_tp = max_tp
+	var tp_power:float = 1.1
+	return int(levelup_tp * pow(xp_level, tp_power))
+
+func atk_max_increase(current_atk:int) -> int:
 	current_atk = player_atk
-	var atk_power:float = 1.1
+	var atk_power:float = 1.2
 	return int(current_atk * pow(xp_level, atk_power))
 
 func replace_player_tech(index: int, tech: tech_resource) -> void:
@@ -116,9 +135,13 @@ func check_levelup():
 		player_xp -= xp_needed
 		xp_level += 1
 		xp_needed = level_up(xp_level)
-		player_atk = batte_atk_update(player_atk)
+		max_player_hp = hp_max_increase(max_player_hp)
+		max_tp = tp_max_increase(max_tp)
+		player_atk = atk_max_increase(player_atk)
 		check_new_tech()
 	print("Lv.", xp_level, "| " , player_xp, "/" , xp_needed, "Current experience to next level")
+	print("Current HP = ", player_hp, "/", max_player_hp)
+	print("Current TP = ", player_tp, "/", max_tp)
 	print("Current Attack = ", player_atk)
 
 func check_new_tech() -> void:
