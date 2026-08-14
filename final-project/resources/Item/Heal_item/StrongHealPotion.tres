@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://byl6fe52f1b0q"]
 
+[ext_resource type="Texture2D" uid="uid://de6na8w3iwau4" path="res://asset/Items/002 Strong Heal Potion.png" id="1_cml30"]
 [ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/Resource_script/resource_item.gd" id="1_uej1o"]
 
 [resource]
 script = ExtResource("1_uej1o")
 item_name = "Strong Heal Potion"
 description = "Heal more health for player"
-max_stack_size = 5
+max_stack_size = 10
+item_icon = ExtResource("1_cml30")
 effect_type = 1
 heal_amount = 20
 metadata/_custom_type_script = "uid://dbd68g4nt4do"

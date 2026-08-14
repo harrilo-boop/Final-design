@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://wmddaf2vofvx"]
+
+[ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/Resource_script/resource_item.gd" id="1_ii31v"]
+[ext_resource type="Texture2D" uid="uid://bvn5ximd03kbg" path="res://asset/Items/006 Strong Technique Point Potion.png" id="1_knr3w"]
+
+[resource]
+script = ExtResource("1_ii31v")
+item_name = "Strong Technique Point Potion"
+description = "Give stronger effect healing player's tp"
+max_stack_size = 5
+item_icon = ExtResource("1_knr3w")
+tp_amount = 50
+metadata/_custom_type_script = "uid://dbd68g4nt4do"

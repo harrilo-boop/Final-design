@@ -76,8 +76,11 @@ var items = {
 	"Wood Sheild": load("res://resources/Item/Defend_item/WoodSheild.tres"),
 	#Heal_player_item------------------------------------------------------------------------------
 	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),
-	"Continous Heal Potion": load("res://resources/Item/Heal_item/ContinousHealPotion.tres"),
-	"Strong Heal Potion": load("res://resources/Item/Heal_item/StrongHealPotion.tres")
+	"Strong Heal Potion": load("res://resources/Item/Heal_item/StrongHealPotion.tres"),
+	"Rare Heal Potion": load("res://resources/Item/Heal_item/RareHealPotion.tres"),
+	"Super Rare Heal Potion": load("res://resources/Item/Heal_item/SuperRareHealPotion.tres"),
+	"Technique Point Potion": load("res://resources/Item/Heal_item/TechniquePointPotion.tres"),
+	"Strong Technique Potion": load("res://resources/Item/Heal_item/StrongTechniquePointPotion.tres")
 }
 
 #Current technique using as start condition

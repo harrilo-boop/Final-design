@@ -26,10 +26,7 @@ var equipped_tech:Array[tech_resource] = [
 var replacing_tech: bool = false
 var item_choosing:bool = false
 var item_buttons: Array[Button] = []
-var regen_amount = 0
-var regen_turn = 0
 var shield_amount = 0
-var shield_turn = 0
 
 #Damage calculate variables
 var total_damage_atk:int = 0
@@ -92,8 +89,6 @@ func _ready() -> void:
 		item_6,
 		item_7
 	]
-	print(item_buttons)
-	print(item_buttons.size())
 	options_button.show()
 	tech_options.hide()
 	item_options.hide()
@@ -124,7 +119,6 @@ func player_turn_change() -> void:
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 	enemy_bar.value = enemy_hp
 	change_turn.start()
-	apply_buff()
 
 func enemy_turn_change() -> void:
 	player_turn = true
@@ -231,6 +225,7 @@ func update_item_buttons():
 		if slot.item == null:
 			item_buttons[i].disabled = true
 			item_buttons[i].text = "Empty"
+		
 			print(i, "Empty")
 		else:
 			print(i, slot.item.item_name)
@@ -259,15 +254,8 @@ func _on_item_6_pressed():
 func _on_item_7_pressed():
 	select_item(6)
 	
-func apply_buff():
-	if regen_turn > 0:
-		player_hp += regen_amount
-		player_hp = min(player_hp,max_hp)
-		regen_turn -= 1
-	if shield_turn > 0:
-		shield_turn -= 1
-		if shield_turn == 0:
-			shield_amount = 0
+
+
 
 #Player's leaving battle settings------------------------------------
 func battle_end() -> void:

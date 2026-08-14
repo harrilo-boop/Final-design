@@ -2,8 +2,6 @@ extends Node
 
 const SCENE_OVERWORLD = preload("res://scenes/map_scene/overworld.tscn")
 const SCENE_TOWN = preload("res://scenes/map_scene/Town.tscn")
-const SCENE_WSHOP = preload("res://scenes/map_scene/WeaponShop.tscn")
-const SCENE_ISHOP = preload("res://scenes/map_scene/ItemShop.tscn")
 
 var spawn_door_tag: String = ""
 var player_is_transitioning: bool = false
@@ -19,13 +17,7 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 		"Town":
 			scene_to_load = SCENE_TOWN
 			Global.last_scene = "Town"
-		"WeaponShop":
-			scene_to_load = SCENE_WSHOP	
-			Global.last_scene = "WeaponShop"
-		"ItemShop":
-			scene_to_load = SCENE_ISHOP
-			Global.last_scene = "ItemShop"
-		
+
 	if scene_to_load == null:
 		return
 	player_is_transitioning = true

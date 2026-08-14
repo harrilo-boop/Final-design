@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://cdb45d0quh5vm"]
 
+[ext_resource type="Texture2D" uid="uid://bcw4ae67sv21k" path="res://asset/Items/005 Technique Point Potion .png" id="1_m2vu2"]
 [ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/Resource_script/resource_item.gd" id="1_qcut8"]
 
 [resource]
@@ -7,8 +8,7 @@ script = ExtResource("1_qcut8")
 item_name = "Technique Point Potion"
 description = "Gain TP"
 max_stack_size = 10
-use_in_world = false
-effect_type = 2
-tp_amount = 10
-duration = 1
+item_icon = ExtResource("1_m2vu2")
+effect_type = 1
+tp_amount = 20
 metadata/_custom_type_script = "uid://dbd68g4nt4do"

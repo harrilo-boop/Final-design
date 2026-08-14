@@ -50,10 +50,13 @@ func move_player() -> void:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-	var direction: Vector2 = Vector2(0.0, 0.0)
-	direction.x = Input.get_axis("ui_left", "ui_right")
-	direction.y = Input.get_axis("ui_up", "ui_down")
-	
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+		direction.y = 0
+	elif Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
+		direction.x = 0
+	else:
+		direction = Vector2.ZERO
 	if direction != Vector2.ZERO:
 		velocity = speed * direction.normalized()
 		last_direction = direction

@@ -137,7 +137,6 @@ shape = SubResource("CircleShape2D_g2els")
 position = Vector2(0, -25)
 scale = Vector2(2.9542499, 2.945375)
 sprite_frames = SubResource("SpriteFrames_81s8p")
-animation = &"left"
 autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
