@@ -225,7 +225,6 @@ func update_item_buttons():
 		if slot.item == null:
 			item_buttons[i].disabled = true
 			item_buttons[i].text = "Empty"
-		
 			print(i, "Empty")
 		else:
 			print(i, slot.item.item_name)
