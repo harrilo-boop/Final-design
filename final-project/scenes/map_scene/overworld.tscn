@@ -30,7 +30,8 @@ position = Vector2(-478, 162)
 position = Vector2(-303, 155)
 
 [node name="Itembox1" parent="." unique_id=327047994 instance=ExtResource("4_a4k1r")]
-position = Vector2(-231, 107)
+z_index = -1
+position = Vector2(-5, -254)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]
 

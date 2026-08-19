@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c532v7ukaiutb"]
+
+[ext_resource type="Script" uid="uid://bqxqcbe31xcue" path="res://script/System_script/tower_room.gd" id="1_g3mfm"]
+
+[node name="Room" type="Node2D" unique_id=423902231]
+script = ExtResource("1_g3mfm")
+
+[node name="Playerspawn" type="Marker2D" parent="." unique_id=989365810]

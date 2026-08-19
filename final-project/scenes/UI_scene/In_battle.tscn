@@ -339,6 +339,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_cve37")
 [node name="Item_1" type="Button" parent="Item_options/Item_option1" unique_id=876481550]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5hhvv")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Item_option2" type="PanelContainer" parent="Item_options" unique_id=1276427197]
 layout_mode = 0
@@ -351,6 +353,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4uc4m")
 [node name="Item_2" type="Button" parent="Item_options/Item_option2" unique_id=170935863]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_e1vla")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Item_option3" type="PanelContainer" parent="Item_options" unique_id=103027249]
 layout_mode = 0
@@ -363,6 +367,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 [node name="Item_3" type="Button" parent="Item_options/Item_option3" unique_id=2091822582]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_118um")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Item_option4" type="PanelContainer" parent="Item_options" unique_id=758110210]
 layout_mode = 0
@@ -375,6 +381,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 [node name="Item_4" type="Button" parent="Item_options/Item_option4" unique_id=851522161]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Item_option5" type="PanelContainer" parent="Item_options" unique_id=1503840276]
 layout_mode = 0
@@ -387,6 +395,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 [node name="Item_5" type="Button" parent="Item_options/Item_option5" unique_id=1032514747]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Item_option6" type="PanelContainer" parent="Item_options" unique_id=1156812255]
 layout_mode = 0
@@ -399,6 +409,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 [node name="Item_6" type="Button" parent="Item_options/Item_option6" unique_id=1135773307]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Item_option7" type="PanelContainer" parent="Item_options" unique_id=2096267956]
 layout_mode = 0
@@ -411,6 +423,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_35c1n")
 [node name="Item_7" type="Button" parent="Item_options/Item_option7" unique_id=992541165]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
 layout_mode = 3

@@ -67,12 +67,10 @@ var techs = {
 	"Triple Typhoon": load("res://resources/Tech/Wind/Wind_tech5.tres")
 }
 var items = {
-	#Attackable_item-------------------------------------------------------------------------------
-	"Flame Bottle": load("res://resources/Item/Attack_item/FlameBottle.tres"),
 	#Buff_player_item------------------------------------------------------------------------------
 	"Attack Up Potion": load("res://resources/Item/Buff_item/AttackUpPotion.tres"),
 	#Defendable_item-------------------------------------------------------------------------------
-	"TemporarySheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
+	"Temporary Sheild": load("res://resources/Item/Defend_item/TemporarySheild.tres"),
 	"Wood Sheild": load("res://resources/Item/Defend_item/WoodSheild.tres"),
 	#Heal_player_item------------------------------------------------------------------------------
 	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),

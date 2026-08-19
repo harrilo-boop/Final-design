@@ -9,8 +9,6 @@ func use_item(item:item_resource, battle):
 			use_heal(item, battle)
 		item_resource.EffectType.SHIELD:
 			use_shield(item, battle)
-		item_resource.EffectType.DAMAGE:
-			use_damage(item,battle)
 		item_resource.EffectType.ATK_BUFF or item_resource.EffectType.TECH_BUFF:
 			use_buff(item,battle)
 
@@ -22,11 +20,6 @@ func use_heal(item,battle):
 	
 func use_shield(item,battle):
 	battle.shield_amount = item.defend_amount
-
-func use_damage(item,battle):
-	battle.enemy_hp -= item.damage
-	if battle.enemy_hp < 0:
-		battle.enemy_hp = 0
 
 func use_buff(item,battle):
 	battle.player_atk * item.atk_up

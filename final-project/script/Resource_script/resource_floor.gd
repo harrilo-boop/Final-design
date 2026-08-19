@@ -1,6 +1,12 @@
 extends Resource
-class_name floor_Resource
+class_name FloorResource
 
-@export var floor:int
+enum FloorType {
+	BATTLE,
+	PUZZLE,
+	RECOVERY,
+	BOSS
+}
 
-@export var rooms:Array[level_resource]
+@export var floor_number:int
+@export var floor_type:FloorType
