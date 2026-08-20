@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FloorResource" format=3 uid="uid://tkct3tht0jtg"]
+
+[ext_resource type="Script" uid="uid://dgtpcgr5ug7eh" path="res://script/Resource_script/resource_floor.gd" id="1_haexm"]
+
+[resource]
+script = ExtResource("1_haexm")
+floor_number = 46
+metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

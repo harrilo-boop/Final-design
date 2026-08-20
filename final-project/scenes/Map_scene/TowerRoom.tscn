@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://c532v7ukaiutb"]
 
 [ext_resource type="Script" uid="uid://bqxqcbe31xcue" path="res://script/System_script/tower_room.gd" id="1_g3mfm"]
+[ext_resource type="PackedScene" uid="uid://cg7dhxiq2vh30" path="res://scenes/Character_scene/player.tscn" id="2_h20ji"]
+[ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/Object_scene/door.tscn" id="2_jw7tw"]
 
 [node name="Room" type="Node2D" unique_id=423902231]
 script = ExtResource("1_g3mfm")
 
+[node name="player" parent="." unique_id=88700311 instance=ExtResource("2_h20ji")]
+
 [node name="Playerspawn" type="Marker2D" parent="." unique_id=989365810]
+
+[node name="Door_enter" type="Node" parent="." unique_id=709686725]
+
+[node name="Door" parent="Door_enter" unique_id=154942317 instance=ExtResource("2_jw7tw")]
+
+[node name="CollisionShape2D" parent="Door_enter/Door" index="0" unique_id=1285604296]
+position = Vector2(0, 500)
+
+[editable path="Door_enter/Door"]

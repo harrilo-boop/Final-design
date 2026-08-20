@@ -8,5 +8,10 @@ func _on_chest_opened(body):
 		return
 	print("Get Heal Potion")
 	Global.inventory.add_item(Global.items["Heal Potion"])
+	Global.inventory.add_item(Global.items["Strong Heal Potion"])
+	Global.inventory.add_item(Global.items["Rare Heal Potion"])
+	Global.inventory.add_item(Global.items["Super Rare Heal Potion"])
+	Global.inventory.add_item(Global.items["Technique Point Potion"])
+	Global.inventory.add_item(Global.items["Strong Technique Potion"])
 	Global.inventory.add_item(Global.items["Temporary Sheild"])
 	item_animation.play("opened")

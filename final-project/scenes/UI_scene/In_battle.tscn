@@ -23,6 +23,10 @@ bg_color = Color(0.70980394, 0.14117648, 0.15294118, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqpje"]
 bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cve37"]
+font_size = 40
+font_color = Color(0.7309131, 0.7309131, 0.73091304, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acoj8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebmv"]
@@ -193,7 +197,15 @@ max_value = 10.0
 step = 1.0
 show_percentage = false
 
+[node name="Item_label" type="Label" parent="Stats_UI" unique_id=512269288]
+offset_left = 39.0
+offset_top = 54.0
+offset_right = 235.0
+offset_bottom = 101.0
+label_settings = SubResource("LabelSettings_cve37")
+
 [node name="Options_button" type="Control" parent="." unique_id=478916685]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -257,6 +269,7 @@ theme_override_font_sizes/font_size = 30
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -341,6 +354,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5hhvv")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Item_option2" type="PanelContainer" parent="Item_options" unique_id=1276427197]
 layout_mode = 0
@@ -355,6 +369,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_e1vla")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Item_option3" type="PanelContainer" parent="Item_options" unique_id=103027249]
 layout_mode = 0
@@ -369,6 +384,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_118um")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Item_option4" type="PanelContainer" parent="Item_options" unique_id=758110210]
 layout_mode = 0
@@ -383,6 +399,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Item_option5" type="PanelContainer" parent="Item_options" unique_id=1503840276]
 layout_mode = 0
@@ -397,6 +414,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Item_option6" type="PanelContainer" parent="Item_options" unique_id=1156812255]
 layout_mode = 0
@@ -411,6 +429,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Item_option7" type="PanelContainer" parent="Item_options" unique_id=2096267956]
 layout_mode = 0
@@ -425,8 +444,10 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v4c7e")
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 70.0

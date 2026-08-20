@@ -229,7 +229,7 @@ func update_item_buttons():
 		else:
 			print(i, slot.item.item_name)
 			item_buttons[i].disabled = false
-			item_buttons[i].text = slot.item.item_name
+			item_buttons[i].text = str(slot.quantity)
 			item_buttons[i].icon = slot.item.item_icon
 func select_item(index:int):
 	var slot = Global.inventory.item_slots[index]

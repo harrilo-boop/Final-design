@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FloorResource" format=3 uid="uid://5h0a3w0hyhsb"]
+
+[ext_resource type="Script" uid="uid://dgtpcgr5ug7eh" path="res://script/Resource_script/resource_floor.gd" id="1_thjgl"]
+
+[resource]
+script = ExtResource("1_thjgl")
+floor_number = 4
+floor_describtion = "Intro for Escape"
+metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

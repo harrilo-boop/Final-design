@@ -5,7 +5,7 @@ extends Node
 @export var item_resource: Resource
 
 #Player's health
-var player_hp:int = 20
+var player_hp:int = 5
 var max_player_hp:int = 20
 
 #Player's stats

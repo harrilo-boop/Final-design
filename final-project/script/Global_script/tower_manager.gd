@@ -5,8 +5,9 @@ const MAX_FLOOR:int = 50
 
 enum FloorType {
 	BATTLE,
-	PUZZLE,
+	LOGIC,
 	RECOVERY,
+	TREASURE,
 	BOSS
 }
 

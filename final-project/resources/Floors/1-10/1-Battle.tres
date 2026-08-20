@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FloorResource" format=3 uid="uid://delyjtl70juun"]
+
+[ext_resource type="Script" uid="uid://dgtpcgr5ug7eh" path="res://script/Resource_script/resource_floor.gd" id="1_7lycn"]
+
+[resource]
+script = ExtResource("1_7lycn")
+floor_number = 1
+floor_describtion = "Intro of attack"
+metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"
