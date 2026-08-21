@@ -11,7 +11,6 @@ class_name item_resource
 enum EffectType{
 	NONE,
 	HEAL,
-	DAMAGE,
 	SHIELD,
 	ATK_BUFF,
 	TECH_BUFF,

@@ -5,13 +5,14 @@ extends Node
 @export var item_resource: Resource
 
 #Player's health
-var player_hp:int = 5
+var player_hp:int = 20
 var max_player_hp:int = 20
 
 #Player's stats
 var player_tp:int = 20
 var max_tp:int = 20
 var player_atk:int = 2
+var shield_amount = 0
 
 #Player's current stats
 const MAX_TECH = 4
@@ -29,7 +30,7 @@ var inventory: Inventory
 #Player's experience system
 var player_xp:int = 0
 var xp_earn: int = 0
-var xp_level:int = 1
+var xp_level:int = 0
 var xp_needed:int = 0
 var max_level:int = 50
 
@@ -41,7 +42,7 @@ var battle_entered_by:String = "player"
 #Enemy's stats
 var enemy_hp:int = 10
 var max_enemy_hp:int = 10
-var enemy_atk:int = 2
+var enemy_atk:int = 10
 
 #Dictionary for all techniques
 var techs = {
@@ -53,15 +54,19 @@ var techs = {
 	"Volcano Explosion": load("res://resources/Tech/Fire/Fire_tech5.tres"),
 	#Ability(Ground)-------------------------------------------------------------------------------
 	"Mud": load("res://resources/Tech/Ground/Ground_tech1.tres"),
-	"Earthquake": load("res://resources/Tech/Ground/Ground_tech5.tres"),
+	"Spikes": load("res://resources/Tech/Ground/Ground_tech2.tres"),
+	"Earthquake": load("res://resources/Tech/Ground/Ground_tech3.tres"),
 	"Nature Power": load("res://resources/Tech/Ground/Ground_tech4.tres"),
 	"World Collapse": load("res://resources/Tech/Ground/Ground_tech5.tres"),
 	#Ability(Water)--------------------------------------------------------------------------------
 	"Water Ball": load("res://resources/Tech/Water/Water_tech1.tres"),
+	"Waves": load("res://resources/Tech/Water/Water_tech2.tres"),
+	"Hydro Stream": load("res://resources/Tech/Water/Water_tech3.tres"),
 	"Thunder Shock": load("res://resources/Tech/Water/Water_tech4.tres"),
 	"Tsunami": load("res://resources/Tech/Water/Water_tech5.tres"),
 	#Ability(Wind)---------------------------------------------------------------------------------
 	"Wind Blow": load("res://resources/Tech/Wind/Wind_tech1.tres"),
+	"Whirlwind": load("res://resources/Tech/Wind/Wind_tech2.tres"),
 	"Hurricane": load("res://resources/Tech/Wind/Wind_tech3.tres"),
 	"Echoes": load("res://resources/Tech/Wind/Wind_tech4.tres"),
 	"Triple Typhoon": load("res://resources/Tech/Wind/Wind_tech5.tres")

@@ -35,4 +35,14 @@ position = Vector2(-5, -254)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]
 
+[node name="Itembox2" parent="." unique_id=1504449646 instance=ExtResource("4_a4k1r")]
+z_index = -1
+position = Vector2(-183, -253)
+
+[node name="AnimatedSprite2D" parent="Itembox2" index="1" unique_id=1478324361]
+animation = &"rare_default"
+autoplay = "rare_default"
+frame_progress = 0.4176759
+
 [editable path="Door/Door_town"]
+[editable path="Itembox2"]

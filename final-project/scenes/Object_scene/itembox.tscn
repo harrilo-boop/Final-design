@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b4upmi16a8yj6" path="res://script/Object_script/itembox.gd" id="1_pspm3"]
 [ext_resource type="Texture2D" uid="uid://clkwwap7v7ra6" path="res://asset/Items/011 Treasure Box Closed.png" id="2_42qhu"]
 [ext_resource type="Texture2D" uid="uid://df3hnxl7xfynl" path="res://asset/Items/012 Treasure Box Opened.png" id="3_48g0g"]
+[ext_resource type="Texture2D" uid="uid://c2g0gl0ft7jhv" path="res://asset/Items/013 Rare Treasure Box Closed.png" id="4_wxj4p"]
+[ext_resource type="Texture2D" uid="uid://05n5uv5xvcn1" path="res://asset/Items/014 Rare Treasure Box Opened.png" id="5_abu5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2q7c"]
 size = Vector2(122, 98.75)
@@ -24,7 +26,26 @@ animations = [{
 "loop": true,
 "name": &"opened",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wxj4p")
+}],
+"loop": true,
+"name": &"rare_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_abu5v")
+}],
+"loop": true,
+"name": &"rare_opened",
+"speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42qhu"]
+size = Vector2(123, 100)
 
 [node name="Area2D" type="Area2D" unique_id=327047994 node_paths=PackedStringArray("item_animation")]
 script = ExtResource("1_pspm3")
@@ -38,7 +59,14 @@ debug_color = Color(0.9764706, 0.84313726, 0.3647059, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1478324361]
 scale = Vector2(4.3984375, 3.984375)
 sprite_frames = SubResource("SpriteFrames_wxj4p")
-animation = &"opened"
+animation = &"rare_opened"
 autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=354406432]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=307801034]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_42qhu")
+debug_color = Color(1, 1, 1, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_chest_opened"]

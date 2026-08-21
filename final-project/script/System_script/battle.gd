@@ -12,6 +12,7 @@ var max_tp:int = 1
 var player_atk:int = 1
 var xp_earn:int = 1
 var xp_level:int = 1
+var shield_amount:int = 0
 #Enemy variables
 var enemy_hp: int = 5
 var max_enemy_hp:int = 5
@@ -26,7 +27,6 @@ var equipped_tech:Array[tech_resource] = [
 var replacing_tech: bool = false
 var item_choosing:bool = false
 var item_buttons: Array[Button] = []
-var shield_amount = 0
 
 #Damage calculate variables
 var total_damage_atk:int = 0
@@ -118,6 +118,7 @@ func player_turn_change() -> void:
 	turn_label.text = "Enemy's Turn"
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 	enemy_bar.value = enemy_hp
+	print(player_tp , "TP")
 	change_turn.start()
 
 func enemy_turn_change() -> void:
@@ -145,7 +146,8 @@ func _enemy_turn() -> void:
  
 func _enemy_attack() -> void:
 	if player_hp >= 1:
-		total_enemy_atk = max(0, enemy_atk - shield_amount)
+		total_enemy_atk = max(0, enemy_atk - Global.shield_amount)
+		Global.shield_amount = max(0, total_enemy_atk - Global.shield_amount)
 		player_hp = max(0, player_hp - total_enemy_atk)
 		enemy_turn_change()
 	if player_hp <= 0:
@@ -165,7 +167,7 @@ func _on_tech_pressed() -> void:
 			tech_buttons[tech].text = "Blank"
 			tech_buttons[tech].disabled = true
 
-func tech_damage_check(tech: tech_resource) -> void:
+func tech_damage_check(tech_resource) -> void:
 	var tech_damage = tech_resource.tech_atk
 	var ability_type = tech_resource.ability
 	if enemy_resource.weak == ability_type:
@@ -177,7 +179,6 @@ func tech_damage_check(tech: tech_resource) -> void:
 	enemy_bar.value = enemy_hp
 	player_turn_change()
 	player_tp = player_tp - tech_resource.tech_tp
-	print(player_tp , "TP")
 	
 func _tech_options(tech: String) -> void:
 	if player_turn == true and enemy_turn == false:
@@ -237,6 +238,9 @@ func select_item(index:int):
 		return
 	ItemManager.use_item(slot.item,self)
 	Global.inventory.remove_item(slot.item)
+	options_button.show()
+	item_options.hide()
+	item_choosing = false
 	player_turn_change()
 
 func _on_item_1_pressed():

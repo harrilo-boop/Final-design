@@ -18,4 +18,18 @@ script = ExtResource("1_g3mfm")
 [node name="CollisionShape2D" parent="Door_enter/Door" index="0" unique_id=1285604296]
 position = Vector2(0, 500)
 
+[node name="Marker2D" parent="Door_enter/Door" index="1" unique_id=1382765507]
+position = Vector2(3, 289)
+
+[node name="Door_leave" type="Node" parent="." unique_id=1469896484]
+
+[node name="Door" parent="Door_leave" unique_id=1820823068 instance=ExtResource("2_jw7tw")]
+
+[node name="CollisionShape2D" parent="Door_leave/Door" index="0" unique_id=1285604296]
+position = Vector2(3, -526)
+
+[node name="Marker2D" parent="Door_leave/Door" index="1" unique_id=1382765507]
+position = Vector2(2, -331)
+
 [editable path="Door_enter/Door"]
+[editable path="Door_leave/Door"]

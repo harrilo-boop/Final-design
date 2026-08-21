@@ -9,5 +9,6 @@ item_name = "Temporary Sheild"
 description = "Give a temporary sheild resisting damage"
 max_stack_size = 5
 item_icon = ExtResource("1_0hn7s")
-defend_amount = 15
+effect_type = 2
+defend_amount = 20
 metadata/_custom_type_script = "uid://dbd68g4nt4do"

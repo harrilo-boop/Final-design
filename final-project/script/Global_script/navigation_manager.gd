@@ -2,6 +2,9 @@ extends Node
 
 const SCENE_OVERWORLD = preload("res://scenes/map_scene/overworld.tscn")
 const SCENE_TOWN = preload("res://scenes/map_scene/Town.tscn")
+const SCENE_ROOM_ENTER = preload("res://scenes/Map_scene/TowerRoom.tscn")
+const SCENE_ROOM_LEAVE = preload("res://scenes/Map_scene/TowerRoom.tscn")
+
 
 var spawn_door_tag: String = ""
 var player_is_transitioning: bool = false

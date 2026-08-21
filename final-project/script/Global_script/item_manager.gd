@@ -15,12 +15,12 @@ func use_item(item:item_resource, battle):
 func use_heal(item,battle):
 	battle.player_hp += item.heal_amount
 	battle.player_hp = min(battle.player_hp,battle.max_hp)
-	battle.player_tp = item.tp_amount
-	battle.player_tp = min(battle.player_tp, battle.max_tp)
+	battle.player_tp += item.tp_amount
+	battle.player_tp = max(battle.player_tp, battle.max_tp)
 	
 func use_shield(item,battle):
-	battle.shield_amount = item.defend_amount
+	Global.shield_amount += item.defend_amount
 
 func use_buff(item,battle):
-	battle.player_atk * item.atk_up
-	battle.total_damage_attack * item.tech_up
+	battle.player_atk += item.atk_up
+	battle.total_damage_attack += item.tech_up

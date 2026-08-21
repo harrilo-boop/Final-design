@@ -205,7 +205,6 @@ offset_bottom = 101.0
 label_settings = SubResource("LabelSettings_cve37")
 
 [node name="Options_button" type="Control" parent="." unique_id=478916685]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -269,7 +268,6 @@ theme_override_font_sizes/font_size = 30
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -447,7 +445,6 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 70.0
