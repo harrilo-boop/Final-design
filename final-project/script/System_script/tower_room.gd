@@ -1,20 +1,30 @@
 extends Node2D
+class_name tower_room
 
-@export var floor_type: Resource
-	
+func _ready() -> void:
+	var current_floor_data = TowerManager.get_current_floor()
+	if current_floor_data == null:
+		print("No Floor Resource")
+		return
+	print("Current Floor: ", current_floor_data.floor_number)
+	print("Floor Type: ", current_floor_data.floor_type)
+
+	check_type(current_floor_data)
+
 func check_type(floor: level_resource) -> void:
-	var floor_tag = level_resource.FloorType
-	match floor_tag:
-		floor.FloorType.BATTLE:
+	match floor.floor_type:
+		level_resource.FloorType.BATTLE:
 			create_battle_room()
-		floor.FloorType.LOGIC:
+		level_resource.FloorType.LOGIC:
 			create_logic_room()
-		floor.FloorType.RECOVERY:
+		level_resource.FloorType.RECOVERY:
 			create_recovery_room()
-		floor.FloorType.TREASURE:
+		level_resource.FloorType.TREASURE:
 			create_treasure_room()
-		floor.FloorType.BOSS:
+		level_resource.FloorType.BOSS:
 			create_boss_room()
+		level_resource.FloorType.NONE:
+			print("Floor Type is NONE")
 
 func create_battle_room() -> void:
 	print("Battle Room")
@@ -27,6 +37,6 @@ func create_recovery_room() -> void:
 
 func create_treasure_room() -> void:
 	print("Treasure Room")
-	
+
 func create_boss_room() -> void:
 	print("Boss Room")
