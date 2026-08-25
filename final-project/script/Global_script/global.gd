@@ -33,6 +33,7 @@ var xp_earn: int = 0
 var xp_level:int = 0
 var xp_needed:int = 0
 var max_level:int = 50
+var current_floor:int = 0
 
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO

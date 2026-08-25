@@ -2,8 +2,8 @@ extends Node
 
 const SCENE_OVERWORLD = preload("res://scenes/map_scene/overworld.tscn")
 const SCENE_TOWN = preload("res://scenes/map_scene/Town.tscn")
-const SCENE_ROOM_ENTER = preload("res://scenes/Map_scene/TowerRoom.tscn")
-const SCENE_ROOM_LEAVE = preload("res://scenes/Map_scene/TowerRoom.tscn")
+const FIRST_FLOOR = preload("res://scenes/Map_scene/TowerRoom.tscn")
+const FLOOR_LEAVE = preload("res://scenes/Map_scene/TowerRoom.tscn")
 
 
 var spawn_door_tag: String = ""
@@ -20,6 +20,14 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 		"Town":
 			scene_to_load = SCENE_TOWN
 			Global.last_scene = "Town"
+		"first_floor":
+			scene_to_load = FIRST_FLOOR
+			Global.last_scene = "Tower_floor"
+			TowerManager.next_floor()
+		"next_floor":
+			scene_to_load = FLOOR_LEAVE
+			Global.last_scene = "Tower_floorw"
+			TowerManager.next_floor()
 
 	if scene_to_load == null:
 		return

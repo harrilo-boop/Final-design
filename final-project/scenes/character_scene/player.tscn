@@ -121,7 +121,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(60.6875, 64.5)
 
-[node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("player", "pivot", "sword_area", "sword_collision", "timer", "animatesprite") groups=["player"]]
+[sub_resource type="LabelSettings" id="LabelSettings_4u46h"]
+font_size = 40
+font_color = Color(0.930951, 0.7897842, 0.2820671, 0.92941177)
+
+[node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("player", "pivot", "sword_area", "sword_collision", "timer", "animatesprite", "current_level") groups=["player"]]
 script = ExtResource("1_mvd3h")
 player = NodePath(".")
 pivot = NodePath("Marker2D")
@@ -129,6 +133,7 @@ sword_area = NodePath("sword_area")
 sword_collision = NodePath("sword_area/sword_collision")
 timer = NodePath("attack_battle")
 animatesprite = NodePath("AnimatedSprite2D")
+current_level = NodePath("Current_level_label")
 
 [node name="player_collision" type="CollisionShape2D" parent="." unique_id=1006971222]
 shape = SubResource("CircleShape2D_g2els")
@@ -137,6 +142,7 @@ shape = SubResource("CircleShape2D_g2els")
 position = Vector2(0, -25)
 scale = Vector2(2.9542499, 2.945375)
 sprite_frames = SubResource("SpriteFrames_81s8p")
+animation = &"down_attack"
 autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
@@ -151,6 +157,14 @@ shape = SubResource("RectangleShape2D_3vyb7")
 debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
+
+[node name="Current_level_label" type="Label" parent="." unique_id=1776112301]
+offset_left = -567.0
+offset_top = -319.0
+offset_right = -521.0
+offset_bottom = -264.0
+text = "00"
+label_settings = SubResource("LabelSettings_4u46h")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="end_attack"]
 [connection signal="timeout" from="attack_battle" to="." method="_attack_to_battle"]

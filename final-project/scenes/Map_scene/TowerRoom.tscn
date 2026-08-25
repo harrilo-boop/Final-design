@@ -14,6 +14,9 @@ script = ExtResource("1_g3mfm")
 [node name="Door_enter" type="Node" parent="." unique_id=709686725]
 
 [node name="Door" parent="Door_enter" unique_id=154942317 instance=ExtResource("2_jw7tw")]
+door_tag = "Door_enter"
+level_to_load = "Tower_floor"
+destination_tag = "Door_next"
 
 [node name="CollisionShape2D" parent="Door_enter/Door" index="0" unique_id=1285604296]
 position = Vector2(0, 500)
@@ -24,6 +27,9 @@ position = Vector2(3, 289)
 [node name="Door_leave" type="Node" parent="." unique_id=1469896484]
 
 [node name="Door" parent="Door_leave" unique_id=1820823068 instance=ExtResource("2_jw7tw")]
+door_tag = "Door_next"
+level_to_load = "next_floor"
+destination_tag = "Door_enter"
 
 [node name="CollisionShape2D" parent="Door_leave/Door" index="0" unique_id=1285604296]
 position = Vector2(3, -526)

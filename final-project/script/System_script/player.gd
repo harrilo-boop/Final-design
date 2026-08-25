@@ -11,6 +11,7 @@ var last_direction: Vector2 = Vector2.DOWN
 var hitbox_offset: Vector2
 var last_position: Vector2 = Vector2(0,0)
 var battle_entered_by:String = ""
+var current_floor:int = 0
 
 @export var player: CharacterBody2D
 @export var pivot: Marker2D
@@ -18,11 +19,13 @@ var battle_entered_by:String = ""
 @export var sword_collision: CollisionShape2D
 @export var timer: Timer
 @export var animatesprite: AnimatedSprite2D
+@export var current_level: Label
 
 func _ready() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
 	hitbox_offset = sword_area.position
+
 	if Global.last_position != Vector2.ZERO:
 		global_position = Global.last_position
 		Global.last_position = Vector2.ZERO
@@ -39,7 +42,8 @@ func _process(_delta: float) -> void:
 		speed = speed * 1.2
 	elif Input.is_action_just_released("ui_run"):
 		speed = speed / 1.2
-
+	current_floor = Global.current_floor
+	current_level.text = str(current_floor)
 
 func _on_spawn(_direction: String) -> void:
 	global_position = position
@@ -80,6 +84,7 @@ func update_hitbox_offset() -> void:
 			sword_area.position = Vector2(0, distance)     
 		else:
 			sword_area.position = Vector2(0, -distance)  
+
 
 #Finding which direction for animation movement
 func update_animation(direction: Vector2) -> void:

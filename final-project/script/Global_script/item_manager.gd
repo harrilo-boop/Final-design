@@ -5,11 +5,11 @@ extends Node
 
 func use_item(item:item_resource, battle):
 	match item.effect_type:
-		item_resource.EffectType.HEAL:
+		item.EffectType.HEAL:
 			use_heal(item, battle)
-		item_resource.EffectType.SHIELD:
+		item.EffectType.SHIELD:
 			use_shield(item, battle)
-		item_resource.EffectType.ATK_BUFF or item_resource.EffectType.TECH_BUFF:
+		item.EffectType.ATK_BUFF or item.EffectType.TECH_BUFF:
 			use_buff(item,battle)
 
 func use_heal(item,battle):

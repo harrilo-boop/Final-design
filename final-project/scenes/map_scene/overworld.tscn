@@ -18,31 +18,45 @@ position = Vector2(242, 3)
 [node name="Door" type="Node" parent="." unique_id=1713063800]
 
 [node name="Door_town" parent="Door" unique_id=154942317 instance=ExtResource("3_wqr2r")]
-position = Vector2(247, 255)
+position = Vector2(-175, 390)
 door_tag = "overworld_door"
 level_to_load = "Town"
 destination_tag = "town_door"
 
 [node name="CollisionShape2D" parent="Door/Door_town" index="0" unique_id=1285604296]
-position = Vector2(-478, 162)
+position = Vector2(-123, 5)
 
 [node name="Marker2D" parent="Door/Door_town" index="1" unique_id=1382765507]
-position = Vector2(-303, 155)
+position = Vector2(0, 0)
+
+[node name="Door2" type="Node" parent="." unique_id=589005557]
+
+[node name="Door" parent="Door2" unique_id=1417771912 instance=ExtResource("3_wqr2r")]
+door_tag = "To_tower"
+level_to_load = "first_floor"
+destination_tag = "Door_enter"
+
+[node name="CollisionShape2D" parent="Door2/Door" index="0" unique_id=1285604296]
+position = Vector2(1, -328)
+
+[node name="Marker2D" parent="Door2/Door" index="1" unique_id=1382765507]
+position = Vector2(3, -151)
 
 [node name="Itembox1" parent="." unique_id=327047994 instance=ExtResource("4_a4k1r")]
 z_index = -1
-position = Vector2(-5, -254)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]
+position = Vector2(-251, 2)
 
 [node name="Itembox2" parent="." unique_id=1504449646 instance=ExtResource("4_a4k1r")]
 z_index = -1
-position = Vector2(-183, -253)
+position = Vector2(-429, 3)
 
 [node name="AnimatedSprite2D" parent="Itembox2" index="1" unique_id=1478324361]
 animation = &"rare_default"
 autoplay = "rare_default"
 frame_progress = 0.4176759
 
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]
+
 [editable path="Door/Door_town"]
+[editable path="Door2/Door"]
 [editable path="Itembox2"]
