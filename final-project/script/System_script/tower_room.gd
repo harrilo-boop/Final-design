@@ -2,39 +2,43 @@ extends Node2D
 class_name tower_room
 
 #Determine the type of level it is and give the correct stats
+@export var enemy_body: CharacterBody2D
+@export var enemy_collision: CollisionShape2D
 @export var treasure_area: Area2D
 @export var treasure_body: CollisionShape2D
 @export var treasure: CollisionShape2D
 @export var enter_require: CollisionShape2D
-var level_require: bool = false
+var floor_require: bool = true
 
 func _ready() -> void:
+	enemy_body.hide()
+	enemy_collision.disabled = true
 	treasure_area.hide()
 	treasure.disabled = true
 	treasure_body.disabled = true
-	enter_require.disabled = false
+
+	floor_require = Global.floor_require
 	var current_floor_data = TowerManager.get_current_floor()
-	if current_floor_data == null:
-		print("No Floor Resource")
-		return
 	print("Current Floor: ", current_floor_data.floor_number)
 	check_type(current_floor_data)
 
 func check_type(floor: level_resource) -> void:
 	match floor.floor_type:
-		level_resource.FloorType.BATTLE:
+		floor.FloorType.BATTLE:
 			create_battle_room()
-		level_resource.FloorType.LOGIC:
+		floor.FloorType.LOGIC:
 			create_logic_room()
-		level_resource.FloorType.RECOVERY:
+		floor.FloorType.RECOVERY:
 			create_recovery_room()
-		level_resource.FloorType.TREASURE:
+		floor.FloorType.TREASURE:
 			create_treasure_room()
-		level_resource.FloorType.BOSS:
+		floor.FloorType.BOSS:
 			create_boss_room()
 
 func create_battle_room() -> void:
 	print("Battle Room")
+	enemy_body.show()
+	enemy_collision.disabled = false
 
 func create_logic_room() -> void:
 	print("Logic Room")
@@ -44,7 +48,7 @@ func create_recovery_room() -> void:
 
 func create_treasure_room() -> void:
 	print("Treasure Room")
-	treasure_area.show()	
+	treasure_area.show()
 	treasure.disabled = false
 	treasure_body.disabled = false
 
@@ -52,7 +56,8 @@ func create_boss_room() -> void:
 	print("Boss Room")
 
 func requirement_check() -> void:
-	if level_require == true:
-		enter_require.disabled = true
+	if Global.floor_require == true:
+		enter_require.hide()
+		enter_require.disabled = false
 		print("Go to Next Floor Allowed")
-		pass
+#Door requirement problem wait for fixed

@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://felhg58ef4g8"]
 
+[ext_resource type="Texture2D" uid="uid://chgsyxfm0jag1" path="res://asset/Enemy/E01N slime normal.png" id="1_46ak1"]
 [ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_75s5m"]
 
 [resource]
 script = ExtResource("1_75s5m")
+enemy_icon = ExtResource("1_46ak1")
 enemy_name = "Slime"
 weak = 3
 resist = 2

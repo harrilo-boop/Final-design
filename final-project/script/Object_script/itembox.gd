@@ -11,6 +11,7 @@ func _on_chest_opened(body):
 		normal_chest_open()
 	elif item_animation.animation == "rare_default":
 		rare_chest_open()
+	Global.floor_require = true
 		
 func normal_chest_open():
 	print("Get Heal Potion and Tp Potion")

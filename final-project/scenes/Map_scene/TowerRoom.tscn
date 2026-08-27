@@ -9,15 +9,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp0t4"]
 size = Vector2(372, 7)
 
-[node name="Room" type="Node2D" unique_id=423902231 node_paths=PackedStringArray("treasure_area", "treasure_body", "treasure", "enter_require")]
+[node name="Room" type="Node2D" unique_id=423902231 node_paths=PackedStringArray("enemy_body", "enemy_collision", "treasure_area", "treasure_body", "treasure", "enter_require")]
 script = ExtResource("1_g3mfm")
+enemy_body = NodePath("Enemy")
+enemy_collision = NodePath("Enemy/CollisionShape2D")
 treasure_area = NodePath("TreasureBox")
 treasure_body = NodePath("TreasureBox/StaticBody2D/CollisionShape2D")
 treasure = NodePath("TreasureBox/CollisionShape2D")
 enter_require = NodePath("Enter_require/CollisionShape2D")
 
 [node name="player" parent="." unique_id=88700311 instance=ExtResource("2_h20ji")]
-position = Vector2(1018, 32)
+position = Vector2(1131, -33)
 
 [node name="Playerspawn" type="Marker2D" parent="." unique_id=989365810]
 
@@ -25,7 +27,7 @@ position = Vector2(1018, 32)
 
 [node name="Door" parent="Door_enter" unique_id=154942317 instance=ExtResource("2_jw7tw")]
 door_tag = "Door_enter"
-level_to_load = "Tower_floor"
+level_to_load = "return_floor"
 destination_tag = "Door_next"
 
 [node name="CollisionShape2D" parent="Door_enter/Door" index="0" unique_id=1285604296]
@@ -43,26 +45,29 @@ destination_tag = "Door_enter"
 
 [node name="CollisionShape2D" parent="Door_leave/Door" index="0" unique_id=1285604296]
 position = Vector2(0, -500)
-debug_color = Color(0.6555618, 0.81284916, 0.39626282, 0.41960785)
+debug_color = Color(0.6000174, 0.86401707, 0.45997208, 0.41960785)
 
 [node name="Marker2D" parent="Door_leave/Door" index="1" unique_id=1382765507]
 position = Vector2(2, -331)
 
 [node name="TreasureBox" parent="." unique_id=327047994 instance=ExtResource("4_tp0t4")]
-visible = false
 
 [node name="AnimatedSprite2D" parent="TreasureBox" index="1" unique_id=1478324361]
 animation = &"rare_default"
 autoplay = "rare_default"
 
 [node name="Enter_require" type="StaticBody2D" parent="." unique_id=1414286607]
+z_index = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter_require" unique_id=191866290]
+z_index = -1
 position = Vector2(0, -361.5)
 shape = SubResource("RectangleShape2D_tp0t4")
+debug_color = Color(0.6220781, 0.5339371, 0.9965858, 0.41960785)
 
 [node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("5_obu14")]
 
 [editable path="Door_enter/Door"]
 [editable path="Door_leave/Door"]
 [editable path="TreasureBox"]
+[editable path="Enemy"]

@@ -10,7 +10,6 @@ var return_from_battle:bool = true
 var last_direction: Vector2 = Vector2.DOWN
 var hitbox_offset: Vector2
 var last_position: Vector2 = Vector2(0,0)
-var battle_entered_by:String = ""
 var current_floor:int = 0
 
 @export var player: CharacterBody2D
@@ -152,5 +151,4 @@ func _attack_to_battle() -> void:
 #Enter a battle and change the scene 
 func _enter_battle() -> void: 
 	Global.last_position = global_position
-	battle_entered_by = "player"
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/In_battle.tscn")

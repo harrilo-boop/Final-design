@@ -94,7 +94,7 @@ func _ready() -> void:
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	player_bar.value = player_hp
 	player_bar.max_value = max_hp
 	enemy_bar.max_value = max_enemy_hp
@@ -130,7 +130,6 @@ func _attack_choose() -> void:
 	if player_animation.animation == "default":
 		player_animation.play("attack")
 		enemy_animation.play("attacked")
-	var tech_damage = tech_data.tech_atk
 	if player_turn == true and enemy_turn == false:
 		if enemy_hp >= 1: 
 			total_damage_atk = max(0, player_atk)
@@ -166,6 +165,7 @@ func _on_tech_pressed() -> void:
 		else:
 			tech_buttons[tech].text = "Blank"
 			tech_buttons[tech].disabled = true
+
 
 func tech_damage_check(tech_data: tech_resource) -> void:
 	if player_animation.animation == "default":
@@ -316,4 +316,5 @@ func show_learn_ui():
 	learn_label.text = "Learn " + Global.new_tech.tech_name + " ?"
 
 func finish_battle():
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")	
+	Global.floor_require = true
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")

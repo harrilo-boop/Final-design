@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("1_8rn0g")
-item_name = "Woof Sheild"
+item_name = "Wood Sheild"
 description = "Resist damage from enemy"
+max_stack_size = 3
 item_icon = ExtResource("1_jctsi")
 effect_type = 2
 defend_amount = 10

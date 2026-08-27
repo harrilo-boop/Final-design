@@ -1,9 +1,6 @@
 extends Node
 #All Variables for player in game
 
-@export var tech_resource: Resource
-@export var item_resource: Resource
-
 #Player's health
 var player_hp:int = 20
 var max_player_hp:int = 20
@@ -38,6 +35,7 @@ var current_floor:int = 0
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO
 var last_scene:String = "overworld"
+var floor_require: bool = false
 
 #Enemy's stats
 var enemy_hp:int = 10
@@ -92,7 +90,7 @@ func _ready() -> void:
 	equipped_tech[1] = techs["Water Ball"]
 	equipped_tech[2] = null
 	equipped_tech[3] = null
-	xp_needed = level_up(xp_level)
+	xp_needed = level_up()
 	inventory = Inventory.new()
 	add_child(inventory)
 	
@@ -124,13 +122,13 @@ func replace_player_tech(index: int, tech: tech_resource) -> void:
 	equipped_tech[index] = tech
 	
 #Updating player's xp after battle
-func battle_xp_update(xp_earn: int) -> bool:
-	player_xp += xp_earn
+func battle_xp_update(xp_gain: int) -> bool:
+	player_xp += xp_gain
 	check_levelup()
 	return new_tech != null
 	
 #Setting the xp requirement for every level
-func level_up(xp_level: int) -> int:
+func level_up() -> int:
 	var basic_xp:int = 10
 	var xp_power:float = 1.5 
 	return int(basic_xp * pow(xp_level, xp_power))
@@ -140,7 +138,7 @@ func check_levelup():
 	while player_xp >= xp_needed and xp_level < max_level:
 		player_xp -= xp_needed
 		xp_level += 1
-		xp_needed = level_up(xp_level)
+		xp_needed = level_up()
 		max_player_hp = hp_max_increase(max_player_hp)
 		max_tp = tp_max_increase(max_tp)
 		player_atk = atk_max_increase(player_atk)
