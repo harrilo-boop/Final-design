@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://yib0k8kw8snq" path="res://script/System_script/enemy.gd" id="1_ps6yo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
-radius = 42.0
+radius = 43.185646
 
 [node name="Enemy" type="CharacterBody2D" unique_id=790093923 groups=["Enemy"]]
 script = ExtResource("1_ps6yo")
@@ -11,5 +11,7 @@ script = ExtResource("1_ps6yo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497424036]
 shape = SubResource("CircleShape2D_8tegq")
 debug_color = Color(0.96854955, 0.16239247, 0.19665086, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=175871390]
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=564999321]

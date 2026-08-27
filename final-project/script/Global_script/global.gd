@@ -38,12 +38,11 @@ var current_floor:int = 0
 #For locating player's last position before entering the battle
 var last_position: Vector2 = Vector2.ZERO
 var last_scene:String = "overworld"
-var battle_entered_by:String = "player"
 
 #Enemy's stats
 var enemy_hp:int = 10
 var max_enemy_hp:int = 10
-var enemy_atk:int = 10
+var enemy_atk:int = 1
 
 #Dictionary for all techniques
 var techs = {

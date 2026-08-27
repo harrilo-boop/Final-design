@@ -1,6 +1,6 @@
 extends CharacterBody2D
-
 class_name Player
+
 #THE PLAYER SCRIPT WITH OVERWORLD SETTINGS
 
 var speed:float = 500
@@ -153,5 +153,4 @@ func _attack_to_battle() -> void:
 func _enter_battle() -> void: 
 	Global.last_position = global_position
 	battle_entered_by = "player"
-	Global.battle_entered_by = battle_entered_by
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/In_battle.tscn")

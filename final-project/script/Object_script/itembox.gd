@@ -1,6 +1,8 @@
 extends Area2D
 
+#Settings about the treasure/item box
 @export var item_animation: AnimatedSprite2D
+
 
 func _on_chest_opened(body):
 	if !body.is_in_group("player"):

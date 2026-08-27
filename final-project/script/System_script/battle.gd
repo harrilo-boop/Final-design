@@ -38,11 +38,13 @@ var total_enemy_atk:int = 0
 @export var change_turn: Timer
 @export var player_bar: ProgressBar
 @export var enemy_bar: ProgressBar
+@export var player_animation: AnimatedSprite2D
+@export var enemy_animation: AnimatedSprite2D
 @export var options_button: Control
 @export var tech_options: Control
-@export var tech_resource: Resource
-@export var enemy_resource: Resource
-@export var item_resource: Resource
+@export var tech_data: Resource
+@export var enemy_data: Resource
+@export var item_data: Resource
 @export var tech_1: Button
 @export var tech_2: Button
 @export var tech_3: Button
@@ -74,12 +76,7 @@ func _ready() -> void:
 	xp_earn = Global.xp_earn
 	xp_level = Global.xp_level
 	equipped_tech = Global.equipped_tech
-	if Global.battle_entered_by == "player":
-		player_turn = true
-		enemy_turn = false
-	elif Global.battle_entered_by == "enemy":
-		player_turn = false
-		enemy_turn = true
+	player_animation.flip_h = true
 	item_buttons = [
 		item_1,
 		item_2,
@@ -130,13 +127,17 @@ func enemy_turn_change() -> void:
 	
 #Player's basic attack-----------------------------------------------
 func _attack_choose() -> void:
+	if player_animation.animation == "default":
+		player_animation.play("attack")
+		enemy_animation.play("attacked")
+	var tech_damage = tech_data.tech_atk
 	if player_turn == true and enemy_turn == false:
 		if enemy_hp >= 1: 
 			total_damage_atk = max(0, player_atk)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
 			player_turn_change()
 		if enemy_hp == 0:
-			xp_earn = enemy_resource.xp_give
+			xp_earn = enemy_data.xp_give
 			battle_end() 
 
 #Enemy turn's settings
@@ -147,7 +148,6 @@ func _enemy_turn() -> void:
 func _enemy_attack() -> void:
 	if player_hp >= 1:
 		total_enemy_atk = max(0, enemy_atk - Global.shield_amount)
-		Global.shield_amount = max(0, total_enemy_atk - Global.shield_amount)
 		player_hp = max(0, player_hp - total_enemy_atk)
 		enemy_turn_change()
 	if player_hp <= 0:
@@ -167,30 +167,37 @@ func _on_tech_pressed() -> void:
 			tech_buttons[tech].text = "Blank"
 			tech_buttons[tech].disabled = true
 
-func tech_damage_check(tech_resource) -> void:
-	var tech_damage = tech_resource.tech_atk
-	var ability_type = tech_resource.ability
-	if enemy_resource.weak == ability_type:
+func tech_damage_check(tech_data: tech_resource) -> void:
+	if player_animation.animation == "default":
+		player_animation.play("attack")
+		enemy_animation.play("attacked")
+	var tech_damage = tech_data.tech_atk
+	var ability_type = tech_data.ability
+	if enemy_data.weak == ability_type:
 		tech_damage *= 2 #Hit the weakness get critical
-	elif enemy_resource.resist == ability_type:
+	elif enemy_data.resist == ability_type:
 		tech_damage /= 2 #Hit the resist get half damage
 	total_damage_atk = tech_damage
 	enemy_hp = max(0,enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
-	player_turn_change()
-	player_tp = player_tp - tech_resource.tech_tp
+	player_tp = player_tp - tech_data.tech_tp
 	
 func _tech_options(tech: String) -> void:
 	if player_turn == true and enemy_turn == false:
-		var current_tech = Global.equipped_tech
-		tech_resource = Global.techs[tech]
-		tech_damage_check(tech_resource)
+		var _current_tech = Global.equipped_tech
+		tech_data = Global.techs[tech]
+		tech_damage_check(tech_data)
 		tech_options.hide()
 		options_button.show()
 	if enemy_hp == 0:
-			xp_earn = enemy_resource.xp_give
+			xp_earn = enemy_data.xp_give
 			print(player_hp)
 			battle_end()
+
+func _player_attack_finish() -> void:
+	player_turn_change()
+	player_animation.play("default")
+	enemy_animation.play("default")
 
 func _on_option_1_pressed() -> void:
 	select_tech(0)

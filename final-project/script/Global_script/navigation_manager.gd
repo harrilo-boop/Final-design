@@ -9,6 +9,7 @@ const FLOOR_LEAVE = preload("res://scenes/Map_scene/TowerRoom.tscn")
 var spawn_door_tag: String = ""
 var player_is_transitioning: bool = false
 
+
 func go_to_level(level_tag: String, destination_tag: String) -> void:
 	if player_is_transitioning:
 		return
@@ -26,7 +27,7 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 			TowerManager.next_floor()
 		"next_floor":
 			scene_to_load = FLOOR_LEAVE
-			Global.last_scene = "Tower_floorw"
+			Global.last_scene = "Tower_floor"
 			TowerManager.next_floor()
 
 	if scene_to_load == null:

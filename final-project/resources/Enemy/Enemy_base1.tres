@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://beb1twq6mgtrh"]
 
 [ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_1y6vl"]
+[ext_resource type="Texture2D" uid="uid://chgsyxfm0jag1" path="res://asset/Enemy/E01N slime normal.png" id="1_mpl81"]
 
 [resource]
 script = ExtResource("1_1y6vl")
+enemy_icon = ExtResource("1_mpl81")
 enemy_name = "Testing enemy 1"
 enemy_hp = 10
 xp_give = 9
