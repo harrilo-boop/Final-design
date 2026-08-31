@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_jivdk")
-floor_type = 1
+floor_number = 41
+floor_type = 2
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

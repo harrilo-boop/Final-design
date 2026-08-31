@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="level_resource" format=3 uid="uid://o7x8wbdy3l65"]
 
-[ext_resource type="Script" uid="uid://dgtpcgr5ug7eh" path="res://script/Resource_script/resource_level.gd" id="1_awvvq"]
+[ext_resource type="Script" uid="uid://dgtpcgr5ug7eh" path="res://script/Resource_script/resource_level.gd" id="1_kqjm7"]
 
 [resource]
-script = ExtResource("1_awvvq")
+script = ExtResource("1_kqjm7")
 floor_number = 19
-floor_type = 2
+floor_type = 1
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

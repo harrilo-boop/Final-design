@@ -26,8 +26,6 @@ func check_type(floor: level_resource) -> void:
 	match floor.floor_type:
 		floor.FloorType.BATTLE:
 			create_battle_room()
-		floor.FloorType.LOGIC:
-			create_logic_room()
 		floor.FloorType.RECOVERY:
 			create_recovery_room()
 		floor.FloorType.TREASURE:
@@ -39,9 +37,6 @@ func create_battle_room() -> void:
 	print("Battle Room")
 	enemy_body.show()
 	enemy_collision.disabled = false
-
-func create_logic_room() -> void:
-	print("Logic Room")
 
 func create_recovery_room() -> void:
 	print("Recovery Room")

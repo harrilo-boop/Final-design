@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_kvbm6")
-floor_type = 5
+floor_number = 50
+floor_type = 4
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

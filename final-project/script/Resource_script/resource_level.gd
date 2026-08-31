@@ -4,7 +4,6 @@ class_name level_resource
 enum FloorType {
 	NONE,
 	BATTLE,
-	LOGIC,
 	RECOVERY,
 	TREASURE,
 	BOSS
