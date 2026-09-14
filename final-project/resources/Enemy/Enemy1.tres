@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://bnbc5fi4nmlgj"]
 
-[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_syrnj"]
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_fwuvw"]
 
 [resource]
-script = ExtResource("1_syrnj")
-enemy_name = "Monster wood"
+script = ExtResource("1_fwuvw")
+enemy_name = "Shadow"
 weak = 1
 resist = 2
 enemy_atk = 3

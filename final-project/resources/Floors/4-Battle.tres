@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_thjgl")
 floor_number = 4
-floor_describtion = "Intro for Escape"
 floor_type = 1
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

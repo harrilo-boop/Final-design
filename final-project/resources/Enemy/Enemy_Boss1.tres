@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://felhg58ef4g8"]
+
+[ext_resource type="Texture2D" uid="uid://chgsyxfm0jag1" path="res://asset/Enemy/E01N slime normal.png" id="1_m2fdr"]
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="2_rrbmg"]
+
+[resource]
+script = ExtResource("2_rrbmg")
+enemy_icon = ExtResource("1_m2fdr")
+enemy_name = "Giant Slime"
+enemy_describe = "10th floor Boss"
+weak = 3
+resist = 2
+enemy_atk = 6
+enemy_hp = 20
+xp_give = 50
+metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

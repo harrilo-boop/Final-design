@@ -28,13 +28,15 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 		"next_floor":
 			scene_to_load = TOWER_FLOOR
 			Global.last_scene = "Tower_floor"
+			Global.floor_require = false
 			TowerManager.next_floor()
 		"return_floor":
 			if TowerManager.current_floor == 1:
 				scene_to_load = SCENE_OVERWORLD
+				Global.last_scene = "overworld"
 			elif TowerManager.current_floor > 1:
 				scene_to_load = TOWER_FLOOR
-			Global.last_scene = "Tower_floor"
+				Global.last_scene = "Tower_floor"
 			TowerManager.return_floor()
 
 	if scene_to_load == null:

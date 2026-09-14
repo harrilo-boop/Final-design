@@ -40,7 +40,7 @@ var floor_require: bool = false
 #Enemy's stats
 var enemy_hp:int = 10
 var max_enemy_hp:int = 10
-var enemy_atk:int = 1
+var enemy_atk:int = 2
 
 #Dictionary for all techniques
 var techs = {
@@ -105,8 +105,8 @@ func battle_tp_update(current_tp: int):
 	
 func hp_max_increase(levelup_hp: int) -> int:
 	levelup_hp = max_player_hp
-	var hp_power:float = 1.3
-	return int(levelup_hp * pow(xp_level, hp_power))
+	var hp_power:float = 1.1
+	return int(levelup_hp * hp_power)
 
 func tp_max_increase(levelup_tp: int) -> int:
 	levelup_tp = max_tp

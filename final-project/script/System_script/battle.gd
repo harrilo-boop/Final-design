@@ -37,7 +37,9 @@ var total_enemy_atk:int = 0
 @export var enemy_ui: Label
 @export var change_turn: Timer
 @export var player_bar: ProgressBar
+@export var player_bar_ui: AnimatedSprite2D
 @export var enemy_bar: ProgressBar
+@export var enemy_bar_ui: AnimatedSprite2D
 @export var player_animation: AnimatedSprite2D
 @export var enemy_animation: AnimatedSprite2D
 @export var options_button: Control
@@ -61,22 +63,25 @@ var total_enemy_atk:int = 0
 @export var learn_tech_yes: Button
 @export var learn_tech_no: Button
 @export var learn_label: Label
+@export var ui_display_timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#connect the autoload data to battle
+#connect the autoload data for player---------
 	player_hp = Global.player_hp 
 	max_hp = Global.max_player_hp
 	player_tp = Global.player_tp
 	max_tp = Global.player_tp
 	player_atk = Global.player_atk
-	enemy_hp = Global.enemy_hp
-	max_enemy_hp = Global.max_enemy_hp
-	enemy_atk = Global.enemy_atk
 	xp_earn = Global.xp_earn
 	xp_level = Global.xp_level
 	equipped_tech = Global.equipped_tech
 	player_animation.flip_h = true
+#connect the autoload data for enemy-------------
+	enemy_hp = Global.enemy_hp
+	max_enemy_hp = Global.max_enemy_hp
+	enemy_atk = Global.enemy_atk
+#stats about the battle panel--------------------
 	item_buttons = [
 		item_1,
 		item_2,
@@ -115,7 +120,10 @@ func player_turn_change() -> void:
 	turn_label.text = "Enemy's Turn"
 	enemy_ui.text = "Enemy HP:" + str(enemy_hp)
 	enemy_bar.value = enemy_hp
+	update_player_hp_bar()
+	update_enemy_hp_bar()
 	print(player_tp , "TP")
+	options_button.hide()
 	change_turn.start()
 
 func enemy_turn_change() -> void:
@@ -123,8 +131,42 @@ func enemy_turn_change() -> void:
 	enemy_turn = false
 	turn_label.text = "Your Turn"
 	hp_ui.text = "HP:" + str(player_hp)
+	player_bar.value = player_hp
+	update_player_hp_bar()
+	update_enemy_hp_bar()
+	options_button.show()
 	change_turn.start()
-	
+
+func update_player_hp_bar() -> void:
+	var hp_ratio = float(player_hp) / float(max_hp)
+	if hp_ratio <= 0.0:
+		player_bar_ui.play("0%")
+	elif hp_ratio <= 0.2:
+		player_bar_ui.play("20%")
+	elif hp_ratio <= 0.4:
+		player_bar_ui.play("40%")
+	elif hp_ratio <= 0.6:
+		player_bar_ui.play("60%")
+	elif hp_ratio <= 0.8:
+		player_bar_ui.play("80%")
+	else:
+		player_bar_ui.play("100%")
+
+func update_enemy_hp_bar() -> void:
+	var enemy_ratio = float(enemy_hp) / float(max_enemy_hp)
+	if enemy_ratio <= 0.0:
+		enemy_bar_ui.play("0%")
+	elif enemy_ratio <= 0.2:
+		enemy_bar_ui.play("20%")
+	elif enemy_ratio <= 0.4:
+		enemy_bar_ui.play("40%")
+	elif enemy_ratio <= 0.6:
+		enemy_bar_ui.play("60%")
+	elif enemy_ratio <= 0.8:
+		enemy_bar_ui.play("80%")
+	else:
+		enemy_bar_ui.play("100%")
+
 #Player's basic attack-----------------------------------------------
 func _attack_choose() -> void:
 	if player_animation.animation == "default":
@@ -134,10 +176,11 @@ func _attack_choose() -> void:
 		if enemy_hp >= 1: 
 			total_damage_atk = max(0, player_atk)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
-			player_turn_change()
-		if enemy_hp == 0:
+		if enemy_hp <= 0:
 			xp_earn = enemy_data.xp_give
 			battle_end() 
+		else:
+			player_turn_change()
 
 #Enemy turn's settings
 func _enemy_turn() -> void:
@@ -146,6 +189,8 @@ func _enemy_turn() -> void:
  
 func _enemy_attack() -> void:
 	if player_hp >= 1:
+		if enemy_animation.animation == "default":
+			enemy_animation.play("attack")
 		total_enemy_atk = max(0, enemy_atk - Global.shield_amount)
 		player_hp = max(0, player_hp - total_enemy_atk)
 		enemy_turn_change()
@@ -181,22 +226,26 @@ func tech_damage_check(tech_data: tech_resource) -> void:
 	enemy_hp = max(0,enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
 	player_tp = player_tp - tech_data.tech_tp
-	
+
 func _tech_options(tech: String) -> void:
 	if player_turn == true and enemy_turn == false:
-		var _current_tech = Global.equipped_tech
-		tech_data = Global.techs[tech]
-		tech_damage_check(tech_data)
-		tech_options.hide()
-		options_button.show()
-	if enemy_hp == 0:
+		if enemy_hp >= 1:
+			var _current_tech = Global.equipped_tech
+			tech_data = Global.techs[tech]
+			tech_damage_check(tech_data)
+			tech_options.hide()
+			options_button.show()
+			player_turn_change()
+		if enemy_hp == 0:
 			xp_earn = enemy_data.xp_give
 			print(player_hp)
 			battle_end()
-
+			
 func _player_attack_finish() -> void:
-	player_turn_change()
 	player_animation.play("default")
+	enemy_animation.play("default")
+
+func _enemy_attack_finish() -> void:
 	enemy_animation.play("default")
 
 func _on_option_1_pressed() -> void:
@@ -273,21 +322,29 @@ func battle_end() -> void:
 	Global.battle_hp_update(player_hp)
 	Global.battle_tp_update(player_tp)
 	Global.battle_xp_update(xp_earn)
+	options_button.hide()
+	Battle_end.show()
+	learn_tech_yes.hide()
+	learn_tech_no.hide()
+	learn_label.show()
 	if Global.new_tech != null:
-		print("Show UI")
+		learn_label.text = "Show UI"
+		ui_display_timer.start()
 		show_learn_ui()
 	elif Global.new_tech == null:
-		print("Finish Battle")
-		finish_battle()
+		learn_label.text = "Finish Battle"
+		ui_display_timer.start()
+
+func ui_display_end() -> void:
+	finish_battle()
 
 func _escape() -> void:
 	if player_turn == true and enemy_turn == false:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/map_scene/overworld.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/overworld.tscn")
+
 	
 func replace_tech() -> void:
-	Battle_end.hide()
 	replacing_tech = true
-	options_button.hide()
 	tech_options.show()
 	var tech_buttons = [tech_1, tech_2, tech_3, tech_4]
 	for i in range(4):
@@ -300,7 +357,6 @@ func not_replace_tech() -> void:
 	learn_label.hide()
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
-
 	finish_battle()
 
 func show_learn_ui():
@@ -317,4 +373,4 @@ func show_learn_ui():
 
 func finish_battle():
 	Global.floor_require = true
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/overworld.tscn")

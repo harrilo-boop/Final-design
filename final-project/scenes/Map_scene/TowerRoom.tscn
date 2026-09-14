@@ -5,17 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://c50lf3k03pa2f" path="res://scenes/Object_scene/door.tscn" id="2_jw7tw"]
 [ext_resource type="PackedScene" uid="uid://g3x01mdihldn" path="res://scenes/Object_scene/itembox.tscn" id="4_tp0t4"]
 [ext_resource type="PackedScene" uid="uid://bocov7t2rxj7c" path="res://scenes/Character_scene/enemy.tscn" id="5_obu14"]
+[ext_resource type="PackedScene" uid="uid://grvr2mlxtj1t" path="res://scenes/Object_scene/revive_stop.tscn" id="6_8cdyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp0t4"]
 size = Vector2(372, 7)
 
-[node name="Room" type="Node2D" unique_id=423902231 node_paths=PackedStringArray("enemy_body", "enemy_collision", "treasure_area", "treasure_body", "treasure", "enter_require")]
+[node name="Room" type="Node2D" unique_id=423902231 node_paths=PackedStringArray("enemy_body", "enemy_collision", "treasure_area", "treasure_body", "treasure", "revive_area", "revive_collision", "revive_body", "enter_require")]
 script = ExtResource("1_g3mfm")
 enemy_body = NodePath("Enemy")
 enemy_collision = NodePath("Enemy/CollisionShape2D")
 treasure_area = NodePath("TreasureBox")
 treasure_body = NodePath("TreasureBox/StaticBody2D/CollisionShape2D")
 treasure = NodePath("TreasureBox/CollisionShape2D")
+revive_area = NodePath("ReviveStop")
+revive_collision = NodePath("ReviveStop/CollisionShape2D")
+revive_body = NodePath("ReviveStop/StaticBody2D/CollisionShape2D")
 enter_require = NodePath("Enter_require/CollisionShape2D")
 
 [node name="player" parent="." unique_id=88700311 instance=ExtResource("2_h20ji")]
@@ -31,7 +35,7 @@ level_to_load = "return_floor"
 destination_tag = "Door_next"
 
 [node name="CollisionShape2D" parent="Door_enter/Door" index="0" unique_id=1285604296]
-position = Vector2(0, 500)
+position = Vector2(0, 650)
 
 [node name="Marker2D" parent="Door_enter/Door" index="1" unique_id=1382765507]
 position = Vector2(3, 289)
@@ -67,7 +71,17 @@ debug_color = Color(0.6220781, 0.5339371, 0.9965858, 0.41960785)
 
 [node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("5_obu14")]
 
+[node name="ReviveStop" parent="." unique_id=1496619155 instance=ExtResource("6_8cdyn")]
+
+[node name="CollisionShape2D" parent="ReviveStop" index="0" unique_id=264653727]
+z_index = -2
+scale = Vector2(2.25, 2.25)
+
+[node name="AnimatedSprite2D" parent="ReviveStop" index="1" unique_id=1201622666]
+z_index = -1
+
 [editable path="Door_enter/Door"]
 [editable path="Door_leave/Door"]
 [editable path="TreasureBox"]
 [editable path="Enemy"]
+[editable path="ReviveStop"]

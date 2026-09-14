@@ -3,12 +3,20 @@
 [ext_resource type="Script" uid="uid://crscq0jn3a2rj" path="res://script/System_script/battle.gd" id="1_cve37"]
 [ext_resource type="Script" uid="uid://cdhyyklnof0xc" path="res://script/Resource_script/resource_tech.gd" id="2_4uc4m"]
 [ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="3_v4c7e"]
-[ext_resource type="Texture2D" uid="uid://h4tma5qm6pvx" path="res://asset/Enemy/E01A slime attacked.png" id="4_35c1n"]
 [ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/Resource_script/resource_item.gd" id="4_xb7t0"]
 [ext_resource type="Texture2D" uid="uid://bwikdaf5gtidb" path="res://asset/Enemy/E01B slime battle.png" id="5_5hhvv"]
+[ext_resource type="FontFile" uid="uid://stjrr0ikgqnm" path="res://asset/Font/boldpixels.ttf" id="5_ivdf3"]
 [ext_resource type="Texture2D" uid="uid://i434c1seg06n" path="res://asset/Player/attack/Character_player_attack0006.png" id="6_118um"]
+[ext_resource type="Texture2D" uid="uid://dw0lg6a5gncca" path="res://asset/UI/health_bar0005.png" id="6_i3xtw"]
+[ext_resource type="Texture2D" uid="uid://146b0gu1tm11" path="res://asset/UI/health_bar0000.png" id="7_ie8os"]
 [ext_resource type="Texture2D" uid="uid://crkjr8xl1d7c" path="res://asset/Player/attack/Character_player_attack0007.png" id="7_v4c7e"]
+[ext_resource type="Texture2D" uid="uid://dv4epjnsr08vu" path="res://asset/UI/health_bar0004.png" id="8_qeiqy"]
+[ext_resource type="Texture2D" uid="uid://bjc8hatkk5wg1" path="res://asset/Enemy/E01A slime attack.png" id="8_v4c7e"]
 [ext_resource type="Texture2D" uid="uid://cb5wbwqk3ll20" path="res://asset/Player/attack/Character_player_attack0008.png" id="8_xb7t0"]
+[ext_resource type="Texture2D" uid="uid://cj022ufonppdw" path="res://asset/UI/health_bar0003.png" id="9_5147d"]
+[ext_resource type="Texture2D" uid="uid://i84bp5ds3fyr" path="res://asset/Enemy/E01D slime attacked.png" id="9_xb7t0"]
+[ext_resource type="Texture2D" uid="uid://otuj5kx5cwur" path="res://asset/UI/health_bar0002.png" id="10_dpktx"]
+[ext_resource type="Texture2D" uid="uid://da5kvw0pw1qmc" path="res://asset/UI/health_bar0001.png" id="11_pfq24"]
 
 [sub_resource type="Resource" id="Resource_ivdf3"]
 script = ExtResource("2_4uc4m")
@@ -23,12 +31,13 @@ script = ExtResource("4_xb7t0")
 metadata/_custom_type_script = "uid://dbd68g4nt4do"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
-font_size = 40
+font = ExtResource("5_ivdf3")
+font_size = 60
 font_color = Color(0.33660764, 0.3366076, 0.3366076, 1)
-outline_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_a7cga"]
-font_size = 40
+font = ExtResource("5_ivdf3")
+font_size = 60
 font_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7cga"]
@@ -37,9 +46,107 @@ bg_color = Color(0.70980394, 0.14117648, 0.15294118, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqpje"]
 bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_cve37"]
-font_size = 40
-font_color = Color(0.7309131, 0.7309131, 0.73091304, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u8j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i3xtw")
+}],
+"loop": true,
+"name": &"0%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ie8os")
+}],
+"loop": true,
+"name": &"100%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qeiqy")
+}],
+"loop": true,
+"name": &"20%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5147d")
+}],
+"loop": true,
+"name": &"40%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dpktx")
+}],
+"loop": true,
+"name": &"60%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_pfq24")
+}],
+"loop": true,
+"name": &"80%",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_imvy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i3xtw")
+}],
+"loop": true,
+"name": &"0%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ie8os")
+}],
+"loop": true,
+"name": &"100%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qeiqy")
+}],
+"loop": true,
+"name": &"20%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5147d")
+}],
+"loop": true,
+"name": &"40%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dpktx")
+}],
+"loop": true,
+"name": &"60%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_pfq24")
+}],
+"loop": true,
+"name": &"80%",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acoj8"]
 
@@ -90,7 +197,8 @@ border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4c7e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ebmv"]
-font_size = 50
+font = ExtResource("5_ivdf3")
+font_size = 70
 font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5r8l"]
@@ -131,9 +239,17 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_35c1n")
+"texture": ExtResource("8_v4c7e")
 }],
-"loop": true,
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_xb7t0")
+}],
+"loop": false,
 "name": &"attacked",
 "speed": 5.0
 }, {
@@ -141,19 +257,21 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_5hhvv")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "enemy_bar", "player_animation", "enemy_animation", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label")]
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "player_bar_ui", "enemy_bar", "enemy_bar_ui", "player_animation", "enemy_animation", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label", "ui_display_timer")]
 script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
 enemy_ui = NodePath("Stats_UI/Enemyhp_label")
 change_turn = NodePath("Change_turn")
 player_bar = NodePath("Stats_UI/Playerhp")
+player_bar_ui = NodePath("Stats_UI/Playerhp/playerhp_sprite")
 enemy_bar = NodePath("Stats_UI/Enemyhp")
+enemy_bar_ui = NodePath("Stats_UI/Enemyhp/enemyhp_sprite")
 player_animation = NodePath("Battle_animation/Player_animation")
 enemy_animation = NodePath("Battle_animation/Enemy_animation")
 options_button = NodePath("Options_button")
@@ -177,6 +295,7 @@ Battle_end = NodePath("Battle_End")
 learn_tech_yes = NodePath("Battle_End/PanelContainer/Learn_yes")
 learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
 learn_label = NodePath("Battle_End/learn_label")
+ui_display_timer = NodePath("Battle_End/Timer")
 
 [node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
 offset_top = 306.0
@@ -211,6 +330,7 @@ offset_bottom = 626.0
 color = Color(0.3779188, 0.37791887, 0.37791884, 0.54509807)
 
 [node name="Change_turn" type="Timer" parent="." unique_id=1282682776]
+wait_time = 2.0
 one_shot = true
 
 [node name="Stats_UI" type="CanvasLayer" parent="." unique_id=1623192407]
@@ -232,15 +352,22 @@ text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Playerhp" type="ProgressBar" parent="Stats_UI" unique_id=746096015]
-offset_left = 70.0
-offset_top = 371.0
-offset_right = 439.0
+offset_left = 85.0
+offset_top = 374.0
+offset_right = 421.0
 offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
 max_value = 20.0
 step = 1.0
 show_percentage = false
+
+[node name="playerhp_sprite" type="AnimatedSprite2D" parent="Stats_UI/Playerhp" unique_id=1074885984]
+position = Vector2(169.00005, 23)
+scale = Vector2(11.5, 11.5)
+sprite_frames = SubResource("SpriteFrames_6u8j8")
+animation = &"100%"
+autoplay = "100%"
 
 [node name="Enemyhp_label" type="Label" parent="Stats_UI" unique_id=1139744857]
 offset_left = 705.0
@@ -251,9 +378,9 @@ text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Enemyhp" type="ProgressBar" parent="Stats_UI" unique_id=2081252063]
-offset_left = 703.0
-offset_top = 369.0
-offset_right = 1072.0
+offset_left = 715.0
+offset_top = 373.0
+offset_right = 1058.0
 offset_bottom = 406.0
 theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
@@ -261,14 +388,15 @@ max_value = 10.0
 step = 1.0
 show_percentage = false
 
-[node name="Item_label" type="Label" parent="Stats_UI" unique_id=512269288]
-offset_left = 39.0
-offset_top = 54.0
-offset_right = 235.0
-offset_bottom = 101.0
-label_settings = SubResource("LabelSettings_cve37")
+[node name="enemyhp_sprite" type="AnimatedSprite2D" parent="Stats_UI/Enemyhp" unique_id=1223148650]
+position = Vector2(172, 23)
+scale = Vector2(11.5, 11.5)
+sprite_frames = SubResource("SpriteFrames_imvy4")
+animation = &"100%"
+autoplay = "100%"
 
 [node name="Options_button" type="Control" parent="." unique_id=478916685]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -287,7 +415,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_acoj8")
 [node name="Attack" type="Button" parent="Options_button/Attack_button" unique_id=993049186]
 light_mask = 2
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 text = "Attack"
 
 [node name="Tech_button" type="PanelContainer" parent="Options_button" unique_id=722236232]
@@ -300,7 +429,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4ebmv")
 
 [node name="Tech" type="Button" parent="Options_button/Tech_button" unique_id=1098732909]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 text = "Technique
 "
 
@@ -314,7 +444,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_17rcu")
 
 [node name="Item" type="Button" parent="Options_button/Item_button" unique_id=1580386765]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 text = "Item
 "
 
@@ -328,10 +459,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_i4isp")
 
 [node name="Escape" type="Button" parent="Options_button/Escape_button" unique_id=137392479]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -349,7 +482,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3odsw")
 
 [node name="Option1" type="Button" parent="Tech_options/Option1_button" unique_id=746009828]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 disabled = true
 text = "Option1"
 
@@ -363,7 +497,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qvrq4")
 
 [node name="Option2" type="Button" parent="Tech_options/Option2_button" unique_id=2138890355]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 disabled = true
 text = "Option2"
 
@@ -377,7 +512,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_12hua")
 
 [node name="Option3" type="Button" parent="Tech_options/Option3_button" unique_id=1542140674]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 disabled = true
 text = "Option3
 "
@@ -392,7 +528,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_b4e4d")
 
 [node name="Option4" type="Button" parent="Tech_options/Option4_button" unique_id=1251498681]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 40
 disabled = true
 text = "Option4"
 
@@ -509,6 +646,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 70.0
@@ -517,6 +655,7 @@ offset_right = 1069.0
 offset_bottom = 629.0
 
 [node name="learn_label" type="Label" parent="Battle_End" unique_id=1848710145]
+visible = false
 layout_mode = 0
 offset_left = 27.0
 offset_top = 119.0
@@ -535,7 +674,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
 
 [node name="Learn_yes" type="Button" parent="Battle_End/PanelContainer" unique_id=891959614]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxFlat_5j1hs")
 text = "YES"
 
@@ -549,13 +689,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_h5r8l")
 
 [node name="Learn_no" type="Button" parent="Battle_End/PanelContainer2" unique_id=1364264214]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("5_ivdf3")
+theme_override_font_sizes/font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxFlat_ft0od")
 text = "NO"
+
+[node name="Timer" type="Timer" parent="Battle_End" unique_id=871069521]
+wait_time = 2.0
 
 [node name="Battle_animation" type="Node" parent="." unique_id=1134554578]
 
 [node name="Player_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=2117135216]
+visible = false
 position = Vector2(315, 128)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ivdf3")
@@ -563,9 +708,11 @@ animation = &"attack"
 autoplay = "default"
 
 [node name="Enemy_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1459097158]
+visible = false
 position = Vector2(826.00006, 170)
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_e1vla")
+animation = &"attacked"
 autoplay = "default"
 
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
@@ -586,4 +733,6 @@ autoplay = "default"
 [connection signal="pressed" from="Item_options/Item_option7/Item_7" to="." method="_on_item_7_pressed"]
 [connection signal="pressed" from="Battle_End/PanelContainer/Learn_yes" to="." method="replace_tech"]
 [connection signal="pressed" from="Battle_End/PanelContainer2/Learn_no" to="." method="not_replace_tech"]
+[connection signal="timeout" from="Battle_End/Timer" to="." method="ui_display_end"]
 [connection signal="animation_finished" from="Battle_animation/Player_animation" to="." method="_player_attack_finish"]
+[connection signal="animation_finished" from="Battle_animation/Enemy_animation" to="." method="_enemy_attack_finish"]

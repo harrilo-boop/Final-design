@@ -13,11 +13,15 @@ script = SubResource("GDScript_u2ss0")
 
 [node name="player" parent="." unique_id=88700311 instance=ExtResource("1_feswv")]
 
+[node name="Current_level_label" parent="player" index="6" unique_id=1776112301]
+z_index = 1
+
 [node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("2_2wux1")]
-z_index = -1
+z_index = -2
 position = Vector2(242, 3)
 
 [node name="Sprite2D" parent="Enemy" index="1" unique_id=175871390]
+visible = false
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_a4k1r")
 
@@ -38,6 +42,7 @@ position = Vector2(0, 0)
 [node name="Door2" type="Node" parent="." unique_id=589005557]
 
 [node name="Door" parent="Door2" unique_id=1417771912 instance=ExtResource("3_wqr2r")]
+visible = false
 door_tag = "To_tower"
 level_to_load = "first_floor"
 destination_tag = "Door_enter"
@@ -61,8 +66,7 @@ animation = &"rare_default"
 autoplay = "rare_default"
 frame_progress = 0.4176759
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1376892184]
-
+[editable path="player"]
 [editable path="Enemy"]
 [editable path="Door/Door_town"]
 [editable path="Door2/Door"]

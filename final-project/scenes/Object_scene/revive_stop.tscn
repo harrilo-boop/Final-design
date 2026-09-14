@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://grvr2mlxtj1t"]
+
+[ext_resource type="Script" uid="uid://minb31yd67xq" path="res://scenes/Object_scene/revive_stop.gd" id="1_14xtj"]
+[ext_resource type="Texture2D" uid="uid://cgwnov6f68dmr" path="res://asset/Items/015 Heal Fountain Full.png" id="2_yxryi"]
+[ext_resource type="Texture2D" uid="uid://coxyfpy87hrj6" path="res://asset/Items/016 Heal Fountain Null.png" id="3_5uwkg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_inv8v"]
+radius = 100.49261
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0itro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yxryi")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5uwkg")
+}],
+"loop": true,
+"name": &"null",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxryi"]
+radius = 158.0
+height = 316.0
+
+[node name="Area2D" type="Area2D" unique_id=1496619155 node_paths=PackedStringArray("heal_timer", "heal_animation")]
+script = ExtResource("1_14xtj")
+heal_timer = NodePath("Heal_timer")
+heal_animation = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=264653727]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_inv8v")
+debug_color = Color(0.85470706, 0.31595555, 0.49797618, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1201622666]
+position = Vector2(0, -50)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_0itro")
+animation = &"full"
+autoplay = "full"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=735806599]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1674752228]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_yxryi")
+
+[node name="Heal_timer" type="Timer" parent="." unique_id=1330464931]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_player_revive"]
+[connection signal="body_exited" from="." to="." method="_player_leave_revive"]
+[connection signal="timeout" from="Heal_timer" to="." method="_heal_done"]

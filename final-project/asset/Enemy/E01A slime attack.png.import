@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h4tma5qm6pvx"
-path="res://.godot/imported/E01A slime attacked.png-16aa46a3546b9515c27e71ed249d8859.ctex"
+uid="uid://bjc8hatkk5wg1"
+path="res://.godot/imported/E01A slime attack.png-08e11ca6375558249e784aae0898aafd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Enemy/E01A slime attacked.png"
-dest_files=["res://.godot/imported/E01A slime attacked.png-16aa46a3546b9515c27e71ed249d8859.ctex"]
+source_file="res://asset/Enemy/E01A slime attack.png"
+dest_files=["res://.godot/imported/E01A slime attack.png-08e11ca6375558249e784aae0898aafd.ctex"]
 
 [params]
 

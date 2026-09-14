@@ -7,6 +7,9 @@ class_name tower_room
 @export var treasure_area: Area2D
 @export var treasure_body: CollisionShape2D
 @export var treasure: CollisionShape2D
+@export var revive_area: Area2D
+@export var revive_collision: CollisionShape2D
+@export var revive_body: CollisionShape2D
 @export var enter_require: CollisionShape2D
 var floor_require: bool = true
 
@@ -16,22 +19,28 @@ func _ready() -> void:
 	treasure_area.hide()
 	treasure.disabled = true
 	treasure_body.disabled = true
-
+	revive_area.hide()
+	revive_collision.disabled = true
+	revive_body.disabled = true
+	if Global.last_scene == "Tower_floor":
+		enter_require.disabled = false
 	floor_require = Global.floor_require
 	var current_floor_data = TowerManager.get_current_floor()
-	print("Current Floor: ", current_floor_data.floor_number)
 	check_type(current_floor_data)
+
 
 func check_type(floor: level_resource) -> void:
 	match floor.floor_type:
-		floor.FloorType.BATTLE:
+		level_resource.FloorType.BATTLE:
 			create_battle_room()
-		floor.FloorType.RECOVERY:
+		level_resource.FloorType.RECOVERY:
 			create_recovery_room()
-		floor.FloorType.TREASURE:
+		level_resource.FloorType.TREASURE:
 			create_treasure_room()
-		floor.FloorType.BOSS:
+		level_resource.FloorType.BOSS:
 			create_boss_room()
+	
+	requirement_check()
 
 func create_battle_room() -> void:
 	print("Battle Room")
@@ -40,6 +49,9 @@ func create_battle_room() -> void:
 
 func create_recovery_room() -> void:
 	print("Recovery Room")
+	revive_area.show()
+	revive_collision.disabled = false
+	revive_body.disabled = false
 
 func create_treasure_room() -> void:
 	print("Treasure Room")
@@ -52,7 +64,9 @@ func create_boss_room() -> void:
 
 func requirement_check() -> void:
 	if Global.floor_require == true:
+		enemy_body.hide()
+		enemy_collision.disabled = true
 		enter_require.hide()
-		enter_require.disabled = false
+		enter_require.disabled = true
 		print("Go to Next Floor Allowed")
 #Door requirement problem wait for fixed

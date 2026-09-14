@@ -19,6 +19,7 @@ var current_floor:int = 0
 @export var timer: Timer
 @export var animatesprite: AnimatedSprite2D
 @export var current_level: Label
+@export var hint_label: Label
 
 func _ready() -> void:
 	sword_area.monitoring = false
@@ -84,7 +85,6 @@ func update_hitbox_offset() -> void:
 		else:
 			sword_area.position = Vector2(0, -distance)  
 
-
 #Finding which direction for animation movement
 func update_animation(direction: Vector2) -> void:
 	if animatesprite == null:
@@ -146,8 +146,7 @@ func _on_sword_hit(body: Node) -> void:
 func _attack_to_battle() -> void:
 	sword_area.monitoring = false
 	sword_collision.disabled = true
-	
-	
+
 #Enter a battle and change the scene 
 func _enter_battle() -> void: 
 	Global.last_position = global_position

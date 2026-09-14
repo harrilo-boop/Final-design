@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dknxesbl6mi4m" path="res://asset/Player/attack/Character_player_attack0003.png" id="17_276u7"]
 [ext_resource type="Texture2D" uid="uid://q0uarwb1t65v" path="res://asset/Player/attack/Character_player_attack0004.png" id="18_dqs86"]
 [ext_resource type="Texture2D" uid="uid://d4d1tnfd6gylq" path="res://asset/Player/attack/Character_player_attack0005.png" id="19_l0wk1"]
+[ext_resource type="FontFile" uid="uid://stjrr0ikgqnm" path="res://asset/Font/boldpixels.ttf" id="20_tx33l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 44.102154
@@ -73,7 +74,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"left",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -122,8 +123,10 @@ animations = [{
 size = Vector2(60.6875, 64.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4u46h"]
-font_size = 40
-font_color = Color(0.930951, 0.7897842, 0.2820671, 0.92941177)
+font = ExtResource("20_tx33l")
+font_size = 60
+outline_size = 7
+outline_color = Color(0.015971804, 0.015971802, 0.015971802, 1)
 
 [node name="player" type="CharacterBody2D" unique_id=88700311 node_paths=PackedStringArray("player", "pivot", "sword_area", "sword_collision", "timer", "animatesprite", "current_level") groups=["player"]]
 script = ExtResource("1_mvd3h")
@@ -139,10 +142,9 @@ current_level = NodePath("Current_level_label")
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=398273417]
-position = Vector2(0, -25)
+position = Vector2(0, -30.000004)
 scale = Vector2(2.9542499, 2.945375)
 sprite_frames = SubResource("SpriteFrames_81s8p")
-animation = &"down_attack"
 autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=686294838]
@@ -159,10 +161,11 @@ debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
 
 [node name="Current_level_label" type="Label" parent="." unique_id=1776112301]
-offset_left = -567.0
-offset_top = -319.0
-offset_right = -521.0
-offset_bottom = -264.0
+visible = false
+offset_left = 486.0
+offset_top = -300.0
+offset_right = 554.0
+offset_bottom = -245.0
 text = "00"
 label_settings = SubResource("LabelSettings_4u46h")
 
