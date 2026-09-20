@@ -3,7 +3,6 @@ class_name enemy_resource
 
 @export var enemy_icon: Texture2D
 @export var enemy_name: String
-@export var enemy_describe: String
 @export var weak: weakness
 @export var resist:resistance
 @export var enemy_atk:int = 1

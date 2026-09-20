@@ -161,10 +161,9 @@ debug_color = Color(0.6735175, 0.32460558, 0.9711192, 0.41960785)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1230885932]
 
 [node name="Current_level_label" type="Label" parent="." unique_id=1776112301]
-visible = false
-offset_left = 486.0
+offset_left = 495.0
 offset_top = -300.0
-offset_right = 554.0
+offset_right = 563.0
 offset_bottom = -245.0
 text = "00"
 label_settings = SubResource("LabelSettings_4u46h")

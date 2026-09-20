@@ -340,7 +340,7 @@ func ui_display_end() -> void:
 
 func _escape() -> void:
 	if player_turn == true and enemy_turn == false:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/overworld.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")
 
 	
 func replace_tech() -> void:
@@ -373,4 +373,4 @@ func show_learn_ui():
 
 func finish_battle():
 	Global.floor_require = true
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/overworld.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")

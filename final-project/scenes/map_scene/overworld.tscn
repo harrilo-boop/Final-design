@@ -21,7 +21,6 @@ z_index = -2
 position = Vector2(242, 3)
 
 [node name="Sprite2D" parent="Enemy" index="1" unique_id=175871390]
-visible = false
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_a4k1r")
 
@@ -42,7 +41,6 @@ position = Vector2(0, 0)
 [node name="Door2" type="Node" parent="." unique_id=589005557]
 
 [node name="Door" parent="Door2" unique_id=1417771912 instance=ExtResource("3_wqr2r")]
-visible = false
 door_tag = "To_tower"
 level_to_load = "first_floor"
 destination_tag = "Door_enter"

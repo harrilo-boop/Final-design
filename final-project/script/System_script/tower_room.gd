@@ -11,6 +11,7 @@ class_name tower_room
 @export var revive_collision: CollisionShape2D
 @export var revive_body: CollisionShape2D
 @export var enter_require: CollisionShape2D
+@export var tower_door: AnimatedSprite2D
 var floor_require: bool = true
 
 func _ready() -> void:
@@ -25,6 +26,8 @@ func _ready() -> void:
 	if Global.last_scene == "Tower_floor":
 		enter_require.disabled = false
 	floor_require = Global.floor_require
+	if floor_require == false:
+		tower_door.play("Closed")
 	var current_floor_data = TowerManager.get_current_floor()
 	check_type(current_floor_data)
 
@@ -64,6 +67,7 @@ func create_boss_room() -> void:
 
 func requirement_check() -> void:
 	if Global.floor_require == true:
+		tower_door.play("Opened")
 		enemy_body.hide()
 		enemy_collision.disabled = true
 		enter_require.hide()
