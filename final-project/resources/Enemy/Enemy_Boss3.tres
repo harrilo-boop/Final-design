@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://8ngbowx588qw"]
+
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_hpukk"]
+
+[resource]
+script = ExtResource("1_hpukk")
+enemy_name = "Wolf"
+weak = 1
+resist = 2
+enemy_atk = 15
+metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

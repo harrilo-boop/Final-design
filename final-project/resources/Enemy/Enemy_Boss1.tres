@@ -9,4 +9,5 @@ weak = 3
 resist = 2
 enemy_atk = 6
 enemy_hp = 45
+xp_give = 2000
 metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

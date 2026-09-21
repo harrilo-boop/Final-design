@@ -6,8 +6,9 @@ class_name enemy_resource
 @export var weak: weakness
 @export var resist:resistance
 @export var enemy_atk:int = 1
-@export var enemy_hp:int = 0
-@export var xp_give:int = 1000
+@export var enemy_hp:int = 1
+@export var xp_give:int = 1
+@export var appear_floor:int = 1
 
 
 

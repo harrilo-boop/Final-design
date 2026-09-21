@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://g3x01mdihldn" path="res://scenes/Object_scene/itembox.tscn" id="4_tp0t4"]
 [ext_resource type="PackedScene" uid="uid://bocov7t2rxj7c" path="res://scenes/Character_scene/enemy.tscn" id="5_obu14"]
 [ext_resource type="PackedScene" uid="uid://grvr2mlxtj1t" path="res://scenes/Object_scene/revive_stop.tscn" id="6_8cdyn"]
+[ext_resource type="Script" uid="uid://0smys3eofsqu" path="res://script/Global_script/enemy_manager.gd" id="10_ler88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bbvdc"]
 texture = ExtResource("2_kdajx")
@@ -363,6 +364,9 @@ scale = Vector2(2.25, 2.25)
 
 [node name="AnimatedSprite2D" parent="ReviveStop" index="1" unique_id=1201622666]
 z_index = -1
+
+[node name="Node2" type="Node" parent="." unique_id=441843094]
+script = ExtResource("10_ler88")
 
 [editable path="Door_enter/Door"]
 [editable path="Door_leave/Door"]

@@ -8,5 +8,5 @@ enemy_name = "Enemy_Weak04"
 weak = 4
 enemy_atk = 3
 enemy_hp = 15
-xp_give = 15
+xp_give = 30
 metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

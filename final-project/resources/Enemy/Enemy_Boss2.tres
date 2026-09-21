@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://cvau35ph0vc65"]
+
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_cuddt"]
+
+[resource]
+script = ExtResource("1_cuddt")
+enemy_name = "Bat"
+weak = 3
+resist = 4
+enemy_atk = 10
+enemy_hp = 30
+metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

@@ -97,15 +97,6 @@ func _ready() -> void:
 	equipped_tech = Global.equipped_tech
 	player_animation.flip_h = true
 	#Enemy data----------------------------------
-	print("Current floor: ", Global.current_floor)
-	print("Enemy count: ", EnemyManager.floor_enemies.size())
-
-	enemy_data = EnemyManager.get_enemy_for_floor(Global.current_floor)
-
-	if enemy_data == null:
-		push_error("No enemy data for floor: " + str(Global.current_floor))
-		return
-
 	enemy_hp = enemy_data.enemy_hp
 	max_enemy_hp = enemy_data.enemy_hp
 	enemy_atk = enemy_data.enemy_atk

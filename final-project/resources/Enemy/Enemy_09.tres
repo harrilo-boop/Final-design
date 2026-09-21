@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy_resource" format=3 uid="uid://cdhrgjl3cflns"]
+
+[ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="1_hj3mt"]
+
+[resource]
+script = ExtResource("1_hj3mt")
+enemy_name = "Enemy_Strong01"
+weak = 1
+resist = 3
+enemy_atk = 16
+enemy_hp = 30
+xp_give = 250
+metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

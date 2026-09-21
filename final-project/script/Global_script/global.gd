@@ -84,6 +84,27 @@ var items = {
 	"Strong Technique Potion": load("res://resources/Item/Heal_item/StrongTechniquePointPotion.tres")
 }
 
+var weak_enemies = {
+	"Weak 1": load("res://resources/Enemy/Enemy_01.tres"),
+	"Weak 2": load("res://resources/Enemy/Enemy_02.tres"),
+	"Weak 3": load("res://resources/Enemy/Enemy_03.tres"),
+	"Weak 4": load("res://resources/Enemy/Enemy_04.tres")
+}
+
+var normal_enemies = {
+	"Normal 1": load("res://resources/Enemy/Enemy_05.tres"),
+	"Normal 2": load("res://resources/Enemy/Enemy_06.tres"),
+	"Normal 3": load("res://resources/Enemy/Enemy_07.tres"),
+	"Normal 4": load("res://resources/Enemy/Enemy_08.tres")
+}
+
+var strong_enemies = {
+	"Strong 1": load("res://resources/Enemy/Enemy_09.tres"),
+	"Strong 2": load("res://resources/Enemy/Enemy_10.tres"),
+	"Strong 3": load("res://resources/Enemy/Enemy_11.tres"),
+	"Strong 4": load("res://resources/Enemy/Enemy_12.tres")
+}
+
 #Current technique using as start condition
 func _ready() -> void:
 	equipped_tech[0] = techs["Flame"]
