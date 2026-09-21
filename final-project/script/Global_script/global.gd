@@ -20,14 +20,14 @@ var equipped_tech:Array[tech_resource] = [
 	null,
 	null
 ]
-
+var pending_techs: Array[tech_resource] = []
 var tech_replace:bool = false
 var inventory: Inventory
 
 #Player's experience system
 var player_xp:int = 0
 var xp_earn: int = 0
-var xp_level:int = 0
+var xp_level:int = 1
 var xp_needed:int = 0
 var max_level:int = 50
 var current_floor:int = 0
@@ -110,12 +110,12 @@ func hp_max_increase(levelup_hp: int) -> int:
 
 func tp_max_increase(levelup_tp: int) -> int:
 	levelup_tp = max_tp
-	var tp_power:float = 1.1
-	return int(levelup_tp * pow(xp_level, tp_power))
+	var tp_power:float = 1.05
+	return int(levelup_tp * tp_power)
 
 func atk_max_increase(current_atk:int) -> int:
 	current_atk = player_atk
-	var atk_power:float = 1.2
+	var atk_power:float = 1.005
 	return int(current_atk * pow(xp_level, atk_power))
 
 func replace_player_tech(index: int, tech: tech_resource) -> void:
@@ -130,7 +130,7 @@ func battle_xp_update(xp_gain: int) -> bool:
 #Setting the xp requirement for every level
 func level_up() -> int:
 	var basic_xp:int = 10
-	var xp_power:float = 1.5 
+	var xp_power:float = 1.2
 	return int(basic_xp * pow(xp_level, xp_power))
 
 #Checkinng whever can player level up
@@ -151,7 +151,10 @@ func check_levelup():
 func check_new_tech() -> void:
 	for tech in techs.values():
 		if tech.required_level == xp_level:
-			learn_new_skill(tech)
+			if equipped_tech.has(tech):
+				continue
+			if not pending_techs.has(tech):
+				pending_techs.append(tech)
 
 func learn_new_skill(new_tech: tech_resource) -> void:
 	if equipped_tech.has(new_tech):
@@ -161,5 +164,10 @@ func learn_new_skill(new_tech: tech_resource) -> void:
 			replace_player_tech(i, new_tech)
 			print("Learned ", new_tech.tech_name)
 			return
-	self.new_tech = new_tech
-	
+	if not pending_techs.has(new_tech):
+		pending_techs.append(new_tech)
+
+func get_next_pending_tech() -> tech_resource:
+	if pending_techs.is_empty():
+		return null
+	return pending_techs.pop_front()

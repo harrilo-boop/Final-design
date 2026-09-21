@@ -6,5 +6,5 @@
 script = ExtResource("1_1y6vl")
 enemy_name = "Testing enemy 1"
 enemy_hp = 10
-xp_give = 9
+xp_give = 1
 metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

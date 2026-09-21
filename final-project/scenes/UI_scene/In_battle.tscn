@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://i84bp5ds3fyr" path="res://asset/Enemy/E01D slime attacked.png" id="9_xb7t0"]
 [ext_resource type="Texture2D" uid="uid://otuj5kx5cwur" path="res://asset/UI/health_bar0002.png" id="10_dpktx"]
 [ext_resource type="Texture2D" uid="uid://da5kvw0pw1qmc" path="res://asset/UI/health_bar0001.png" id="11_pfq24"]
+[ext_resource type="Script" uid="uid://0smys3eofsqu" path="res://script/Global_script/enemy_manager.gd" id="18_ie8os"]
 
 [sub_resource type="Resource" id="Resource_ivdf3"]
 script = ExtResource("2_4uc4m")
@@ -714,6 +715,9 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_e1vla")
 animation = &"attacked"
 autoplay = "default"
+
+[node name="Enemy_Manager" type="Node" parent="." unique_id=1922061483]
+script = ExtResource("18_ie8os")
 
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]

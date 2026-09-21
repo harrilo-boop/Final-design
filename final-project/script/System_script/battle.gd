@@ -3,7 +3,7 @@ extends Node2D
 
 var player_turn:bool = true
 var enemy_turn:bool = false
-var update_stats:bool = false
+var battle_finished: bool = false
 #Player variables
 var player_hp:int = 1
 var max_hp:int = 1
@@ -67,21 +67,13 @@ var total_enemy_atk:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-#connect the autoload data for player---------
-	player_hp = Global.player_hp 
-	max_hp = Global.max_player_hp
-	player_tp = Global.player_tp
-	max_tp = Global.player_tp
-	player_atk = Global.player_atk
-	xp_earn = Global.xp_earn
-	xp_level = Global.xp_level
-	equipped_tech = Global.equipped_tech
-	player_animation.flip_h = true
-#connect the autoload data for enemy-------------
-	enemy_hp = Global.enemy_hp
-	max_enemy_hp = Global.max_enemy_hp
-	enemy_atk = Global.enemy_atk
-#stats about the battle panel--------------------
+	options_button.show()
+	tech_options.hide()
+	item_options.hide()
+	Battle_end.hide()
+	learn_label.hide()
+	learn_tech_yes.hide()
+	learn_tech_no.hide()
 	item_buttons = [
 		item_1,
 		item_2,
@@ -91,13 +83,32 @@ func _ready() -> void:
 		item_6,
 		item_7
 	]
-	options_button.show()
-	tech_options.hide()
-	item_options.hide()
-	Battle_end.hide()
-	learn_label.hide()
-	learn_tech_yes.hide()
-	learn_tech_no.hide()
+	item_choosing = false
+	replacing_tech = false
+	battle_finished = false
+	#Player data---------------------------------
+	player_hp = Global.player_hp
+	max_hp = Global.max_player_hp
+	player_tp = Global.player_tp
+	max_tp = Global.max_tp
+	player_atk = Global.player_atk
+	xp_earn = Global.xp_earn
+	xp_level = Global.xp_level
+	equipped_tech = Global.equipped_tech
+	player_animation.flip_h = true
+	#Enemy data----------------------------------
+	print("Current floor: ", Global.current_floor)
+	print("Enemy count: ", EnemyManager.floor_enemies.size())
+
+	enemy_data = EnemyManager.get_enemy_for_floor(Global.current_floor)
+
+	if enemy_data == null:
+		push_error("No enemy data for floor: " + str(Global.current_floor))
+		return
+
+	enemy_hp = enemy_data.enemy_hp
+	max_enemy_hp = enemy_data.enemy_hp
+	enemy_atk = enemy_data.enemy_atk
 
 func _process(_delta: float) -> void:
 	player_bar.value = player_hp
@@ -105,14 +116,19 @@ func _process(_delta: float) -> void:
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
-	if Input.is_action_just_pressed("ui_cancel") and replacing_tech == false:
-		options_button.show()
-		tech_options.hide()
-	if Input.is_action_just_pressed("ui_cancel") and item_choosing == true:
-		options_button.show()
-		item_options.hide()
-		item_choosing = false
-		
+	if Input.is_action_just_pressed("ui_cancel"):
+		if item_choosing:
+			options_button.show()
+			item_options.hide()
+			item_choosing = false
+		elif replacing_tech:
+			replacing_tech = false
+			tech_options.hide()
+			options_button.show()
+		elif tech_options.visible:
+			tech_options.hide()
+			options_button.show()
+
 #Changing turn by player to enemy
 func player_turn_change() -> void:
 	player_turn = false
@@ -257,13 +273,13 @@ func _on_option_3_pressed() -> void:
 func _on_option_4_pressed() -> void:
 	select_tech(3)
 
-func select_tech(index:int)->void:
+func select_tech(index: int) -> void:
 	if replacing_tech:
 		Global.replace_player_tech(index, Global.new_tech)
 		Global.new_tech = null
 		replacing_tech = false
 		tech_options.hide()
-		finish_battle()
+		show_next_pending_tech()
 		return
 	_tech_options(Global.equipped_tech[index].tech_name)
 
@@ -319,45 +335,55 @@ func _on_item_7_pressed():
 
 #Player's leaving battle settings------------------------------------
 func battle_end() -> void:
+	if battle_finished:
+		return
+	battle_finished = true
 	Global.battle_hp_update(player_hp)
 	Global.battle_tp_update(player_tp)
 	Global.battle_xp_update(xp_earn)
 	options_button.hide()
+	tech_options.hide()
+	item_options.hide()
+	ui_display_timer.stop()
 	Battle_end.show()
-	learn_tech_yes.hide()
-	learn_tech_no.hide()
-	learn_label.show()
-	if Global.new_tech != null:
-		learn_label.text = "Show UI"
-		ui_display_timer.start()
-		show_learn_ui()
-	elif Global.new_tech == null:
-		learn_label.text = "Finish Battle"
-		ui_display_timer.start()
-
+	show_next_pending_tech()
+	
 func ui_display_end() -> void:
 	finish_battle()
+
+func show_next_pending_tech() -> void:
+	Global.new_tech = Global.get_next_pending_tech()
+	if Global.new_tech != null:
+		show_learn_ui()
+	else:
+		learn_label.text = "Battle Finish"
+		learn_tech_yes.hide()
+		learn_tech_no.hide()
+		ui_display_timer.start()
 
 func _escape() -> void:
 	if player_turn == true and enemy_turn == false:
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")
 
-	
+
 func replace_tech() -> void:
 	replacing_tech = true
 	tech_options.show()
 	var tech_buttons = [tech_1, tech_2, tech_3, tech_4]
 	for i in range(4):
-		tech_buttons[i].text = Global.equipped_tech[i].tech_name
+		if Global.equipped_tech[i] != null:
+			tech_buttons[i].text = Global.equipped_tech[i].tech_name
+		else:
+			tech_buttons[i].text = "Blank"
 
 func not_replace_tech() -> void:
 	Global.new_tech = null
 	replacing_tech = false
-	Battle_end.hide()
 	learn_label.hide()
 	learn_tech_yes.hide()
 	learn_tech_no.hide()
-	finish_battle()
+	tech_options.hide()
+	show_next_pending_tech()
 
 func show_learn_ui():
 	player_turn = false
