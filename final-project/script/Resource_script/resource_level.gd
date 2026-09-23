@@ -12,5 +12,4 @@ enum FloorType {
 @export var floor_number:int
 @export var floor_describtion: String
 @export var floor_type:FloorType
-@export var enemy_group: Array
-@export var reward: Array
+@export var enemy_id: String = ""

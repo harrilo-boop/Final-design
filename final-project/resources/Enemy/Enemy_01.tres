@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_exvdy")
+enemy_id = "01"
 enemy_name = "Enemy_Weak01"
 weak = 1
 enemy_atk = 3

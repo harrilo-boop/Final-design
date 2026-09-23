@@ -7,8 +7,6 @@ var battle_finished: bool = false
 #Player variables
 var player_hp:int = 1
 var max_hp:int = 1
-var player_tp:int = 1
-var max_tp:int = 1
 var player_atk:int = 1
 var xp_earn:int = 1
 var xp_level:int = 1
@@ -47,6 +45,7 @@ var total_enemy_atk:int = 0
 @export var tech_data: Resource
 @export var enemy_data: Resource
 @export var item_data: Resource
+@export var level_data: Resource
 @export var tech_1: Button
 @export var tech_2: Button
 @export var tech_3: Button
@@ -89,14 +88,20 @@ func _ready() -> void:
 	#Player data---------------------------------
 	player_hp = Global.player_hp
 	max_hp = Global.max_player_hp
-	player_tp = Global.player_tp
-	max_tp = Global.max_tp
 	player_atk = Global.player_atk
 	xp_earn = Global.xp_earn
 	xp_level = Global.xp_level
 	equipped_tech = Global.equipped_tech
 	player_animation.flip_h = true
-	#Enemy data----------------------------------
+	#connect the autoload data for enemy-------------
+	level_data = TowerManager.get_current_floor()
+	if level_data == null:
+		push_error("Cannot find floor data for floor: " + str(Global.current_floor))
+		return
+	if not Global.enemies.has(level_data.enemy_id):
+		push_error("Cannot find enemy: " + level_data.enemy_id)
+		return
+	enemy_data = Global.enemies[level_data.enemy_id]
 	enemy_hp = enemy_data.enemy_hp
 	max_enemy_hp = enemy_data.enemy_hp
 	enemy_atk = enemy_data.enemy_atk
@@ -107,6 +112,7 @@ func _process(_delta: float) -> void:
 	enemy_bar.max_value = max_enemy_hp
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
+	enemy_ui.text = "HP:" + str(enemy_hp)
 	if Input.is_action_just_pressed("ui_cancel"):
 		if item_choosing:
 			options_button.show()
@@ -129,7 +135,6 @@ func player_turn_change() -> void:
 	enemy_bar.value = enemy_hp
 	update_player_hp_bar()
 	update_enemy_hp_bar()
-	print(player_tp , "TP")
 	options_button.hide()
 	change_turn.start()
 
@@ -232,7 +237,6 @@ func tech_damage_check(tech_data: tech_resource) -> void:
 	total_damage_atk = tech_damage
 	enemy_hp = max(0,enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
-	player_tp = player_tp - tech_data.tech_tp
 
 func _tech_options(tech: String) -> void:
 	if player_turn == true and enemy_turn == false:
@@ -330,7 +334,6 @@ func battle_end() -> void:
 		return
 	battle_finished = true
 	Global.battle_hp_update(player_hp)
-	Global.battle_tp_update(player_tp)
 	Global.battle_xp_update(xp_earn)
 	options_button.hide()
 	tech_options.hide()
@@ -344,12 +347,14 @@ func ui_display_end() -> void:
 
 func show_next_pending_tech() -> void:
 	Global.new_tech = Global.get_next_pending_tech()
+	
 	if Global.new_tech != null:
 		show_learn_ui()
 	else:
 		learn_label.text = "Battle Finish"
 		learn_tech_yes.hide()
 		learn_tech_no.hide()
+		learn_label.show()
 		ui_display_timer.start()
 
 func _escape() -> void:
@@ -359,6 +364,10 @@ func _escape() -> void:
 
 func replace_tech() -> void:
 	replacing_tech = true
+	Battle_end.hide()
+	learn_label.hide()
+	learn_tech_yes.show()
+	learn_tech_no.show()
 	tech_options.show()
 	var tech_buttons = [tech_1, tech_2, tech_3, tech_4]
 	for i in range(4):
@@ -382,6 +391,7 @@ func show_learn_ui():
 	change_turn.stop()
 	options_button.hide()
 	tech_options.hide()
+	item_options.hide()
 	Battle_end.show()
 	learn_label.show()
 	learn_tech_yes.show()

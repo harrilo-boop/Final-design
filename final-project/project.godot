@@ -22,7 +22,6 @@ NavigationManager="*uid://cb0gy2pceu062"
 ItemManager="*uid://cpxcfwo214xnw"
 InventoryManager="*uid://cny2173vrtks8"
 TowerManager="*uid://ti8tlokbv57a"
-EnemyManager="*uid://0smys3eofsqu"
 
 [input]
 

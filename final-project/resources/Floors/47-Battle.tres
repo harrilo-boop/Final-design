@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_f02rv")
 floor_type = 1
+enemy_id = "Enemy_11"
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"

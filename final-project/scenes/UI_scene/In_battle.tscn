@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dfpgh1ebpmoho" path="res://script/Resource_script/resource_enemy.gd" id="3_v4c7e"]
 [ext_resource type="Script" uid="uid://dbd68g4nt4do" path="res://script/Resource_script/resource_item.gd" id="4_xb7t0"]
 [ext_resource type="Texture2D" uid="uid://bwikdaf5gtidb" path="res://asset/Enemy/E01B slime battle.png" id="5_5hhvv"]
+[ext_resource type="Script" uid="uid://dgtpcgr5ug7eh" path="res://script/Resource_script/resource_level.gd" id="5_ie8os"]
 [ext_resource type="FontFile" uid="uid://stjrr0ikgqnm" path="res://asset/Font/boldpixels.ttf" id="5_ivdf3"]
 [ext_resource type="Texture2D" uid="uid://i434c1seg06n" path="res://asset/Player/attack/Character_player_attack0006.png" id="6_118um"]
 [ext_resource type="Texture2D" uid="uid://dw0lg6a5gncca" path="res://asset/UI/health_bar0005.png" id="6_i3xtw"]
@@ -29,6 +30,10 @@ metadata/_custom_type_script = "uid://dfpgh1ebpmoho"
 [sub_resource type="Resource" id="Resource_8lneb"]
 script = ExtResource("4_xb7t0")
 metadata/_custom_type_script = "uid://dbd68g4nt4do"
+
+[sub_resource type="Resource" id="Resource_qeiqy"]
+script = ExtResource("5_ie8os")
+metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
 font = ExtResource("5_ivdf3")
@@ -279,6 +284,7 @@ tech_options = NodePath("Tech_options")
 tech_data = SubResource("Resource_ivdf3")
 enemy_data = SubResource("Resource_6u8j8")
 item_data = SubResource("Resource_8lneb")
+level_data = SubResource("Resource_qeiqy")
 tech_1 = NodePath("Tech_options/Option1_button/Option1")
 tech_2 = NodePath("Tech_options/Option2_button/Option2")
 tech_3 = NodePath("Tech_options/Option3_button/Option3")
@@ -348,7 +354,6 @@ offset_left = 70.0
 offset_top = 316.0
 offset_right = 205.0
 offset_bottom = 371.0
-text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Playerhp" type="ProgressBar" parent="Stats_UI" unique_id=746096015]
@@ -358,7 +363,6 @@ offset_right = 421.0
 offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
-max_value = 20.0
 step = 1.0
 show_percentage = false
 
@@ -374,7 +378,6 @@ offset_left = 705.0
 offset_top = 317.0
 offset_right = 827.0
 offset_bottom = 372.0
-text = "HP: 10"
 label_settings = SubResource("LabelSettings_a7cga")
 
 [node name="Enemyhp" type="ProgressBar" parent="Stats_UI" unique_id=2081252063]
@@ -384,7 +387,6 @@ offset_right = 1058.0
 offset_bottom = 406.0
 theme_override_styles/background = SubResource("StyleBoxFlat_a7cga")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vqpje")
-max_value = 10.0
 step = 1.0
 show_percentage = false
 

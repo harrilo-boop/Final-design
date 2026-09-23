@@ -2,12 +2,10 @@ extends Node
 #All Variables for player in game
 
 #Player's health
-var player_hp:int = 20
-var max_player_hp:int = 20
+var player_hp:int = 100
+var max_player_hp:int = 100
 
 #Player's stats
-var player_tp:int = 20
-var max_tp:int = 20
 var player_atk:int = 2
 var shield_amount = 0
 
@@ -69,6 +67,7 @@ var techs = {
 	"Echoes": load("res://resources/Tech/Wind/Wind_tech4.tres"),
 	"Triple Typhoon": load("res://resources/Tech/Wind/Wind_tech5.tres")
 }
+
 var items = {
 	#Buff_player_item------------------------------------------------------------------------------
 	"Attack Up Potion": load("res://resources/Item/Buff_item/AttackUpPotion.tres"),
@@ -79,30 +78,30 @@ var items = {
 	"Heal Potion": load("res://resources/Item/Heal_item/HealPotion.tres"),
 	"Strong Heal Potion": load("res://resources/Item/Heal_item/StrongHealPotion.tres"),
 	"Rare Heal Potion": load("res://resources/Item/Heal_item/RareHealPotion.tres"),
-	"Super Rare Heal Potion": load("res://resources/Item/Heal_item/SuperRareHealPotion.tres"),
-	"Technique Point Potion": load("res://resources/Item/Heal_item/TechniquePointPotion.tres"),
-	"Strong Technique Potion": load("res://resources/Item/Heal_item/StrongTechniquePointPotion.tres")
+	"Super Rare Heal Potion": load("res://resources/Item/Heal_item/SuperRareHealPotion.tres")
 }
 
-var weak_enemies = {
-	"Weak 1": load("res://resources/Enemy/Enemy_01.tres"),
-	"Weak 2": load("res://resources/Enemy/Enemy_02.tres"),
-	"Weak 3": load("res://resources/Enemy/Enemy_03.tres"),
-	"Weak 4": load("res://resources/Enemy/Enemy_04.tres")
-}
-
-var normal_enemies = {
-	"Normal 1": load("res://resources/Enemy/Enemy_05.tres"),
-	"Normal 2": load("res://resources/Enemy/Enemy_06.tres"),
-	"Normal 3": load("res://resources/Enemy/Enemy_07.tres"),
-	"Normal 4": load("res://resources/Enemy/Enemy_08.tres")
-}
-
-var strong_enemies = {
-	"Strong 1": load("res://resources/Enemy/Enemy_09.tres"),
-	"Strong 2": load("res://resources/Enemy/Enemy_10.tres"),
-	"Strong 3": load("res://resources/Enemy/Enemy_11.tres"),
-	"Strong 4": load("res://resources/Enemy/Enemy_12.tres")
+var enemies = {
+	"Enemy_01": preload("res://resources/Enemy/Enemy_01.tres"),
+	"Enemy_02": preload("res://resources/Enemy/Enemy_02.tres"),
+	"Enemy_03": preload("res://resources/Enemy/Enemy_03.tres"),
+	"Enemy_04": preload("res://resources/Enemy/Enemy_04.tres"),
+	
+	"Enemy_05": preload("res://resources/Enemy/Enemy_05.tres"),
+	"Enemy_06": preload("res://resources/Enemy/Enemy_06.tres"),
+	"Enemy_07": preload("res://resources/Enemy/Enemy_07.tres"),
+	"Enemy_08": preload("res://resources/Enemy/Enemy_08.tres"),
+	
+	"Enemy_09": preload("res://resources/Enemy/Enemy_09.tres"),
+	"Enemy_10": preload("res://resources/Enemy/Enemy_10.tres"),
+	"Enemy_11": preload("res://resources/Enemy/Enemy_11.tres"),
+	"Enemy_12": preload("res://resources/Enemy/Enemy_12.tres"),
+	
+	"Boss_01": preload("res://resources/Enemy/Enemy_Boss1.tres"),
+	"Boss_02": preload("res://resources/Enemy/Enemy_Boss2.tres"),
+	"Boss_03": preload("res://resources/Enemy/Enemy_Boss3.tres"),
+	"Boss_04": preload("res://resources/Enemy/Enemy_Boss4.tres"),
+	"Boss_05": preload("res://resources/Enemy/Enemy_Boss5.tres")
 }
 
 #Current technique using as start condition
@@ -120,24 +119,10 @@ func _ready() -> void:
 func battle_hp_update(current_hp: int):
 	player_hp = current_hp
 
-#Updating player's tech after battle
-func battle_tp_update(current_tp: int):
-	player_tp = current_tp
-	
 func hp_max_increase(levelup_hp: int) -> int:
 	levelup_hp = max_player_hp
 	var hp_power:float = 1.1
 	return int(levelup_hp * hp_power)
-
-func tp_max_increase(levelup_tp: int) -> int:
-	levelup_tp = max_tp
-	var tp_power:float = 1.05
-	return int(levelup_tp * tp_power)
-
-func atk_max_increase(current_atk:int) -> int:
-	current_atk = player_atk
-	var atk_power:float = 1.005
-	return int(current_atk * pow(xp_level, atk_power))
 
 func replace_player_tech(index: int, tech: tech_resource) -> void:
 	equipped_tech[index] = tech
@@ -161,21 +146,16 @@ func check_levelup():
 		xp_level += 1
 		xp_needed = level_up()
 		max_player_hp = hp_max_increase(max_player_hp)
-		max_tp = tp_max_increase(max_tp)
-		player_atk = atk_max_increase(player_atk)
 		check_new_tech()
 	print("Lv.", xp_level, "| " , player_xp, "/" , xp_needed, "Current experience to next level")
 	print("Current HP = ", player_hp, "/", max_player_hp)
-	print("Current TP = ", player_tp, "/", max_tp)
-	print("Current Attack = ", player_atk)
 
 func check_new_tech() -> void:
 	for tech in techs.values():
 		if tech.required_level == xp_level:
 			if equipped_tech.has(tech):
 				continue
-			if not pending_techs.has(tech):
-				pending_techs.append(tech)
+			learn_new_skill(tech)
 
 func learn_new_skill(new_tech: tech_resource) -> void:
 	if equipped_tech.has(new_tech):

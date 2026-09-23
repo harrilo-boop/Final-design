@@ -1,7 +1,6 @@
 extends Resource
 class_name enemy_resource
 
-
 @export var enemy_name: String
 @export var weak: weakness
 @export var resist:resistance

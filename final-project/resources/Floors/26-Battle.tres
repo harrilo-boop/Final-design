@@ -6,4 +6,5 @@
 script = ExtResource("1_o5ieh")
 floor_number = 26
 floor_type = 1
+enemy_id = "Enemy_08"
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"
