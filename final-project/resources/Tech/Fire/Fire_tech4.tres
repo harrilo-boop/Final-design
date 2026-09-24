@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_5h6qe")
-tech_name = "Blizzard"
+tech_name = "Frost"
 ability = 1
 tech_atk = 29
 tech_tp = 7

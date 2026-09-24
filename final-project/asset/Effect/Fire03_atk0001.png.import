@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqmss3cvxxjty"
-path="res://.godot/imported/flamethrower_2_3.png-3356d8e8553a9b84f5b78a2525428711.ctex"
+uid="uid://dos7dapfdhpoj"
+path="res://.godot/imported/Fire03_atk0001.png-b5dc2a927f5ee19837691282025825ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Effect/flamethrower_2_3.png"
-dest_files=["res://.godot/imported/flamethrower_2_3.png-3356d8e8553a9b84f5b78a2525428711.ctex"]
+source_file="res://asset/Effect/Fire03_atk0001.png"
+dest_files=["res://.godot/imported/Fire03_atk0001.png-b5dc2a927f5ee19837691282025825ad.ctex"]
 
 [params]
 

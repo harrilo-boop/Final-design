@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_2jjrr")
-tech_name = "Volcano Explosion"
+tech_name = "Azure Flame"
 ability = 1
 tech_atk = 50
 tech_tp = 35

@@ -46,8 +46,8 @@ var techs = {
 	"Flame" : load("res://resources/Tech/Fire/Fire_tech1.tres"),
 	"Fire Ball": load("res://resources/Tech/Fire/Fire_tech2.tres"),
 	"Heat Wave": load("res://resources/Tech/Fire/Fire_tech3.tres"),
-	"Blizzard": load("res://resources/Tech/Fire/Fire_tech4.tres"),
-	"Volcano Explosion": load("res://resources/Tech/Fire/Fire_tech5.tres"),
+	"Frost": load("res://resources/Tech/Fire/Fire_tech4.tres"),
+	"Azure Flame": load("res://resources/Tech/Fire/Fire_tech5.tres"),
 	#Ability(Ground)-------------------------------------------------------------------------------
 	"Mud": load("res://resources/Tech/Ground/Ground_tech1.tres"),
 	"Spikes": load("res://resources/Tech/Ground/Ground_tech2.tres"),
@@ -59,7 +59,7 @@ var techs = {
 	"Waves": load("res://resources/Tech/Water/Water_tech2.tres"),
 	"Hydro Stream": load("res://resources/Tech/Water/Water_tech3.tres"),
 	"Thunder Shock": load("res://resources/Tech/Water/Water_tech4.tres"),
-	"Tsunami": load("res://resources/Tech/Water/Water_tech5.tres"),
+	"Blue Tide": load("res://resources/Tech/Water/Water_tech5.tres"),
 	#Ability(Wind)---------------------------------------------------------------------------------
 	"Wind Blow": load("res://resources/Tech/Wind/Wind_tech1.tres"),
 	"Whirlwind": load("res://resources/Tech/Wind/Wind_tech2.tres"),

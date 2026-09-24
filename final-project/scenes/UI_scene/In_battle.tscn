@@ -18,6 +18,47 @@
 [ext_resource type="Texture2D" uid="uid://i84bp5ds3fyr" path="res://asset/Enemy/E01D slime attacked.png" id="9_xb7t0"]
 [ext_resource type="Texture2D" uid="uid://otuj5kx5cwur" path="res://asset/UI/health_bar0002.png" id="10_dpktx"]
 [ext_resource type="Texture2D" uid="uid://da5kvw0pw1qmc" path="res://asset/UI/health_bar0001.png" id="11_pfq24"]
+[ext_resource type="Texture2D" uid="uid://cv1p34igx5015" path="res://asset/Effect/Fire01_atk0000.png" id="19_pfq24"]
+[ext_resource type="Texture2D" uid="uid://xl3h50vx7cih" path="res://asset/Effect/Fire01_atk0001.png" id="20_imvy4"]
+[ext_resource type="Texture2D" uid="uid://xtxj153e1oxw" path="res://asset/Effect/Fire01_atk0002.png" id="21_12hnu"]
+[ext_resource type="Texture2D" uid="uid://8jjtikoulsru" path="res://asset/Effect/Fire01_atk0003.png" id="22_dyppr"]
+[ext_resource type="Texture2D" uid="uid://bb04r0ptvv74k" path="res://asset/Effect/Fire02_atk0000.png" id="23_mns4i"]
+[ext_resource type="Texture2D" uid="uid://34an4fxij5af" path="res://asset/Effect/Fire02_atk0001.png" id="24_lhe3q"]
+[ext_resource type="Texture2D" uid="uid://dkeppctayuqdh" path="res://asset/Effect/Fire02_atk0002.png" id="25_iljlo"]
+[ext_resource type="Texture2D" uid="uid://du8w7vl4metlf" path="res://asset/Effect/Fire02_atk0003.png" id="26_h2mq3"]
+[ext_resource type="Texture2D" uid="uid://1pxppsc7hjp" path="res://asset/Effect/Fire03_atk0000.png" id="27_j18a4"]
+[ext_resource type="Texture2D" uid="uid://dos7dapfdhpoj" path="res://asset/Effect/Fire03_atk0001.png" id="28_rnc7p"]
+[ext_resource type="Texture2D" uid="uid://yilo7ojgfhpd" path="res://asset/Effect/Fire03_atk0002.png" id="29_mkn4o"]
+[ext_resource type="Texture2D" uid="uid://c2g3hxojehanm" path="res://asset/Effect/Fire03_atk0003.png" id="30_4hk7k"]
+[ext_resource type="Texture2D" uid="uid://b3aq3ggypb2j0" path="res://asset/Effect/Fire04_atk0000.png" id="31_3r843"]
+[ext_resource type="Texture2D" uid="uid://bogc8eus6umyc" path="res://asset/Effect/Fire04_atk0001.png" id="32_a3lkt"]
+[ext_resource type="Texture2D" uid="uid://bor8l8qo658ru" path="res://asset/Effect/Fire04_atk0002.png" id="33_arqwb"]
+[ext_resource type="Texture2D" uid="uid://1vx8iuptd1s7" path="res://asset/Effect/Fire04_atk0003.png" id="34_h6kw8"]
+[ext_resource type="Texture2D" uid="uid://wuba7d0mf0ym" path="res://asset/Effect/Fire05_atk0000.png" id="35_ej0kb"]
+[ext_resource type="Texture2D" uid="uid://bh4rd5t7wey3n" path="res://asset/Effect/Fire05_atk0001.png" id="36_lsa0h"]
+[ext_resource type="Texture2D" uid="uid://dckcsq73hnlmx" path="res://asset/Effect/Fire05_atk0002.png" id="37_7aj4m"]
+[ext_resource type="Texture2D" uid="uid://b10fohd2hx4dk" path="res://asset/Effect/Fire05_atk0003.png" id="38_vy1kp"]
+[ext_resource type="Texture2D" uid="uid://p3w18wekacii" path="res://asset/Effect/Water1_atk0000.png" id="39_jw304"]
+[ext_resource type="Texture2D" uid="uid://dsiqjlqsrohem" path="res://asset/Effect/Water1_atk0001.png" id="40_w43da"]
+[ext_resource type="Texture2D" uid="uid://cjukt1sbhlpwc" path="res://asset/Effect/Water1_atk0002.png" id="41_sqrre"]
+[ext_resource type="Texture2D" uid="uid://c1v1lm7gnydun" path="res://asset/Effect/Water1_atk0003.png" id="42_kmg4i"]
+[ext_resource type="Texture2D" uid="uid://cvt7f3h144ym1" path="res://asset/Effect/Water2_atk0000.png" id="43_reuqn"]
+[ext_resource type="Texture2D" uid="uid://c8jehe82hqw2x" path="res://asset/Effect/Water2_atk0001.png" id="44_g05kn"]
+[ext_resource type="Texture2D" uid="uid://bs7r82iu5dnlt" path="res://asset/Effect/Water2_atk0002.png" id="45_gu0fn"]
+[ext_resource type="Texture2D" uid="uid://ddcx7ggqc8ncc" path="res://asset/Effect/Water2_atk0003.png" id="46_8r6mc"]
+[ext_resource type="Texture2D" uid="uid://bl2wdc1v4we6v" path="res://asset/Effect/Water3_atk0000.png" id="47_q5qlc"]
+[ext_resource type="Texture2D" uid="uid://7kb83g6vke2l" path="res://asset/Effect/Water3_atk0001.png" id="48_njcxh"]
+[ext_resource type="Texture2D" uid="uid://bpngy8vtaht41" path="res://asset/Effect/Water3_atk0002.png" id="49_dt6g7"]
+[ext_resource type="Texture2D" uid="uid://cadft3sd0u7gy" path="res://asset/Effect/Water3_atk0003.png" id="50_n2afo"]
+[ext_resource type="Texture2D" uid="uid://bsmy1ei8o6u2d" path="res://asset/Effect/Water4_atk0000.png" id="51_ocdvw"]
+[ext_resource type="Texture2D" uid="uid://bh4dqdfrfqjrn" path="res://asset/Effect/Water4_atk0001.png" id="52_4ulrk"]
+[ext_resource type="Texture2D" uid="uid://cqkx15tk3jyix" path="res://asset/Effect/Water4_atk0002.png" id="53_chu6h"]
+[ext_resource type="Texture2D" uid="uid://yawpj5lgxwlh" path="res://asset/Effect/Water4_atk0003.png" id="54_h36sa"]
+[ext_resource type="Texture2D" uid="uid://bjquq2rpar00t" path="res://asset/Effect/Water4_atk0004.png" id="55_tclee"]
+[ext_resource type="Texture2D" uid="uid://purscc6ys8ee" path="res://asset/Effect/Water5_atk0000.png" id="56_5yhot"]
+[ext_resource type="Texture2D" uid="uid://cmynsmwm0ok7t" path="res://asset/Effect/Water5_atk0001.png" id="57_f25vm"]
+[ext_resource type="Texture2D" uid="uid://c0voms8ltjkrw" path="res://asset/Effect/Water5_atk0002.png" id="58_nmn5q"]
+[ext_resource type="Texture2D" uid="uid://dtg64tqp0vxpt" path="res://asset/Effect/Water5_atk0003.png" id="59_0j14k"]
 
 [sub_resource type="Resource" id="Resource_ivdf3"]
 script = ExtResource("2_4uc4m")
@@ -267,7 +308,191 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "player_bar_ui", "enemy_bar", "enemy_bar_ui", "player_animation", "enemy_animation", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label", "ui_display_timer")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkd66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_pfq24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_imvy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_12hnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_dyppr")
+}],
+"loop": true,
+"name": &"Fire_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_mns4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_lhe3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_iljlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_h2mq3")
+}],
+"loop": true,
+"name": &"Fire_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_j18a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_rnc7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_mkn4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4hk7k")
+}],
+"loop": true,
+"name": &"Fire_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_3r843")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_a3lkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_arqwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_h6kw8")
+}],
+"loop": true,
+"name": &"Fire_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_ej0kb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lsa0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_7aj4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_vy1kp")
+}],
+"loop": true,
+"name": &"Fire_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_jw304")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_w43da")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_sqrre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_kmg4i")
+}],
+"loop": true,
+"name": &"Water_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_reuqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_g05kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_gu0fn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_8r6mc")
+}],
+"loop": true,
+"name": &"Water_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_q5qlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_njcxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_dt6g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_n2afo")
+}],
+"loop": true,
+"name": &"Water_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_ocdvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_4ulrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_chu6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_h36sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_tclee")
+}],
+"loop": true,
+"name": &"Water_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("56_5yhot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_f25vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_nmn5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_0j14k")
+}],
+"loop": true,
+"name": &"Water_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_dyppr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "player_bar_ui", "enemy_bar", "enemy_bar_ui", "player_animation", "enemy_animation", "tech_effect", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label", "ui_display_timer")]
 script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
@@ -279,6 +504,7 @@ enemy_bar = NodePath("Stats_UI/Enemyhp")
 enemy_bar_ui = NodePath("Stats_UI/Enemyhp/enemyhp_sprite")
 player_animation = NodePath("Battle_animation/Player_animation")
 enemy_animation = NodePath("Battle_animation/Enemy_animation")
+tech_effect = NodePath("Battle_animation/Tech_effect")
 options_button = NodePath("Options_button")
 tech_options = NodePath("Tech_options")
 tech_data = SubResource("Resource_ivdf3")
@@ -398,7 +624,6 @@ animation = &"100%"
 autoplay = "100%"
 
 [node name="Options_button" type="Control" parent="." unique_id=478916685]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -466,7 +691,6 @@ theme_override_font_sizes/font_size = 40
 text = "Escape"
 
 [node name="Tech_options" type="Control" parent="." unique_id=445906618]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -648,7 +872,6 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Battle_End" type="Control" parent="." unique_id=1639699643]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 70.0
@@ -657,7 +880,6 @@ offset_right = 1069.0
 offset_bottom = 629.0
 
 [node name="learn_label" type="Label" parent="Battle_End" unique_id=1848710145]
-visible = false
 layout_mode = 0
 offset_left = 27.0
 offset_top = 119.0
@@ -709,12 +931,20 @@ animation = &"attack"
 autoplay = "default"
 
 [node name="Enemy_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1459097158]
-visible = false
 position = Vector2(826.00006, 170)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_e1vla")
 animation = &"attacked"
 autoplay = "default"
+
+[node name="Tech_effect" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1925888400]
+position = Vector2(640, 176)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_jkd66")
+animation = &"Fire_1"
+autoplay = "default"
+frame = 2
+frame_progress = 0.28650537
 
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
