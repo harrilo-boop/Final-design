@@ -1,7 +1,7 @@
 extends Node
 
 const SCENE_OVERWORLD = preload("res://scenes/map_scene/overworld.tscn")
-const SCENE_TOWN = preload("res://scenes/map_scene/Town.tscn")
+
 const TOWER_FLOOR = preload("res://scenes/Map_scene/TowerRoom.tscn")
 
 
@@ -18,8 +18,6 @@ func go_to_level(level_tag: String, destination_tag: String) -> void:
 		"overworld":
 			scene_to_load = SCENE_OVERWORLD
 			Global.last_scene = "overworld"
-		"Town":
-			scene_to_load = SCENE_TOWN
 			Global.last_scene = "Town"
 		"first_floor":
 			scene_to_load = TOWER_FLOOR

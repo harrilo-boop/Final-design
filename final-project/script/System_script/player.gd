@@ -19,7 +19,6 @@ var current_floor:int = 0
 @export var timer: Timer
 @export var animatesprite: AnimatedSprite2D
 @export var current_level: Label
-@export var hint_label: Label
 
 func _ready() -> void:
 	sword_area.monitoring = false
@@ -35,13 +34,12 @@ func _process(_delta: float) -> void:
 	move_player()
 	if Input.is_action_just_pressed("ui_attack") and not is_attacking:
 		_start_attack()
-	if Input.is_action_just_pressed("ui_pause"):
-		Global.last_position = global_position
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/UI_scene/Pause_menu.tscn")
 	if Input.is_action_just_pressed("ui_run"):
 		speed = speed * 1.2
 	elif Input.is_action_just_released("ui_run"):
 		speed = speed / 1.2
+	if Input.is_action_just_pressed("ui_leave"):
+		get_tree().quit()
 	current_floor = Global.current_floor
 	current_level.text = str(current_floor)
 

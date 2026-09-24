@@ -16,18 +16,6 @@ var enemy_hp: int = 5
 var max_enemy_hp:int = 5
 var enemy_atk:int = 1
 #Other options button variables
-var tech_animations = {
-	"Flame": "Fire_1",
-	"Fire Ball": "Fire_2",
-	"Heat Wave": "Fire_3",
-	"Frost": "Fire_4",
-	"Azure Flame": "Fire_5",
-	"Water Ball": "Water_1",
-	"Waves": "Water_2",
-	"Hydro Stream": "Water_3",
-	"Thunder Shock": "Water_4",
-	"Blue Tide": "Water_5"
-}
 var equipped_tech:Array[tech_resource] = [
 	null,
 	null,
@@ -45,6 +33,7 @@ var total_enemy_atk:int = 0
 @export var turn_label: Label
 @export var hp_ui: Label
 @export var enemy_ui: Label
+@export var notice_label: Label
 @export var change_turn: Timer
 @export var player_bar: ProgressBar
 @export var player_bar_ui: AnimatedSprite2D
@@ -156,6 +145,7 @@ func enemy_turn_change() -> void:
 	enemy_turn = false
 	turn_label.text = "Your Turn"
 	hp_ui.text = "HP:" + str(player_hp)
+	notice_label.text = ""
 	player_bar.value = player_hp
 	update_player_hp_bar()
 	update_enemy_hp_bar()
@@ -241,13 +231,14 @@ func tech_damage_check(tech_data: tech_resource) -> void:
 	if player_animation.animation == "default":
 		player_animation.play("attack")
 		enemy_animation.play("attacked")
-	play_tech_effect(tech_data)
 	var tech_damage = tech_data.tech_atk
 	var ability_type = tech_data.ability
 	if enemy_data.weak == ability_type:
 		tech_damage *= 2
+		notice_label.text = "WEAKNESS!!"
 	elif enemy_data.resist == ability_type:
 		tech_damage /= 2
+		notice_label.text = "RESISTED"
 	total_damage_atk = tech_damage
 	enemy_hp = max(0, enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
@@ -291,10 +282,6 @@ func select_tech(index: int) -> void:
 		show_next_pending_tech()
 		return
 	_tech_options(Global.equipped_tech[index].tech_name)
-
-func play_tech_effect(tech: tech_resource) -> void:
-	if tech_animations.has(tech.tech_name):
-		tech_effect.play(tech_effect[tech.tech_name])
 
 #Player's using item settings----------------------------------------	
 func _item_options():

@@ -76,183 +76,6 @@ metadata/_custom_type_script = "uid://dbd68g4nt4do"
 script = ExtResource("5_ie8os")
 metadata/_custom_type_script = "uid://dgtpcgr5ug7eh"
 
-[sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
-font = ExtResource("5_ivdf3")
-font_size = 60
-font_color = Color(0.33660764, 0.3366076, 0.3366076, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_a7cga"]
-font = ExtResource("5_ivdf3")
-font_size = 60
-font_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7cga"]
-bg_color = Color(0.70980394, 0.14117648, 0.15294118, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqpje"]
-bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6u8j8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_i3xtw")
-}],
-"loop": true,
-"name": &"0%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_ie8os")
-}],
-"loop": true,
-"name": &"100%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_qeiqy")
-}],
-"loop": true,
-"name": &"20%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_5147d")
-}],
-"loop": true,
-"name": &"40%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_dpktx")
-}],
-"loop": true,
-"name": &"60%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_pfq24")
-}],
-"loop": true,
-"name": &"80%",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_imvy4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_i3xtw")
-}],
-"loop": true,
-"name": &"0%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_ie8os")
-}],
-"loop": true,
-"name": &"100%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_qeiqy")
-}],
-"loop": true,
-"name": &"20%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_5147d")
-}],
-"loop": true,
-"name": &"40%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_dpktx")
-}],
-"loop": true,
-"name": &"60%",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_pfq24")
-}],
-"loop": true,
-"name": &"80%",
-"speed": 5.0
-}]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acoj8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebmv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17rcu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4isp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3odsw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvrq4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12hua"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4e4d"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cve37"]
-bg_color = Color(0.43519226, 0.4351923, 0.43519217, 1)
-border_width_left = 5
-border_width_top = 6
-border_width_right = 5
-border_width_bottom = 8
-border_color = Color(0.2665752, 0.26657522, 0.26657504, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hhvv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uc4m"]
-bg_color = Color(0.43529412, 0.43529412, 0.43529412, 1)
-border_width_left = 5
-border_width_top = 6
-border_width_right = 5
-border_width_bottom = 8
-border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1vla"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35c1n"]
-bg_color = Color(0.43529412, 0.43529412, 0.43529412, 1)
-border_width_left = 5
-border_width_top = 6
-border_width_right = 5
-border_width_bottom = 8
-border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_118um"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4c7e"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4ebmv"]
-font = ExtResource("5_ivdf3")
-font_size = 70
-font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5r8l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j1hs"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivdf3"]
 animations = [{
 "frames": [{
@@ -492,11 +315,194 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "change_turn", "player_bar", "player_bar_ui", "enemy_bar", "enemy_bar_ui", "player_animation", "enemy_animation", "tech_effect", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label", "ui_display_timer")]
+[sub_resource type="LabelSettings" id="LabelSettings_mns4i"]
+font = ExtResource("5_ivdf3")
+font_size = 60
+font_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqpje"]
+font = ExtResource("5_ivdf3")
+font_size = 60
+font_color = Color(0.33660764, 0.3366076, 0.3366076, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7cga"]
+font = ExtResource("5_ivdf3")
+font_size = 60
+font_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7cga"]
+bg_color = Color(0.70980394, 0.14117648, 0.15294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqpje"]
+bg_color = Color(0.3215886, 0.6243723, 0.32544625, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u8j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i3xtw")
+}],
+"loop": true,
+"name": &"0%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ie8os")
+}],
+"loop": true,
+"name": &"100%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qeiqy")
+}],
+"loop": true,
+"name": &"20%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5147d")
+}],
+"loop": true,
+"name": &"40%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dpktx")
+}],
+"loop": true,
+"name": &"60%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_pfq24")
+}],
+"loop": true,
+"name": &"80%",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_imvy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i3xtw")
+}],
+"loop": true,
+"name": &"0%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ie8os")
+}],
+"loop": true,
+"name": &"100%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qeiqy")
+}],
+"loop": true,
+"name": &"20%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5147d")
+}],
+"loop": true,
+"name": &"40%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dpktx")
+}],
+"loop": true,
+"name": &"60%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_pfq24")
+}],
+"loop": true,
+"name": &"80%",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acoj8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17rcu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4isp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3odsw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvrq4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12hua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4e4d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cve37"]
+bg_color = Color(0.43519226, 0.4351923, 0.43519217, 1)
+border_width_left = 5
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.2665752, 0.26657522, 0.26657504, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hhvv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uc4m"]
+bg_color = Color(0.43529412, 0.43529412, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1vla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35c1n"]
+bg_color = Color(0.43529412, 0.43529412, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_118um"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4c7e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ebmv"]
+font = ExtResource("5_ivdf3")
+font_size = 70
+font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5r8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j1hs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0od"]
+
+[node name="Node2D" type="Node2D" unique_id=1501097680 node_paths=PackedStringArray("turn_label", "hp_ui", "enemy_ui", "notice_label", "change_turn", "player_bar", "player_bar_ui", "enemy_bar", "enemy_bar_ui", "player_animation", "enemy_animation", "tech_effect", "options_button", "tech_options", "tech_1", "tech_2", "tech_3", "tech_4", "item_options", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "Battle_end", "learn_tech_yes", "learn_tech_no", "learn_label", "ui_display_timer")]
 script = ExtResource("1_cve37")
 turn_label = NodePath("Stats_UI/Turn_label")
 hp_ui = NodePath("Stats_UI/Playerhp_label")
 enemy_ui = NodePath("Stats_UI/Enemyhp_label")
+notice_label = NodePath("Stats_UI/Notice_label")
 change_turn = NodePath("Change_turn")
 player_bar = NodePath("Stats_UI/Playerhp")
 player_bar_ui = NodePath("Stats_UI/Playerhp/playerhp_sprite")
@@ -529,43 +535,75 @@ learn_tech_no = NodePath("Battle_End/PanelContainer2/Learn_no")
 learn_label = NodePath("Battle_End/learn_label")
 ui_display_timer = NodePath("Battle_End/Timer")
 
-[node name="Demo1" type="ColorRect" parent="." unique_id=1242858733]
+[node name="Battle_scene" type="Node" parent="." unique_id=828245974]
+
+[node name="Demo1" type="ColorRect" parent="Battle_scene" unique_id=1242858733]
 offset_top = 306.0
 offset_right = 1151.0
 offset_bottom = 645.0
 color = Color(1, 1, 1, 0.54509807)
 
-[node name="Demo2" type="ColorRect" parent="." unique_id=1986585398]
+[node name="Demo2" type="ColorRect" parent="Battle_scene" unique_id=1986585398]
 offset_top = 48.0
 offset_right = 34.0
 offset_bottom = 306.0
 color = Color(1, 1, 1, 0.54509807)
 
-[node name="Demo3" type="ColorRect" parent="." unique_id=76555446]
+[node name="Demo3" type="ColorRect" parent="Battle_scene" unique_id=76555446]
 offset_top = -2.0
 offset_right = 1151.0
 offset_bottom = 48.0
 color = Color(1, 1, 1, 0.54509807)
 
-[node name="Demo4" type="ColorRect" parent="." unique_id=1031463089]
+[node name="Demo4" type="ColorRect" parent="Battle_scene" unique_id=1031463089]
 offset_left = 1114.0
 offset_top = 48.0
 offset_right = 1151.0
 offset_bottom = 306.0
 color = Color(1, 1, 1, 0.54509807)
 
-[node name="Demo5" type="ColorRect" parent="." unique_id=1570822014]
+[node name="Demo5" type="ColorRect" parent="Battle_scene" unique_id=1570822014]
 offset_left = 68.0
 offset_top = 430.0
 offset_right = 1069.0
 offset_bottom = 626.0
 color = Color(0.3779188, 0.37791887, 0.37791884, 0.54509807)
 
+[node name="Battle_animation" type="Node" parent="." unique_id=1134554578]
+
+[node name="Player_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=2117135216]
+position = Vector2(315, 130)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ivdf3")
+animation = &"attack"
+autoplay = "default"
+
+[node name="Enemy_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1459097158]
+position = Vector2(826.00006, 170)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_e1vla")
+animation = &"attacked"
+autoplay = "default"
+
+[node name="Tech_effect" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1925888400]
+position = Vector2(640, 176)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_jkd66")
+autoplay = "default"
+
 [node name="Change_turn" type="Timer" parent="." unique_id=1282682776]
 wait_time = 2.0
 one_shot = true
 
 [node name="Stats_UI" type="CanvasLayer" parent="." unique_id=1623192407]
+
+[node name="Notice_label" type="Label" parent="Stats_UI" unique_id=684518140]
+z_index = 3
+offset_left = 37.0
+offset_top = -3.0
+offset_right = 425.0
+offset_bottom = 57.0
+label_settings = SubResource("LabelSettings_mns4i")
 
 [node name="Turn_label" type="Label" parent="Stats_UI" unique_id=1158720786]
 offset_left = 451.0
@@ -921,31 +959,8 @@ text = "NO"
 [node name="Timer" type="Timer" parent="Battle_End" unique_id=871069521]
 wait_time = 2.0
 
-[node name="Battle_animation" type="Node" parent="." unique_id=1134554578]
-
-[node name="Player_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=2117135216]
-position = Vector2(315, 128)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_ivdf3")
-animation = &"attack"
-autoplay = "default"
-
-[node name="Enemy_animation" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1459097158]
-position = Vector2(826.00006, 170)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_e1vla")
-animation = &"attacked"
-autoplay = "default"
-
-[node name="Tech_effect" type="AnimatedSprite2D" parent="Battle_animation" unique_id=1925888400]
-position = Vector2(640, 176)
-scale = Vector2(10, 10)
-sprite_frames = SubResource("SpriteFrames_jkd66")
-animation = &"Fire_1"
-autoplay = "default"
-frame = 2
-frame_progress = 0.28650537
-
+[connection signal="animation_finished" from="Battle_animation/Player_animation" to="." method="_player_attack_finish"]
+[connection signal="animation_finished" from="Battle_animation/Enemy_animation" to="." method="_enemy_attack_finish"]
 [connection signal="timeout" from="Change_turn" to="." method="_enemy_turn"]
 [connection signal="pressed" from="Options_button/Attack_button/Attack" to="." method="_attack_choose"]
 [connection signal="pressed" from="Options_button/Tech_button/Tech" to="." method="_on_tech_pressed"]
@@ -965,5 +980,3 @@ frame_progress = 0.28650537
 [connection signal="pressed" from="Battle_End/PanelContainer/Learn_yes" to="." method="replace_tech"]
 [connection signal="pressed" from="Battle_End/PanelContainer2/Learn_no" to="." method="not_replace_tech"]
 [connection signal="timeout" from="Battle_End/Timer" to="." method="ui_display_end"]
-[connection signal="animation_finished" from="Battle_animation/Player_animation" to="." method="_player_attack_finish"]
-[connection signal="animation_finished" from="Battle_animation/Enemy_animation" to="." method="_enemy_attack_finish"]

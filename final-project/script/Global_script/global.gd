@@ -65,7 +65,7 @@ var techs = {
 	"Whirlwind": load("res://resources/Tech/Wind/Wind_tech2.tres"),
 	"Hurricane": load("res://resources/Tech/Wind/Wind_tech3.tres"),
 	"Echoes": load("res://resources/Tech/Wind/Wind_tech4.tres"),
-	"Triple Typhoon": load("res://resources/Tech/Wind/Wind_tech5.tres")
+	"Storm": load("res://resources/Tech/Wind/Wind_tech5.tres")
 }
 
 var items = {

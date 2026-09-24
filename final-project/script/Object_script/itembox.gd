@@ -11,12 +11,12 @@ func _on_chest_opened(body):
 		normal_chest_open()
 	elif item_animation.animation == "rare_default":
 		rare_chest_open()
-	Global.floor_require = true
+	if Global.last_scene != "overworld":
+		Global.floor_require = true
 		
 func normal_chest_open():
 	print("Get Heal Potion and Tp Potion")
 	Global.inventory.add_item(Global.items["Heal Potion"])
-	Global.inventory.add_item(Global.items["Technique Point Potion"])
 	item_animation.play("opened")
 
 func rare_chest_open():
