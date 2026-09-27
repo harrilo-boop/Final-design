@@ -58,12 +58,14 @@ func create_recovery_room() -> void:
 	revive_area.show()
 	revive_collision.disabled = false
 	revive_body.disabled = false
+	Global.floor_require = true
 
 func create_treasure_room() -> void:
 	print("Treasure Room")
 	treasure_area.show()
 	treasure.disabled = false
 	treasure_body.disabled = false
+	Global.floor_require = true
 
 func create_boss_room() -> void:
 	print("Boss Room")

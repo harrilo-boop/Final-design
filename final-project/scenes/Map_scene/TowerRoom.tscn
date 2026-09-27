@@ -339,12 +339,10 @@ debug_color = Color(0.6000174, 0.86401707, 0.45997208, 0.41960785)
 position = Vector2(2, -331)
 
 [node name="TreasureBox" parent="." unique_id=327047994 instance=ExtResource("4_tp0t4")]
-visible = false
 z_index = -1
 
 [node name="AnimatedSprite2D" parent="TreasureBox" index="1" unique_id=1478324361]
-animation = &"rare_default"
-autoplay = "rare_default"
+animation = &"default"
 
 [node name="Enter_require" type="StaticBody2D" parent="." unique_id=1414286607]
 z_index = -1

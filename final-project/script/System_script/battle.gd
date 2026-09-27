@@ -257,15 +257,18 @@ func tech_damage_check(tech_data: tech_resource) -> void:
 			tech_effect.play(tech_data.animation_name)
 	var tech_damage = tech_data.tech_atk
 	var ability_type = tech_data.ability
+	#Determine is the tech matches enemy's weakness
 	if enemy_data.weak == ability_type:
 		tech_damage *= 2
 		notice_label.text = "WEAKNESS!!"
 	elif enemy_data.resist == ability_type:
 		tech_damage /= 2
 		notice_label.text = "RESISTED"
+	#Calculate the total damage
 	total_damage_atk = tech_damage
 	enemy_hp = max(0, enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
+	#Finish the tech effect playing
 	if tech_effect.visible:
 		await tech_effect.animation_finished
 		tech_effect.stop()
