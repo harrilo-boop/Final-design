@@ -114,6 +114,8 @@ func _ready() -> void:
 	xp_needed = level_up()
 	inventory = Inventory.new()
 	add_child(inventory)
+	if current_floor == 50:
+		print("END")
 	
 
 #Updating player's health after battle
