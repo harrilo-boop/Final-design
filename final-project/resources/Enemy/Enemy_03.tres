@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_erfdk")
-enemy_name = "Enemy_Weak03"
+enemy_name = "E3"
+enemy_sprite = "E3"
 weak = 3
 enemy_atk = 3
 enemy_hp = 15

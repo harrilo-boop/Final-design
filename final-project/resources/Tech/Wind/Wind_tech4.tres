@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_ob5h4")
-tech_name = "Echoes"
+tech_name = "Aeroblast"
 ability = 4
+animation_name = "Wind_4"
 tech_atk = 28
 tech_tp = 19
 required_level = 23

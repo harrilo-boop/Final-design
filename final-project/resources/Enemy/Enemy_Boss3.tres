@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_hpukk")
-enemy_name = "Wolf"
+enemy_name = "B3"
+enemy_sprite = "B3"
 weak = 1
 resist = 2
 enemy_atk = 15
+enemy_hp = 45
 metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

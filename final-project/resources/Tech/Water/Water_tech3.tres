@@ -6,6 +6,7 @@
 script = ExtResource("1_qmvpq")
 tech_name = "Hydro Stream"
 ability = 2
+animation_name = "Water_3"
 tech_atk = 24
 tech_tp = 19
 required_level = 25

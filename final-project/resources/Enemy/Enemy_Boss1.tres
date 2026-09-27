@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("2_rrbmg")
-enemy_name = "Giant Slime"
+enemy_name = "B1"
+enemy_sprite = "B1"
 weak = 3
 resist = 2
 enemy_atk = 6

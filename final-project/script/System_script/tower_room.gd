@@ -4,6 +4,7 @@ class_name tower_room
 #Determine the type of level it is and give the correct stats
 @export var enemy_body: CharacterBody2D
 @export var enemy_collision: CollisionShape2D
+@onready var enemy_sprite: AnimatedSprite2D = enemy_body.get_node("AnimatedSprite2D")
 @export var treasure_area: Area2D
 @export var treasure_body: CollisionShape2D
 @export var treasure: CollisionShape2D
@@ -29,6 +30,8 @@ func _ready() -> void:
 	if floor_require == false:
 		tower_door.play("Closed")
 	var current_floor_data = TowerManager.get_current_floor()
+	if current_floor_data != null:
+		set_enemy_animation(current_floor_data)
 	check_type(current_floor_data)
 
 
@@ -64,6 +67,27 @@ func create_treasure_room() -> void:
 
 func create_boss_room() -> void:
 	print("Boss Room")
+	enemy_body.show()
+	enemy_collision.disabled = false
+
+func set_enemy_animation(floor: level_resource) -> void:
+	if floor.enemy_id == "":
+		return
+	var enemy_data = Global.enemies.get(floor.enemy_id)
+	if enemy_data == null:
+		print("No enemy resource found: ", floor.enemy_id)
+		return
+	var animation_name = ""
+	if floor.enemy_id.begins_with("Enemy_"):
+		var number = int(floor.enemy_id.trim_prefix("Enemy_"))
+		animation_name = "E" + str(number) + "_N"
+	elif floor.enemy_id.begins_with("Boss_"):
+		var number = int(floor.enemy_id.trim_prefix("Boss_"))
+		animation_name = "B" + str(number) + "_N"
+	if enemy_sprite.sprite_frames.has_animation(animation_name):
+		enemy_sprite.play(animation_name)
+	else:
+		print("No animation found for enemy: ", animation_name)
 
 func requirement_check() -> void:
 	if Global.floor_require == true:

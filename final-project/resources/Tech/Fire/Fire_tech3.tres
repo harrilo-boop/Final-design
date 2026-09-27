@@ -6,6 +6,7 @@
 script = ExtResource("1_mnx5m")
 tech_name = "Heat Wave"
 ability = 1
+animation_name = "Fire_3"
 tech_atk = 16
 tech_tp = 15
 required_level = 20

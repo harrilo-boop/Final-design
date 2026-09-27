@@ -30,6 +30,7 @@ var item_buttons: Array[Button] = []
 var total_damage_atk:int = 0
 var total_enemy_atk:int = 0 
 
+#export variables
 @export var turn_label: Label
 @export var hp_ui: Label
 @export var enemy_ui: Label
@@ -42,6 +43,7 @@ var total_enemy_atk:int = 0
 @export var player_animation: AnimatedSprite2D
 @export var enemy_animation: AnimatedSprite2D
 @export var tech_effect: AnimatedSprite2D
+@export var animation_name: String
 @export var options_button: Control
 @export var tech_options: Control
 @export var tech_data: Resource
@@ -107,6 +109,7 @@ func _ready() -> void:
 	enemy_hp = enemy_data.enemy_hp
 	max_enemy_hp = enemy_data.enemy_hp
 	enemy_atk = enemy_data.enemy_atk
+	play_enemy_animation("N")
 
 func _process(_delta: float) -> void:
 	player_bar.value = player_hp
@@ -115,6 +118,7 @@ func _process(_delta: float) -> void:
 	enemy_bar.value = enemy_hp
 	hp_ui.text = "HP:" + str(player_hp)
 	enemy_ui.text = "HP:" + str(enemy_hp)
+	#Let player to cancel their options when press error in battle
 	if Input.is_action_just_pressed("ui_cancel"):
 		if item_choosing:
 			options_button.show()
@@ -140,6 +144,7 @@ func player_turn_change() -> void:
 	options_button.hide()
 	change_turn.start()
 
+#Changing turn by enemy to player
 func enemy_turn_change() -> void:
 	player_turn = true
 	enemy_turn = false
@@ -152,6 +157,7 @@ func enemy_turn_change() -> void:
 	options_button.show()
 	change_turn.start()
 
+#Update player's health bar with the UI changing of the progress bar
 func update_player_hp_bar() -> void:
 	var hp_ratio = float(player_hp) / float(max_hp)
 	if hp_ratio <= 0.0:
@@ -167,6 +173,7 @@ func update_player_hp_bar() -> void:
 	else:
 		player_bar_ui.play("100%")
 
+#Update enemy's health bar with the UI changing of the progress bar
 func update_enemy_hp_bar() -> void:
 	var enemy_ratio = float(enemy_hp) / float(max_enemy_hp)
 	if enemy_ratio <= 0.0:
@@ -182,18 +189,25 @@ func update_enemy_hp_bar() -> void:
 	else:
 		enemy_bar_ui.play("100%")
 
+func play_enemy_animation(action: String) -> void:
+	var animation_name = enemy_data.enemy_sprite + "_" + action
+	if enemy_animation.sprite_frames.has_animation(animation_name):
+		enemy_animation.play(animation_name)
+	else:
+		print(animation_name)
+
 #Player's basic attack-----------------------------------------------
 func _attack_choose() -> void:
 	if player_animation.animation == "default":
 		player_animation.play("attack")
-		enemy_animation.play("attacked")
+		play_enemy_animation("B")
 	if player_turn == true and enemy_turn == false:
 		if enemy_hp >= 1: 
 			total_damage_atk = max(0, player_atk)
 			enemy_hp = max(0, enemy_hp - total_damage_atk)
 		if enemy_hp <= 0:
 			xp_earn = enemy_data.xp_give
-			battle_end() 
+			battle_end()
 		else:
 			player_turn_change()
 
@@ -201,16 +215,19 @@ func _attack_choose() -> void:
 func _enemy_turn() -> void:
 	if enemy_turn == true and player_turn == false:
 		_enemy_attack()
- 
+
+#Enemy turn's attack
 func _enemy_attack() -> void:
 	if player_hp >= 1:
-		if enemy_animation.animation == "default":
-			enemy_animation.play("attack")
+		play_enemy_animation("A")
 		total_enemy_atk = max(0, enemy_atk - Global.shield_amount)
 		player_hp = max(0, player_hp - total_enemy_atk)
-		enemy_turn_change()
-	if player_hp <= 0:
-		battle_end()
+		if player_hp <= 0:
+			battle_end()
+		else:
+			await get_tree().create_timer(0.5).timeout
+			play_enemy_animation("N")
+			enemy_turn_change()
 
 #Player's technique attack settings----------------------------------
 func _on_tech_pressed() -> void:
@@ -226,11 +243,18 @@ func _on_tech_pressed() -> void:
 			tech_buttons[tech].text = "Blank"
 			tech_buttons[tech].disabled = true
 
-
+#Checking the damage and condition of player's choose
 func tech_damage_check(tech_data: tech_resource) -> void:
+	# Player attack animation
 	if player_animation.animation == "default":
 		player_animation.play("attack")
-		enemy_animation.play("attacked")
+	# Enemy hit animation
+	play_enemy_animation("B")
+	# Tech effect animation
+	if tech_data.animation_name != "":
+		if tech_effect.sprite_frames.has_animation(tech_data.animation_name):
+			tech_effect.visible = true
+			tech_effect.play(tech_data.animation_name)
 	var tech_damage = tech_data.tech_atk
 	var ability_type = tech_data.ability
 	if enemy_data.weak == ability_type:
@@ -242,28 +266,37 @@ func tech_damage_check(tech_data: tech_resource) -> void:
 	total_damage_atk = tech_damage
 	enemy_hp = max(0, enemy_hp - total_damage_atk)
 	enemy_bar.value = enemy_hp
+	if tech_effect.visible:
+		await tech_effect.animation_finished
+		tech_effect.stop()
+		tech_effect.visible = false
 
-func _tech_options(tech: String) -> void:
+#Check after player pressed the tech option
+func _tech_options(index: int) -> void:
 	if player_turn == true and enemy_turn == false:
 		if enemy_hp >= 1:
-			var _current_tech = Global.equipped_tech
-			tech_data = Global.techs[tech]
-			tech_damage_check(tech_data)
+			tech_data = Global.equipped_tech[index]
+			if tech_data == null:
+				return
 			tech_options.hide()
-			options_button.show()
-			player_turn_change()
+			options_button.hide()
+			await tech_damage_check(tech_data)
+			if enemy_hp > 0:
+				player_turn_change()
 		if enemy_hp == 0:
 			xp_earn = enemy_data.xp_give
-			print(player_hp)
 			battle_end()
-			
+
+#Reload the player's animation to default
 func _player_attack_finish() -> void:
 	player_animation.play("default")
-	enemy_animation.play("default")
+	play_enemy_animation("N")
 
+#Reload the enemy's animation to default
 func _enemy_attack_finish() -> void:
-	enemy_animation.play("default")
-
+	play_enemy_animation("N")
+	
+#Four buttons of tech choices
 func _on_option_1_pressed() -> void:
 	select_tech(0)
 func _on_option_2_pressed() -> void:
@@ -273,6 +306,7 @@ func _on_option_3_pressed() -> void:
 func _on_option_4_pressed() -> void:
 	select_tech(3)
 
+#Give the correct replacement of tech's place
 func select_tech(index: int) -> void:
 	if replacing_tech:
 		Global.replace_player_tech(index, Global.new_tech)
@@ -281,7 +315,7 @@ func select_tech(index: int) -> void:
 		tech_options.hide()
 		show_next_pending_tech()
 		return
-	_tech_options(Global.equipped_tech[index].tech_name)
+	_tech_options(index)
 
 #Player's using item settings----------------------------------------	
 func _item_options():
@@ -292,6 +326,7 @@ func _item_options():
 	print("item maximum stack = ", item_buttons.size())
 	update_item_buttons()
 	
+#Give the correct data of items
 func update_item_buttons():
 	for i in range(item_buttons.size()):
 		var slot = Global.inventory.item_slots[i]
@@ -304,6 +339,8 @@ func update_item_buttons():
 			item_buttons[i].disabled = false
 			item_buttons[i].text = str(slot.quantity)
 			item_buttons[i].icon = slot.item.item_icon
+
+#Manage the items condition and use
 func select_item(index:int):
 	var slot = Global.inventory.item_slots[index]
 	if slot.item == null:
@@ -315,6 +352,7 @@ func select_item(index:int):
 	item_choosing = false
 	player_turn_change()
 
+#Buttons of item's choices
 func _on_item_1_pressed():
 	select_item(0)
 func _on_item_2_pressed():
@@ -329,12 +367,11 @@ func _on_item_6_pressed():
 	select_item(5)
 func _on_item_7_pressed():
 	select_item(6)
-	
-
-
 
 #Player's leaving battle settings------------------------------------
 func battle_end() -> void:
+	update_player_hp_bar()
+	update_enemy_hp_bar()
 	if battle_finished:
 		return
 	battle_finished = true
@@ -346,13 +383,14 @@ func battle_end() -> void:
 	ui_display_timer.stop()
 	Battle_end.show()
 	show_next_pending_tech()
-	
+
+#Show the battle end UI
 func ui_display_end() -> void:
 	finish_battle()
 
+#Continue the learning skill if needed
 func show_next_pending_tech() -> void:
 	Global.new_tech = Global.get_next_pending_tech()
-	
 	if Global.new_tech != null:
 		show_learn_ui()
 	else:
@@ -362,11 +400,12 @@ func show_next_pending_tech() -> void:
 		learn_label.show()
 		ui_display_timer.start()
 
+#Leave battle and back to the tower
 func _escape() -> void:
 	if player_turn == true and enemy_turn == false:
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")
 
-
+#Give player to choose which one to replace
 func replace_tech() -> void:
 	replacing_tech = true
 	Battle_end.hide()
@@ -381,6 +420,7 @@ func replace_tech() -> void:
 		else:
 			tech_buttons[i].text = "Blank"
 
+#Leave battle when player choose not to replace
 func not_replace_tech() -> void:
 	Global.new_tech = null
 	replacing_tech = false
@@ -390,6 +430,7 @@ func not_replace_tech() -> void:
 	tech_options.hide()
 	show_next_pending_tech()
 
+#Show player you could learn a new tech
 func show_learn_ui():
 	player_turn = false
 	enemy_turn = false
@@ -403,6 +444,7 @@ func show_learn_ui():
 	learn_tech_no.show()
 	learn_label.text = "Learn " + Global.new_tech.tech_name + " ?"
 
+#Leave battle and back to the tower
 func finish_battle():
 	Global.floor_require = true
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/Map_scene/TowerRoom.tscn")

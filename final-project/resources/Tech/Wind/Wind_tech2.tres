@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_merh7")
-tech_name = "Whirlwind"
+tech_name = "Wind Blow"
 ability = 4
+animation_name = "Wind_2"
 tech_atk = 15
 tech_tp = 12
 required_level = 11

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4bee2")
-tech_name = "World Collapse"
+tech_name = "Meteor Crash"
 ability = 3
 tech_atk = 60
 tech_tp = 1

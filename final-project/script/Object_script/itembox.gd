@@ -15,12 +15,13 @@ func _on_chest_opened(body):
 		Global.floor_require = true
 		
 func normal_chest_open():
-	print("Get Heal Potion and Tp Potion")
 	Global.inventory.add_item(Global.items["Heal Potion"])
+	Global.inventory.add_item(Global.items["Strong Heal Potion"])
+	Global.inventory.add_item(Global.items["Rare Heal Potion"])
+	Global.inventory.add_item(Global.items["Super Rare Heal Potion"])
 	item_animation.play("opened")
 
 func rare_chest_open():
-	print("Get Attack Up Potion and Wood Sheild")
 	Global.inventory.add_item(Global.items["Attack Up Potion"])
 	Global.inventory.add_item(Global.items["Wood Sheild"])
 	item_animation.play("rare_opened")

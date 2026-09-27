@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_f60mo")
-tech_name = "Spikes"
+tech_name = "Mud Bomb"
 ability = 3
 tech_atk = 12
 tech_tp = 6

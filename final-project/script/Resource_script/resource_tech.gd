@@ -3,6 +3,7 @@ class_name tech_resource
 
 @export var tech_name: String
 @export var ability: abilities
+@export var animation_name: String
 @export var tech_atk:int = 0
 @export var tech_tp:int = 0
 @export var required_level:int = 0

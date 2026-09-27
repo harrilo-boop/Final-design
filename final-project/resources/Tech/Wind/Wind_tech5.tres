@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_lj4kl")
-tech_name = "Triple Typhoon"
+tech_name = "Bleakwind"
 ability = 4
+animation_name = "Wind_5"
 tech_atk = 33
 tech_tp = 15
 required_level = 39

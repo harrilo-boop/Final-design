@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_pix6e")
-tech_name = "Wind Blow"
+tech_name = "Air Slash"
 ability = 4
+animation_name = "Wind_1"
 tech_atk = 4
 tech_tp = 3
 required_level = 2

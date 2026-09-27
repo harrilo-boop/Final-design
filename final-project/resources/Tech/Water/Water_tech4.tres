@@ -6,6 +6,7 @@
 script = ExtResource("1_ucp48")
 tech_name = "Thunder Shock"
 ability = 2
+animation_name = "Water_4"
 tech_atk = 32
 tech_tp = 15
 required_level = 32

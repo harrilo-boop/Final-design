@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_adkqx")
-tech_name = "Earthquake"
+tech_name = "Muddy Water"
 ability = 3
 tech_atk = 32
 tech_tp = 17

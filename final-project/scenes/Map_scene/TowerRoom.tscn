@@ -339,6 +339,7 @@ debug_color = Color(0.6000174, 0.86401707, 0.45997208, 0.41960785)
 position = Vector2(2, -331)
 
 [node name="TreasureBox" parent="." unique_id=327047994 instance=ExtResource("4_tp0t4")]
+visible = false
 
 [node name="AnimatedSprite2D" parent="TreasureBox" index="1" unique_id=1478324361]
 animation = &"rare_default"
@@ -354,8 +355,14 @@ shape = SubResource("RectangleShape2D_tp0t4")
 debug_color = Color(0.6220781, 0.5339371, 0.9965858, 0.41960785)
 
 [node name="Enemy" parent="." unique_id=790093923 instance=ExtResource("5_obu14")]
+z_index = -1
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" parent="Enemy" index="1" unique_id=707325573]
+animation = &"E1_N"
 
 [node name="ReviveStop" parent="." unique_id=1496619155 instance=ExtResource("6_8cdyn")]
+visible = false
 
 [node name="CollisionShape2D" parent="ReviveStop" index="0" unique_id=264653727]
 z_index = -2

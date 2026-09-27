@@ -2,8 +2,8 @@ extends Node
 #All Variables for player in game
 
 #Player's health
-var player_hp:int = 100
-var max_player_hp:int = 100
+var player_hp:int = 30
+var max_player_hp:int = 30
 
 #Player's stats
 var player_atk:int = 2
@@ -50,10 +50,10 @@ var techs = {
 	"Azure Flame": load("res://resources/Tech/Fire/Fire_tech5.tres"),
 	#Ability(Ground)-------------------------------------------------------------------------------
 	"Mud": load("res://resources/Tech/Ground/Ground_tech1.tres"),
-	"Spikes": load("res://resources/Tech/Ground/Ground_tech2.tres"),
-	"Earthquake": load("res://resources/Tech/Ground/Ground_tech3.tres"),
-	"Nature Power": load("res://resources/Tech/Ground/Ground_tech4.tres"),
-	"World Collapse": load("res://resources/Tech/Ground/Ground_tech5.tres"),
+	"Mud Bomb": load("res://resources/Tech/Ground/Ground_tech2.tres"),
+	"Muddy Water": load("res://resources/Tech/Ground/Ground_tech3.tres"),
+	"Rock Wrecker": load("res://resources/Tech/Ground/Ground_tech4.tres"),
+	"Meteor Crash": load("res://resources/Tech/Ground/Ground_tech5.tres"),
 	#Ability(Water)--------------------------------------------------------------------------------
 	"Water Ball": load("res://resources/Tech/Water/Water_tech1.tres"),
 	"Waves": load("res://resources/Tech/Water/Water_tech2.tres"),
@@ -61,13 +61,14 @@ var techs = {
 	"Thunder Shock": load("res://resources/Tech/Water/Water_tech4.tres"),
 	"Blue Tide": load("res://resources/Tech/Water/Water_tech5.tres"),
 	#Ability(Wind)---------------------------------------------------------------------------------
-	"Wind Blow": load("res://resources/Tech/Wind/Wind_tech1.tres"),
-	"Whirlwind": load("res://resources/Tech/Wind/Wind_tech2.tres"),
+	"Air Slash": load("res://resources/Tech/Wind/Wind_tech1.tres"),
+	"Wind Blow": load("res://resources/Tech/Wind/Wind_tech2.tres"),
 	"Hurricane": load("res://resources/Tech/Wind/Wind_tech3.tres"),
-	"Echoes": load("res://resources/Tech/Wind/Wind_tech4.tres"),
-	"Storm": load("res://resources/Tech/Wind/Wind_tech5.tres")
+	"Aeroblast": load("res://resources/Tech/Wind/Wind_tech4.tres"),
+	"Bleakwind": load("res://resources/Tech/Wind/Wind_tech5.tres")
 }
 
+#Dictionary for all items
 var items = {
 	#Buff_player_item------------------------------------------------------------------------------
 	"Attack Up Potion": load("res://resources/Item/Buff_item/AttackUpPotion.tres"),

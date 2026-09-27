@@ -6,6 +6,7 @@
 script = ExtResource("1_7g5os")
 tech_name = "Water Ball"
 ability = 2
+animation_name = "Water_1"
 tech_atk = 2
 tech_tp = 1
 metadata/_custom_type_script = "uid://cdhyyklnof0xc"

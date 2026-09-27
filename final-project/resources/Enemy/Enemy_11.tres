@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_xnt1s")
-enemy_name = "Enemy_Strong03"
+enemy_name = "E11"
+enemy_sprite = "E3"
 weak = 3
 resist = 1
 enemy_atk = 20

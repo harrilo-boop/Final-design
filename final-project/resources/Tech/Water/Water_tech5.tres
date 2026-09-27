@@ -6,6 +6,7 @@
 script = ExtResource("1_1fua0")
 tech_name = "Blue Tide"
 ability = 2
+animation_name = "Water_5"
 tech_atk = 45
 tech_tp = 25
 required_level = 42

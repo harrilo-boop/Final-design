@@ -6,6 +6,7 @@
 script = ExtResource("1_2jjrr")
 tech_name = "Azure Flame"
 ability = 1
+animation_name = "Fire_5"
 tech_atk = 50
 tech_tp = 35
 required_level = 46

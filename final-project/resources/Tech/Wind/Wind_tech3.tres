@@ -6,6 +6,7 @@
 script = ExtResource("1_42eo7")
 tech_name = "Hurricane"
 ability = 4
+animation_name = "Wind_3"
 tech_atk = 20
 tech_tp = 12
 required_level = 14

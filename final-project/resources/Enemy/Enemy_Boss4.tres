@@ -4,4 +4,10 @@
 
 [resource]
 script = ExtResource("1_rpobr")
+enemy_name = "B4"
+enemy_sprite = "B4"
+weak = 2
+resist = 4
+enemy_atk = 15
+enemy_hp = 50
 metadata/_custom_type_script = "uid://dfpgh1ebpmoho"

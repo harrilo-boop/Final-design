@@ -6,6 +6,7 @@
 script = ExtResource("1_4nfat")
 tech_name = "Fire Ball"
 ability = 1
+animation_name = "Fire_2"
 tech_atk = 8
 tech_tp = 5
 required_level = 7

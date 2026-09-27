@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_a1xbe")
-tech_name = "Nature Power"
+tech_name = "Rock Wrecker"
 ability = 3
 tech_atk = 45
 tech_tp = 24
