@@ -340,6 +340,7 @@ position = Vector2(2, -331)
 
 [node name="TreasureBox" parent="." unique_id=327047994 instance=ExtResource("4_tp0t4")]
 visible = false
+z_index = -1
 
 [node name="AnimatedSprite2D" parent="TreasureBox" index="1" unique_id=1478324361]
 animation = &"rare_default"
@@ -363,6 +364,7 @@ animation = &"E1_N"
 
 [node name="ReviveStop" parent="." unique_id=1496619155 instance=ExtResource("6_8cdyn")]
 visible = false
+z_index = -1
 
 [node name="CollisionShape2D" parent="ReviveStop" index="0" unique_id=264653727]
 z_index = -2

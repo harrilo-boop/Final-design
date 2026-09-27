@@ -142,6 +142,7 @@ current_level = NodePath("Current_level_label")
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=398273417]
+z_index = 1
 position = Vector2(0, -30.000004)
 scale = Vector2(2.9542499, 2.945375)
 sprite_frames = SubResource("SpriteFrames_81s8p")
